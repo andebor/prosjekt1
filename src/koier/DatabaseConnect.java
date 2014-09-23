@@ -7,7 +7,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class DatabaseConnect {
-    private static Connection instance;
+    private static Connection instance; 
 
     static final String SQL_DRIVER = "com.mysql.jdbc.Driver";
     static final String SQL_URL = "jdbc:mysql://mysql.stud.ntnu.no/";
