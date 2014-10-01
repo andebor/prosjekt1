@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.web.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="429.0" prefWidth="620.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TextField prefHeight="77.0" prefWidth="620.0" promptText="Koier" text="      Rapport">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </TextField>
+      <ImageView fitHeight="100.0" fitWidth="58.0" layoutX="14.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../Desktop/koiene_logo.gif" />
+         </image>
+      </ImageView>
+      <Button layoutX="268.0" layoutY="98.0" mnemonicParsing="false" text="Ok" />
+      <Button layoutX="268.0" layoutY="146.0" mnemonicParsing="false" text="Ok" />
+      <Button layoutX="522.0" layoutY="390.0" mnemonicParsing="false" text="Lever" />
+      <TextField layoutX="108.0" layoutY="98.0" promptText="Brukernavn" text="Skriv inn hvilken Koie" />
+      <TextField layoutX="11.0" layoutY="200.0" prefHeight="175.0" prefWidth="557.0" promptText="Kommentar, eventuelt knuste ting " />
+      <TextField layoutX="108.0" layoutY="146.0" promptText="Brukernavn" text="Skriv inn antall vedsekker" />
+   </children>
+</Pane>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="484.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button layoutX="282.0" layoutY="122.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="144.0" text="Kart">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <TextField prefHeight="68.0" prefWidth="484.0" promptText="Hovedmeny" text="      Hovedmeny">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </TextField>
+      <Button layoutX="59.0" layoutY="122.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="144.0" text="Koier">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="59.0" layoutY="197.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="144.0" text="Rapporter">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="282.0" layoutY="197.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="144.0" text="Reservasjoner">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="59.0" layoutY="274.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="144.0" text="Utstyrsliste">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="100.0" fitWidth="58.0" layoutX="7.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../Desktop/koiene_logo.gif" />
+         </image>
+      </ImageView>
+   </children>
+</Pane>
