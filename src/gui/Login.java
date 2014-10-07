@@ -14,7 +14,7 @@ public class Login extends Application{
 			Parent root = FXMLLoader.load(Login.class.getResource("Login.fxml"));
 			primaryStage.setScene(new Scene(root));
 			primaryStage.show();
-		}
+		}	
 
 		public static void main(String[] args) {
 			launch(args);
