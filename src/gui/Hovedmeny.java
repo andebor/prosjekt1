@@ -7,11 +7,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class Login extends Application{
+public class Hovedmeny extends Application{
 	
 		@Override
 		public void start(Stage primaryStage) throws IOException {
-			Parent root = FXMLLoader.load(Login.class.getResource("Login.fxml"));
+			Parent root = FXMLLoader.load(Login.class.getResource("Hovedmeny.fxml"));
 			primaryStage.setScene(new Scene(root));
 			primaryStage.show();
 		}
