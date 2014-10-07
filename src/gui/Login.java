@@ -29,7 +29,7 @@ public class Login extends Application{
 	private Button login;
 	
 	@FXML
-	public void openHovedmeny(ActionEvent event){
+	public void openMainMenu(ActionEvent event){
 		MainMenu mm = new MainMenu();
 		try {
 			mm.start(primaryStage);
