@@ -12,7 +12,7 @@
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="605.0" prefWidth="709.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Button layoutX="341.0" layoutY="84.0" mnemonicParsing="false" text="Velg" />
-      <TextField prefHeight="77.0" prefWidth="626.0" promptText="Koier" text="      RegnbueKoia på bakklandet">
+      <TextField editable="false" prefHeight="77.0" prefWidth="626.0" promptText="Koier" text="      RegnbueKoia på bakklandet">
          <font>
             <Font size="36.0" />
          </font>
@@ -40,6 +40,11 @@
       </TableView>
       <Button layoutX="509.0" layoutY="481.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="Rediger status" />
       <Button layoutX="14.0" layoutY="481.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="Legg til utstyr" />
+      <TextArea editable="false" layoutX="83.0" prefHeight="77.0" prefWidth="626.0" text="   RegnbueKoia på bakklandet">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </TextArea>
       <ImageView fitHeight="100.0" fitWidth="58.0" layoutX="8.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/koiene_logo.gif" />
