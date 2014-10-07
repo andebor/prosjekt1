@@ -17,30 +17,26 @@
             <Font size="36.0" />
          </font>
       </TextField>
-      <Button layoutX="59.0" layoutY="122.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="144.0" text="Koier">
+      <Button layoutX="59.0" layoutY="122.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="144.0" fx:id="koier" onAction="#openKoie" text="Koier">
+         <font>
+            <Font size="18.0" />
+         </font>
+       </Button>
+      
+      <Button layoutX="59.0" layoutY="197.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="144.0" fx:id="rapporter" text="Rapporter">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button layoutX="59.0" layoutY="197.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="144.0" text="Rapporter">
+      <Button layoutX="282.0" layoutY="197.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="144.0" fx:id="reservasjoner" text="Reservasjoner">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button layoutX="282.0" layoutY="197.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="144.0" text="Reservasjoner">
+      <Button layoutX="59.0" layoutY="274.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="144.0" fx:id="utstyrsListe" text="Utstyrsliste">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button layoutX="59.0" layoutY="274.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="144.0" text="Utstyrsliste">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Button>
-      <ImageView fitHeight="100.0" fitWidth="58.0" layoutX="7.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../Desktop/koiene_logo.gif" />
-         </image>
-      </ImageView>
    </children>
 </Pane>
