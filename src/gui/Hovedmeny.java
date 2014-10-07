@@ -11,7 +11,7 @@ public class Hovedmeny extends Application{
 	
 		@Override
 		public void start(Stage primaryStage) throws IOException {
-			Parent root = FXMLLoader.load(Login.class.getResource("Hovedmeny.fxml"));
+			Parent root = FXMLLoader.load(Hovedmeny.class.getResource("Hovedmeny.fxml"));
 			primaryStage.setScene(new Scene(root));
 			primaryStage.show();
 		}
