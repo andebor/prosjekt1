@@ -38,5 +38,13 @@
             <Font size="18.0" />
          </font>
       </Button>
+<<<<<<< HEAD
+=======
+      <ImageView fitHeight="100.0" fitWidth="58.0" layoutX="14.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/koiene_logo.gif" />
+         </image>
+      </ImageView>
+>>>>>>> origin/master
    </children>
 </Pane>
