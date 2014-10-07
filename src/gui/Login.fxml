@@ -7,7 +7,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="340.0" prefWidth="484.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button layoutX="203.0" layoutY="232.0" mnemonicParsing="false" fx:id="loginn" onAction="#openHovedmeny" text="Logg inn" />
+      <Button layoutX="203.0" layoutY="232.0" mnemonicParsing="false" fx:id="login" onAction="#openMainMenu" text="Logg inn" />
       <TextField layoutX="149.0" layoutY="88.0" promptText="Brukernavn" />
       <TextField layoutX="149.0" layoutY="155.0" promptText="Passord" />
    </children>
