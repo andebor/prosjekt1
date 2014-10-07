@@ -16,7 +16,7 @@ public class Utstyrsliste extends Application{
 
 		@Override
 		public void start(Stage primaryStage) throws IOException {
-			Parent root = FXMLLoader.load(Utstyrsliste.class.getResource("Ustyrsliste.fxml"));
+			Parent root = FXMLLoader.load(Utstyrsliste.class.getResource("Utstyrsliste.fxml"));
 			primaryStage.setScene(new Scene(root));
 			primaryStage.show();
 		}
