@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 public class Login extends Application{
 	private Stage primaryStage;
 	
+
 	@Override
 	public void start(Stage primaryStage) throws IOException {
 	    FXMLLoader fxmlLoader = new FXMLLoader();
@@ -22,6 +23,7 @@ public class Login extends Application{
         primaryStage.show();
         this.primaryStage = primaryStage;
 	}
+
 
 	@FXML
 	private Button loginn;

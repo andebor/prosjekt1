@@ -36,8 +36,11 @@ public class Hovedmeny extends Application{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
 		}
+		
+		
+		
+		
 		
 		public static void main(String[] args) {
 			launch(args);
