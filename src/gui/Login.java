@@ -26,13 +26,13 @@ public class Login extends Application{
 
 
 	@FXML
-	private Button loginn;
+	private Button login;
 	
 	@FXML
 	public void openHovedmeny(ActionEvent event){
-		Hovedmeny hm = new Hovedmeny();
+		MainMenu mm = new MainMenu();
 		try {
-			hm.start(primaryStage);
+			mm.start(primaryStage);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
