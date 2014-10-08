@@ -16,49 +16,21 @@ import javafx.stage.Stage;
 
 
 public class Login extends Application {
-	private Stage primaryStage;
 	
-
-	
-	
-
-
 	@Override
 	public void start(Stage primaryStage) throws IOException {
-	
-	    FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setController(this);
-        Parent root = (Parent) fxmlLoader.load(this.getClass().getResourceAsStream("Login.fxml"));
-        primaryStage.setScene(new Scene(root));
-        primaryStage.show();
-     
-        this.primaryStage = primaryStage;
-        
-	}
-	
-	
-	
-	
-	 
-	@FXML
-	private Button login;
-	
-	@FXML
-	public void openMainMenu(ActionEvent event){
-		MainMenu mm = new MainMenu();
-		try {
-			mm.start(primaryStage);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		
+		Parent root = FXMLLoader.load(this.getClass().getResource("Login.fxml"));
+	    primaryStage.setScene(new Scene(root));
+	    primaryStage.show();
+	    LoginController lc = new LoginController();
+	    lc.primaryStage = primaryStage;
 	}
+	 
+	
 	
 	public static void main(String[] args) {
 		launch(args);
 	}
-	
-	
 	
 }
