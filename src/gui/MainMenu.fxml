@@ -12,31 +12,37 @@
          <font>
             <Font size="18.0" />
          </font></Button>
-      <TextField prefHeight="68.0" prefWidth="484.0" promptText="Hovedmeny" text="      Hovedmeny">
-         <font>
-            <Font size="36.0" />
-         </font>
-      </TextField>
-      <Button layoutX="59.0" layoutY="122.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="144.0" fx:id="koier" onAction="#openKoie" text="Koier">
+      <Button fx:id="koier" layoutX="59.0" layoutY="122.0" mnemonicParsing="false" onAction="#openKoie" prefHeight="43.0" prefWidth="144.0" text="Koier">
          <font>
             <Font size="18.0" />
          </font>
        </Button>
       
-      <Button layoutX="59.0" layoutY="197.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="144.0" fx:id="reports" text="Rapporter">
+      <Button fx:id="reports" layoutX="59.0" layoutY="197.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="144.0" text="Rapporter">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button layoutX="282.0" layoutY="197.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="144.0" fx:id="reservations" text="Reservasjoner">
+      <Button fx:id="reservations" layoutX="282.0" layoutY="197.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="144.0" text="Reservasjoner">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button layoutX="59.0" layoutY="274.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="144.0" fx:id="equipmentList" onAction="#openEquipmentList" text="Utstyrsliste">
+      <Button fx:id="equipmentList" layoutX="59.0" layoutY="274.0" mnemonicParsing="false" onAction="#openEquipmentList" prefHeight="43.0" prefWidth="144.0" text="Utstyrsliste">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
+      <ImageView fitHeight="100.0" fitWidth="58.0" layoutX="14.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@file:images/koiene_logo.gif" />
+         </image>
+      </ImageView>
+      <Text layoutX="74.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" Hovedmeny" wrappingWidth="384.13671875">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Text>
+      
    </children>
 </Pane>
