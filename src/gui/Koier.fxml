@@ -20,6 +20,6 @@
             <Font size="36.0" />
          </font>
       </Text>
-      <Button layoutX="247.0" layoutY="198.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="157.0" text="Tilbake" />
+      <Button layoutX="313.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="157.0" text="Tilbake" />
    </children>
 </Pane>
