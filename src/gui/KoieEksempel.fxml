@@ -50,5 +50,6 @@
             <Image url="@images/koiene_logo.gif" />
          </image>
       </ImageView>
+      <Button layoutX="509.0" layoutY="536.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="Tilbake" />
    </children>
 </Pane>
