@@ -13,9 +13,10 @@
    <children>
       <TableView layoutX="5.0" layoutY="81.0" prefHeight="485.0" prefWidth="709.0">
         <columns>
-          <TableColumn prefWidth="255.0" text="Koie" />
-            <TableColumn prefWidth="232.0" text="Ved kubber" />
-            <TableColumn prefWidth="221.0" text="Mangler" />
+          <TableColumn prefWidth="325.0" text="Koie" />
+            <TableColumn minWidth="0.0" prefWidth="123.0" text="Fra dato" />
+            <TableColumn prefWidth="122.0" text="Til dato" />
+            <TableColumn prefWidth="138.0" text="Reservasjons id " />
         </columns>
       </TableView>
       <Button layoutX="565.0" layoutY="566.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="140.0" text="Rediger" />
@@ -25,7 +26,7 @@
          </image>
       </ImageView>
       <Button layoutX="565.0" layoutY="13.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="140.0" text="Tilbake" />
-      <Text layoutX="89.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Utstyrsoversikt" wrappingWidth="468.13671875">
+      <Text layoutX="89.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reservasjoner" wrappingWidth="468.13671875">
          <font>
             <Font size="36.0" />
          </font>
