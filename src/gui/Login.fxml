@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
@@ -7,8 +8,18 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="340.0" prefWidth="484.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button layoutX="203.0" layoutY="232.0" mnemonicParsing="false" fx:id="login" onAction="#openMainMenu" text="Logg inn" />
-      <TextField layoutX="149.0" layoutY="88.0" promptText="Brukernavn" />
+      <Button fx:id="login" layoutX="203.0" layoutY="232.0" mnemonicParsing="false" onAction="#openMainMenu" text="Logg inn" />
+      <TextField layoutX="149.0" layoutY="100.0" promptText="Brukernavn" />
       <TextField layoutX="149.0" layoutY="155.0" promptText="Passord" />
+      <Text layoutX="90.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Logg inn" wrappingWidth="370.13671875">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="100.0" fitWidth="58.0" layoutX="7.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@file:images/koiene_logo.gif" />
+         </image>
+      </ImageView>
    </children>
 </Pane>
