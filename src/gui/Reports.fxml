@@ -9,7 +9,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="605.0" prefWidth="719.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="605.0" prefWidth="719.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ReportsController">
    <children>
       <TableView layoutX="5.0" layoutY="81.0" prefHeight="485.0" prefWidth="709.0">
         <columns>
@@ -24,7 +24,7 @@
             <Image url="@images/koiene_logo.gif" />
          </image>
       </ImageView>
-      <Button layoutX="565.0" layoutY="13.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="140.0" text="Tilbake" />
+      <Button fx:id="back" onAction="#backToMainMenu" layoutX="565.0" layoutY="13.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="140.0" text="Tilbake" />
       <Text layoutX="89.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rapporter" wrappingWidth="468.13671875">
          <font>
             <Font size="36.0" />

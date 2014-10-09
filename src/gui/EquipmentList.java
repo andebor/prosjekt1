@@ -19,6 +19,7 @@ public class EquipmentList extends Application{
 			Parent root = FXMLLoader.load(EquipmentList.class.getResource("EquipmentList.fxml"));
 			primaryStage.setScene(new Scene(root));
 			primaryStage.show();
+			EquipmentListController.setPrimaryStage(primaryStage);
 		}
 
 		public static void main(String[] args) {

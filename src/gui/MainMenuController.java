@@ -11,7 +11,7 @@ public class MainMenuController {
 	private static Stage primaryStage;
 	
 	
-	public void setPrimaryStage(Stage primaryStage){
+	public static void setPrimaryStage(Stage primaryStage){
 		MainMenuController.primaryStage = primaryStage;
 	}
 	
@@ -22,44 +22,30 @@ public class MainMenuController {
 	
 	
 	@FXML
-	public void openKoie(ActionEvent event){
+	public void openKoie(ActionEvent event)throws IOException{
 		Koier koier = new Koier();
-		try {
-			koier.start(primaryStage);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		koier.start(primaryStage);
+		
 	}
 	
 	@FXML
-	public void openReports(ActionEvent event){
+	public void openReports(ActionEvent event)throws IOException{
 		Reports reports = new Reports();
-		try{
-			reports.start(primaryStage);
-		} catch(IOException e) {
-			e.printStackTrace();
-		}
+		reports.start(primaryStage);
+		
 	}
 	
 	@FXML
-	public void openReservations(ActionEvent event){
+	public void openReservations(ActionEvent event)throws IOException{
 		Reservations reserv = new Reservations();
-		try{
-			reserv.start(primaryStage);
-		} catch(IOException e){
-			e.printStackTrace();
-		}
+		reserv.start(primaryStage);
+	
 	}
 	
 	@FXML
-	public void openEquipmentList(ActionEvent event){
+	public void openEquipmentList(ActionEvent event)throws IOException{
 		EquipmentList el = new EquipmentList();
-		try {
-			el.start(primaryStage);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		el.start(primaryStage);	
 	}
 	
 }
