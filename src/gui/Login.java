@@ -16,8 +16,7 @@ public class Login extends Application {
 		Parent root = FXMLLoader.load(this.getClass().getResource("Login.fxml"));
 	    primaryStage.setScene(new Scene(root));
 	    primaryStage.show();
-	    LoginController lc = new LoginController();
-	    lc.setPrimaryStage(primaryStage);
+	    LoginController.setPrimaryStage(primaryStage);
 	}
 	 
 	

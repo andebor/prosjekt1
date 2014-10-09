@@ -16,10 +16,8 @@ public class MainMenu extends Application{
 			Parent root = FXMLLoader.load(this.getClass().getResource("MainMenu.fxml"));
 		    primaryStage.setScene(new Scene(root));
 		    primaryStage.show();
-		    MainMenuController mmc = new MainMenuController();
-		    mmc.setPrimaryStage(primaryStage);
-		    
-	      
+		    MainMenuController.setPrimaryStage(primaryStage);
+		     
 		}
 		
 		

@@ -5,24 +5,23 @@ import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-
 import javafx.stage.Stage;
 
-public class LoginController {
+public class ReservationsController {
 	
 	private static Stage primaryStage;
 	
 	public static void setPrimaryStage(Stage primaryStage){
-		LoginController.primaryStage = primaryStage;
+		ReservationsController.primaryStage = primaryStage;
 	}
 	
 	@FXML
-	private Button login;
+	private Button back;
 	
 	@FXML
-	public void openMainMenu(ActionEvent event)throws IOException{
+	public void backToMainMenu(ActionEvent event)throws IOException{
 		MainMenu mm = new MainMenu();
 		mm.start(primaryStage);
-		
 	}
+	
 }

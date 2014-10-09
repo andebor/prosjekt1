@@ -16,6 +16,7 @@ public class Reservations extends Application{
 		Parent root = FXMLLoader.load(this.getClass().getResource("Reservations.fxml"));
 	    primaryStage.setScene(new Scene(root));
 	    primaryStage.show();
+	    ReservationsController.setPrimaryStage(primaryStage);
 	}
 	 
 	
