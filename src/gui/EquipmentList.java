@@ -8,22 +8,17 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class EquipmentList extends Application{
-	
-	
-	
 
+	@Override
+	public void start(Stage primaryStage) throws IOException {
+		Parent root = FXMLLoader.load(EquipmentList.class.getResource("EquipmentList.fxml"));
+		primaryStage.setScene(new Scene(root));
+		primaryStage.show();
+		EquipmentListController.setPrimaryStage(primaryStage);
+	}
 	
-
-		@Override
-		public void start(Stage primaryStage) throws IOException {
-			Parent root = FXMLLoader.load(EquipmentList.class.getResource("EquipmentList.fxml"));
-			primaryStage.setScene(new Scene(root));
-			primaryStage.show();
-			EquipmentListController.setPrimaryStage(primaryStage);
-		}
-
-		public static void main(String[] args) {
-			launch(args);
-		}
+	public static void main(String[] args) {
+		launch(args);
+	}
 }
 

@@ -9,7 +9,6 @@ import javafx.stage.Stage;
 
 public class ReportsController {
 	
-	
 	private static Stage primaryStage;
 	
 	public static void setPrimaryStage(Stage primaryStage){
@@ -19,12 +18,9 @@ public class ReportsController {
 	@FXML
 	private Button back;
 	
-	
 	@FXML
 	public void backToMainMenu(ActionEvent event) throws IOException{
 		MainMenu mm = new MainMenu();
 		mm.start(primaryStage);
 	}
-	
-	
 }
