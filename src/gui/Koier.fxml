@@ -6,7 +6,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="342.0" prefWidth="484.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.KoierController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.KoierController">
    <children>
       <Button layoutX="339.0" layoutY="116.0" mnemonicParsing="false" text="Velg koie" />
       <ChoiceBox layoutX="14.0" layoutY="116.0" prefHeight="25.0" prefWidth="322.0" />
@@ -15,7 +15,7 @@
             <Image url="@images/koiene_logo.gif" />
          </image>
       </ImageView>
-      <Text disable="true" layoutX="72.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Koier" wrappingWidth="384.13671875">
+      <Text disable="true" layoutX="80.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Koier" wrappingWidth="384.13671875">
          <font>
             <Font size="36.0" />
          </font>
