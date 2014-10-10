@@ -13,7 +13,6 @@ public class EquipmentListController {
 
 	public static void setPrimaryStage(Stage primaryStage) {
 		EquipmentListController.primaryStage = primaryStage;
-		
 	}
 	
 	@FXML

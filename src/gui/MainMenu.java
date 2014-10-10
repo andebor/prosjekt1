@@ -10,16 +10,15 @@ import javafx.stage.Stage;
 
 public class MainMenu extends Application{
 	
-		@Override
-		public void start(Stage primaryStage) throws IOException {
-			Parent root = FXMLLoader.load(this.getClass().getResource("MainMenu.fxml"));
-		    primaryStage.setScene(new Scene(root));
-		    primaryStage.show();
-		    MainMenuController.setPrimaryStage(primaryStage);
-		     
-		}
+	@Override
+	public void start(Stage primaryStage) throws IOException {
+		Parent root = FXMLLoader.load(this.getClass().getResource("MainMenu.fxml"));
+		primaryStage.setScene(new Scene(root));
+		primaryStage.show();
+		MainMenuController.setPrimaryStage(primaryStage);     
+	}
 		
-		public static void main(String[] args) {
-			launch(args);
-		}
+	public static void main(String[] args) {
+		launch(args);
+	}
 }

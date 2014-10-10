@@ -9,20 +9,15 @@ import javafx.stage.Stage;
 
 public class KoieEksempel extends Application{
 	
+	@Override
+	public void start(Stage primaryStage) throws IOException {
+		Parent root = FXMLLoader.load(KoieEksempel.class.getResource("KoieEksempel.fxml"));
+		primaryStage.setScene(new Scene(root));
+		primaryStage.show();
+	}
 	
-	
-
-	
-
-		@Override
-		public void start(Stage primaryStage) throws IOException {
-			Parent root = FXMLLoader.load(KoieEksempel.class.getResource("KoieEksempel.fxml"));
-			primaryStage.setScene(new Scene(root));
-			primaryStage.show();
-		}
-
-		public static void main(String[] args) {
-			launch(args);
-		}
+	public static void main(String[] args) {
+		launch(args);
+	}
 }
 

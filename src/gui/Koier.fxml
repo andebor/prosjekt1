@@ -10,7 +10,7 @@
    <children>
       <Button layoutX="339.0" layoutY="116.0" mnemonicParsing="false" text="Velg koie" />
       <ChoiceBox layoutX="14.0" layoutY="116.0" prefHeight="25.0" prefWidth="322.0" />
-      <ImageView fitHeight="100.0" fitWidth="58.0" layoutX="7.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="100.0" fitWidth="58.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/koiene_logo.gif" />
          </image>
