@@ -1,6 +1,7 @@
 package gui;
 
 import java.io.IOException;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -16,7 +17,7 @@ public class MainMenuController {
 	}
 	
 	@FXML
-	private Button koier, reports, reservations, equipmentList;
+	private Button koier, reports, reservations, equipmentList, logOut;
 	
 	
 	
@@ -47,5 +48,11 @@ public class MainMenuController {
 		EquipmentList el = new EquipmentList();
 		el.start(primaryStage);	
 	}
+	
+	public void backToLogin(ActionEvent event)throws IOException{
+		Login li = new Login();
+		li.start(primaryStage);
+	}
+	
 	
 }
