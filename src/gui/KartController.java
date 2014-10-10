@@ -6,12 +6,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-public class KoierController {
+public class KartController {
 
 	private static Stage primaryStage;
 	
 	public static void setPrimaryStage(Stage primaryStage){
-		KoierController.primaryStage = primaryStage;
+		KartController.primaryStage = primaryStage;
 	}
 	
 	@FXML
