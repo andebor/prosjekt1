@@ -7,13 +7,13 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.image.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="340.0" prefWidth="485.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"  fx:controller="gui.LoginController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"  fx:controller="gui.LoginController">
    
    <children>
       <Button fx:id="login" layoutX="205.0" layoutY="235.0" mnemonicParsing="false" onAction="#openMainMenu" text="Logg inn" />
       <TextField layoutX="160.0" layoutY="100.0" promptText="Brukernavn" />
       <TextField layoutX="160.0" layoutY="155.0" promptText="Passord" />
-      <Text layoutX="90.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Logg inn" wrappingWidth="370.0">
+      <Text layoutX="80.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Logg inn" wrappingWidth="370.0">
          <font>
             <Font size="36.0" />
          </font>

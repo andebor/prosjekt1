@@ -29,7 +29,7 @@
          </image>
       </ImageView>
       <Button fx:id="back" onAction="#backToMainMenu" layoutX="565.0" layoutY="13.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="140.0" text="Tilbake" />
-      <Text layoutX="89.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reservasjoner" wrappingWidth="468.13671875">
+      <Text layoutX="80.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reservasjoner" wrappingWidth="468.13671875">
          <font>
             <Font size="36.0" />
          </font>

@@ -41,7 +41,7 @@
          </image>
       </ImageView>
       <Button layoutX="559.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="134.0" text="Tilbake" />
-      <Text layoutX="76.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Regnbuekoia på bakklandet" wrappingWidth="468.13671875">
+      <Text layoutX="80.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Regnbuekoia på bakklandet" wrappingWidth="468.13671875">
          <font>
             <Font size="36.0" />
          </font>
