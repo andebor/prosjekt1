@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 
 public class MainMenu extends Application{
 	
-		
+	
 		@Override
 		public void start(Stage primaryStage) throws IOException {
 			Parent root = FXMLLoader.load(this.getClass().getResource("MainMenu.fxml"));
@@ -19,7 +19,7 @@ public class MainMenu extends Application{
 		    MainMenuController.setPrimaryStage(primaryStage);
 		     
 		}
-		
+	
 		
 		
 		public static void main(String[] args) {
