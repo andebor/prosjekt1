@@ -2,10 +2,12 @@ package gui;
 
 import java.io.IOException;
 
+import db.DbAdmin;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-
+import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class LoginController {
@@ -18,11 +20,25 @@ public class LoginController {
 	
 	@FXML
 	private Button login;
+	@FXML
+	private TextField username, pw;
+	@FXML
+	private Text errorMessage;
+	
 	
 	@FXML
 	public void openMainMenu(ActionEvent event)throws IOException{
-		MainMenu mm = new MainMenu();
-		mm.start(primaryStage);
+		DbAdmin dbAdmin = new DbAdmin();
+		if (dbAdmin.checkAdmin(username.getText(),pw.getText())){
+			MainMenu mm = new MainMenu();
+			mm.start(primaryStage);
+			
+		}
+		else{
+			System.out.println("Errormessage");
+			
+		}
+		
 		
 	}
 }
