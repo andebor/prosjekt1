@@ -35,7 +35,8 @@ public class LoginController {
 			
 		}
 		else{
-			System.out.println("Errormessage");
+			errorMessage.setVisible(true);
+			
 			
 		}
 		
