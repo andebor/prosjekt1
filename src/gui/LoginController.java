@@ -6,6 +6,7 @@ import db.DbAdmin;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -21,10 +22,11 @@ public class LoginController {
 	@FXML
 	private Button login;
 	@FXML
-	private TextField username, pw;
+	private TextField username;
 	@FXML
 	private Text errorMessage;
-	
+	@FXML
+	private PasswordField pw;
 	
 	@FXML
 	public void openMainMenu(ActionEvent event)throws IOException{
