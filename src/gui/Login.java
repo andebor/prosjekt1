@@ -15,7 +15,6 @@ public class Login extends Application {
 	    primaryStage.setScene(new Scene(root));
 	    primaryStage.show();
 	    LoginController.setPrimaryStage(primaryStage);
-	    
 	}
 	
 	public static void main(String[] args) {
