@@ -1,7 +1,8 @@
 package gui;
 
 import java.io.IOException;
-import db.DbAdmin;
+
+import database.DbAdmin;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
