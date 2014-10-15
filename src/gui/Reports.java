@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 public class Reports extends Application {
 	@Override
 	public void start(Stage primaryStage) throws IOException {
-		
+		ReportsController.fillTable();
 		Parent root = FXMLLoader.load(this.getClass().getResource("Reports.fxml"));
 	    primaryStage.setScene(new Scene(root));
 	    primaryStage.show();
