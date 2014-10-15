@@ -24,7 +24,7 @@
             <Image url="@images/koiene_logo.gif" />
          </image>
       </ImageView>
-      <Text fx:id="errorMessage" disable="true" fill="#f20303" layoutX="160.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Brukernavn eller passord er feil" visible="false" />
+      <Text fx:id="errorMessage" disable="false" fill="#f20303" layoutX="160.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Brukernavn eller passord er feil" visible="false" />
 
    </children>
    

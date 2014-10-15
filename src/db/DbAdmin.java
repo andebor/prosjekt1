@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 public class DbAdmin {
 
-	public boolean checkAdmin(String username, String pw){
+	public static boolean checkAdmin(String username, String pw){
 		String sql = "select password from admin where admin_email = ?";
 		try (PreparedStatement ps = DatabaseConnect.getInstance().prepareStatement(sql)){
 			ps.setString(1, username);

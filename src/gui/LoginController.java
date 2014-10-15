@@ -28,16 +28,15 @@ public class LoginController {
 	
 	@FXML
 	public void openMainMenu(ActionEvent event)throws IOException{
-		DbAdmin dbAdmin = new DbAdmin();
-		if (dbAdmin.checkAdmin(username.getText(),pw.getText())){
+		
+		
+		if (DbAdmin.checkAdmin(username.getText(),pw.getText())){
 			MainMenu mm = new MainMenu();
 			mm.start(primaryStage);
 			
 		}
 		else{
 			errorMessage.setVisible(true);
-			System.out.println("JAJAJA");
-			
 			
 		}
 		
