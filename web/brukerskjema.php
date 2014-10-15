@@ -1,9 +1,13 @@
 <?php
+include 'functions.php';
+
 $dbhost = 'mysql.stud.ntnu.no';
 $dbuser = 'oyvbr_prosjekt1';
 $dbpass = 'oyvbr_prosjekt1';
 $dbname = 'oyvbr_koie';
+//Første connection for å inserte i reports
 $conn = mysql_connect($dbhost, $dbuser, $dbpass);
+mysql_set_charset('utf8',$conn);
 $db_found = mysql_select_db($dbname, $conn);
 if(! $conn )
 {
@@ -20,41 +24,27 @@ if ($db_found) {
     $smoke = $_POST['smoke'];
     $forgotten = $_POST['forgotten'];
     $missing = $_POST['missing'];
-    if ($missing > 0) {
-      $missingimploded = implode("`, `", $missing);
-      $missingformatted = "`" . $missingimploded . "`";
-    }
     $comment = $_POST['comment'];
-    //foreach ($missing as $key => $value) {
-      //mysql_query("UPDATE current_inventory SET $value = '0' WHERE koie = $koie;");
-    //}
-    
-    $wood_query = mysql_query("UPDATE current_inventory SET wood = '$wood' WHERE koie = '$koie'");
-    $smoke_query = mysql_query("UPDATE current_inventory SET smoke = '$smoke' WHERE koie = '$koie'");
-    $new_report = "INSERT INTO reports (`koie_name`, `startdate`, `enddate`, `smoke_detector`, `wood`, `remarks_of_defects`, `forgotten`, `comments`) VALUES ('$koie', '$startdate', '$enddate', '$smoke', '$wood', '$missing', '$forgotten', '$comment')";
+    if (count($missing) > 0) {
+      $inventory_query = createUpdate($missing, $koie, $wood, $smoke);
+    }
+    $status = findStatus($missing, $forgotten);
+    $new_report = "INSERT INTO reports (`koie_name`, `status`, `startdate`, `enddate`, `smoke_detector`, `wood`, `remarks_of_defects`, `forgotten`, `comments`) VALUES ('$koie', '$status', '$startdate', '$enddate', '$smoke', '$wood', '$missing', '$forgotten', '$comment')";
     $test = mysql_query($new_report, $conn);
     if (! $test) {
       die('Could not enter data: ' . mysql_error());
-    }
-  
-  
+    }  
   }
-  //echo "Entered data successfully\n";
-  //$comment_query = mysql_query("UPDATE current_inventory SET comment = '$comment' WHERE koie = '$koie'");
-  //SET smoke = '$smoke' WHERE koie = '$koie'";
-
-  //$sql = "INSERT INTO superkoie (inventartype,antall, maxAntall) VALUES ( "lysestake", 1, 1 )";
-  //$result = mysql_query($sql);
 }
-
-
-//if($_POST['submit'] == "Submit")
-//{
-//  $errorMessage = "";
-
-
-//}
-mysql_close($conn);  
+mysql_close($conn); 
+//  Andre connection for å oppdatere current_inventory
+$conn2 = mysql_connect($dbhost, $dbuser, $dbpass); 
+mysql_set_charset('utf8',$conn2);
+mysql_select_db($dbname, $conn2);
+if($_POST['submit'] == "Submit") {
+  mysql_query($inventory_query, $conn2);
+}
+mysql_close($conn2); 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -157,7 +147,7 @@ mysql_close($conn);
       JA
     </label> 
     <label class="radio-inline" for="smoke-1">
-      <input type="radio" name="smoke" id="smoke-1" value="2">
+      <input type="radio" name="smoke" id="smoke-1" value="0">
       NEI
     </label>
   </div>
@@ -172,7 +162,7 @@ mysql_close($conn);
       JA
     </label> 
     <label class="radio-inline" for="forgotten-1">
-      <input type="radio" name="forgotten" id="smoke-1" value="2" checked="checked">
+      <input type="radio" name="forgotten" id="smoke-1" value="0" checked="checked">
       NEI
     </label>
   </div>
@@ -221,12 +211,6 @@ mysql_close($conn);
   <label class="col-md-4 control-label" for="submit"></label>
   <div class="col-md-4">
     <button type="submit" id="submit" name="submit" value="Submit" class="btn btn-primary">Send!</button>
-    <?php 
-    printf($koie . " - " . $wood . " - " .$smoke . " - ");
-    print_r($missing);
-
-    //echo $missing[5];
-    ?>
   </div>
 </div>
 
