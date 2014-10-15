@@ -1,9 +1,11 @@
 package gui;
 
 import java.io.IOException;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
 import javafx.stage.Stage;
 
 public class ReportsController {
@@ -17,10 +19,15 @@ public class ReportsController {
 	@FXML
 	private Button back;
 	@FXML
+	private TableColumn koie;
+	@FXML
 	public void backToMainMenu(ActionEvent event) throws IOException{
 		MainMenu mm = new MainMenu();
 		mm.start(primaryStage);
 	}
+	
+	
+	
 	
 	
 	
