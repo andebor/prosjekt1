@@ -13,9 +13,14 @@
    <children>
       <TableView layoutX="5.0" layoutY="81.0" prefHeight="485.0" prefWidth="709.0">
         <columns>
-          <TableColumn prefWidth="334.0" text="Koie" />
-            <TableColumn prefWidth="174.0" text="Dato levert" />
-            <TableColumn prefWidth="200.0" text="Status" />
+          <TableColumn prefWidth="270.0" text="Koie" />
+            <TableColumn prefWidth="197.0" text="Dato">
+               <columns>
+                  <TableColumn minWidth="5.0" prefWidth="88.0" text="Fra " />
+                  <TableColumn minWidth="5.0" prefWidth="88.0" text="Til" />
+               </columns></TableColumn>
+            <TableColumn prefWidth="139.0" text="Dato levert" />
+            <TableColumn prefWidth="132.0" text="Status" />
         </columns>
       </TableView>
       <ImageView fitHeight="100.0" fitWidth="58.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
