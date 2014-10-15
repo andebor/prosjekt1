@@ -1,7 +1,6 @@
 package gui;
 
 import java.io.IOException;
-
 import db.DbAdmin;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -30,18 +29,12 @@ public class LoginController {
 	
 	@FXML
 	public void openMainMenu(ActionEvent event)throws IOException{
-		
-		
 		if (DbAdmin.checkAdmin(username.getText(),pw.getText())){
 			MainMenu mm = new MainMenu();
 			mm.start(primaryStage);
-			
 		}
 		else{
 			errorMessage.setVisible(true);
-			
 		}
-		
-		
 	}
 }
