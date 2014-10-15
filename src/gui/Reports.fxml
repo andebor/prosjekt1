@@ -13,22 +13,22 @@
    <children>
       <TableView layoutX="5.0" layoutY="81.0" prefHeight="485.0" prefWidth="709.0">
         <columns>
-          <TableColumn prefWidth="491.0" text="Koie" />
-            <TableColumn prefWidth="111.0" text="Dato levert" />
-            <TableColumn prefWidth="106.0" text="Sett" />
+          <TableColumn prefWidth="334.0" text="Koie" />
+            <TableColumn prefWidth="174.0" text="Dato levert" />
+            <TableColumn prefWidth="200.0" text="Status" />
         </columns>
       </TableView>
-      <Button layoutX="565.0" layoutY="566.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="140.0" text="Rediger" />
       <ImageView fitHeight="100.0" fitWidth="58.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/koiene_logo.gif" />
          </image>
       </ImageView>
-      <Button fx:id="back" onAction="#backToMainMenu" layoutX="565.0" layoutY="13.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="140.0" text="Tilbake" />
+      <Button fx:id="back" layoutX="565.0" layoutY="13.0" mnemonicParsing="false" onAction="#backToMainMenu" prefHeight="25.0" prefWidth="140.0" text="Hovedmeny" />
       <Text layoutX="80.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rapporter" wrappingWidth="468.13671875">
          <font>
             <Font size="36.0" />
          </font>
       </Text>
+      <Button fx:id="back1" layoutX="565.0" layoutY="45.0" mnemonicParsing="false" onAction="#backToMainMenu" prefHeight="25.0" prefWidth="140.0" text="Tilbake" />
    </children>
 </Pane>

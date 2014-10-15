@@ -20,7 +20,7 @@
             <TableColumn prefWidth="104.0" text="Forventet antall " />
         </columns>
       </TableView>
-      <Button layoutX="169.0" layoutY="566.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="Rediger" />
+      <Button layoutX="169.0" layoutY="566.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="Lagre" />
       <ImageView fitHeight="182.0" fitWidth="322.0" layoutX="287.0" layoutY="127.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/IMG_20131010_170254.jpg" />
@@ -33,26 +33,26 @@
             <TableColumn text="Status" />
          </columns>
       </TableView>
-      <Button layoutX="509.0" layoutY="566.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="Rediger status" />
-      <Button layoutX="16.0" layoutY="566.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="Legg til utstyr" />
+      <Button layoutX="16.0" layoutY="566.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="Rediger" />
       <ImageView fitHeight="100.0" fitWidth="58.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/koiene_logo.gif" />
          </image>
       </ImageView>
-      <Button layoutX="559.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="134.0" text="Tilbake" />
+      <Button layoutX="559.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="134.0" text="Hovedmeny" />
       <Text layoutX="80.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Regnbuekoia på bakklandet" wrappingWidth="468.13671875">
          <font>
             <Font size="36.0" />
          </font>
       </Text>
-      <Text layoutX="288.0" layoutY="329.0" strokeType="OUTSIDE" strokeWidth="0.0" text="beskrivelse:" wrappingWidth="84.13671875" />
-      <Text layoutX="287.0" layoutY="403.0" strokeType="OUTSIDE" strokeWidth="0.0" text="sengeplasser:" wrappingWidth="73.13671875" />
-      <Text layoutX="16.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="vedkubber:" wrappingWidth="84.13671875" />
-      <Text layoutX="16.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="tid til dugnad:" wrappingWidth="84.13671875" />
+      <Text layoutX="288.0" layoutY="329.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Beskrivelse:" wrappingWidth="84.13671875" />
+      <Text layoutX="287.0" layoutY="403.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sengeplasser:" wrappingWidth="73.13671875" />
+      <Text layoutX="16.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vedkubber:" wrappingWidth="84.13671875" />
+      <Text layoutX="16.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tid til dugnad:" wrappingWidth="84.13671875" />
       <TextField layoutX="95.0" layoutY="115.0" promptText="antall vedkubber" />
       <TextField layoutX="95.0" layoutY="155.0" promptText="antall besøk/dato" />
       <TextField layoutX="361.0" layoutY="314.0" prefHeight="66.0" prefWidth="252.0" promptText="beskrivelse" />
       <TextField layoutX="361.0" layoutY="386.0" prefHeight="25.0" prefWidth="100.0" promptText="sengeplasser" />
+      <Button layoutX="559.0" layoutY="45.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="134.0" text="Tilbake" />
    </children>
 </Pane>
