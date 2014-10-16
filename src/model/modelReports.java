@@ -2,7 +2,7 @@ package model;
 
 import java.util.Date;
 
-public class modelReports {
+public class ModelReports {
 		
 		private int report_id;
 		private String koie_name;
@@ -16,7 +16,7 @@ public class modelReports {
 		private String comments;
 		 
 
-		public modelReports(int report_id, String koie_name, boolean status, Date startdate, Date enddate, boolean smoke_detector, 
+		public ModelReports(int report_id, String koie_name, boolean status, Date startdate, Date enddate, boolean smoke_detector, 
 				boolean wood, String remarks_of_defects, boolean forgotten, String comments){
 			this.report_id = report_id;
 			this.koie_name = koie_name;

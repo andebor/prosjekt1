@@ -3,7 +3,7 @@ package database;
 
 import java.sql.ResultSet;
 
-public class dbKoie {
+public class DbKoie {
 	
 	public static void main(String[] args) {
         System.out.println("main");
@@ -11,7 +11,7 @@ public class dbKoie {
 
     }
 
-    public dbKoie() {
+    public DbKoie() {
     }
 
     private Koie getKoie(String koiename, int numberOfBeds, String description, Image image) {
