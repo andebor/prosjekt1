@@ -4,10 +4,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-
-
-
-
 public class DbAdmin {
 
 	public static boolean checkAdmin(String username, String pw){
