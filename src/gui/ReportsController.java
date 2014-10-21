@@ -1,7 +1,9 @@
 package gui;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.Map;
+import java.util.ResourceBundle;
 
 import model.ModelReports;
 import database.DbReports;
@@ -17,26 +19,26 @@ import javafx.stage.Stage;
 
 public class ReportsController {
 	
-	private static Stage primaryStage;
+	private Stage primaryStage;
 	
-	public static void setPrimaryStage(Stage primaryStage){
-		ReportsController.primaryStage = primaryStage;
+	public void setPrimaryStage(Stage primaryStage){
+		this.primaryStage = primaryStage;
 	}
 	
 	@FXML
 	private Button back;
 	@FXML
-	private static TableView<ModelReports> reportsTable;
+	TableView<ModelReports> reportsTable;
 	@FXML
-	private static TableColumn<ModelReports, String> koie,date,from,to,dateDelivered,status;
+	TableColumn<ModelReports, String> koie,date,from,to,dateDelivered,status;
 	@FXML
 	public void backToMainMenu(ActionEvent event) throws IOException{
 		MainMenu mm = new MainMenu();
 		mm.start(primaryStage);
 	}
-	private final static ObservableList<ModelReports> data = FXCollections.observableArrayList(DbReports.getReports());
+	final ObservableList<ModelReports> data = FXCollections.observableArrayList(DbReports.getReports());
 	
-	public static void fillReportsTable(){
+	public void initialize(URL location, ResourceBundle resources){
 		reportsTable.setEditable(true);
 		koie.setCellValueFactory(
 			    new PropertyValueFactory<ModelReports,String>("koie_name"));
