@@ -11,16 +11,16 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="605.0" prefWidth="719.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ReportsController">
    <children>
-      <TableView layoutX="5.0" layoutY="81.0" prefHeight="485.0" prefWidth="709.0">
+      <TableView fx:id="reportsTable" layoutX="5.0" layoutY="81.0" prefHeight="485.0" prefWidth="709.0">
         <columns>
-          <TableColumn prefWidth="270.0" text="Koie" />
-            <TableColumn prefWidth="197.0" text="Dato">
+          <TableColumn fx:id="koie" prefWidth="270.0" text="Koie" />
+            <TableColumn fx:id="date" prefWidth="197.0" text="Dato">
                <columns>
-                  <TableColumn minWidth="5.0" prefWidth="88.0" text="Fra " />
-                  <TableColumn minWidth="5.0" prefWidth="88.0" text="Til" />
+                  <TableColumn fx:id="from" minWidth="5.0" prefWidth="88.0" text="Fra " />
+                  <TableColumn fx:id="to" minWidth="5.0" prefWidth="88.0" text="Til" />
                </columns></TableColumn>
-            <TableColumn prefWidth="139.0" text="Dato levert" />
-            <TableColumn prefWidth="132.0" text="Status" />
+            <TableColumn fx:id="dateDelivered" prefWidth="139.0" text="Dato levert" />
+            <TableColumn fx:id="status" prefWidth="132.0" text="Status" />
         </columns>
       </TableView>
       <ImageView fitHeight="100.0" fitWidth="58.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">

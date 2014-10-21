@@ -4,11 +4,13 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+
+
+import java.util.List;
 
 import model.ModelReports;
-import javafx.collections.ObservableList;
+
 
 public class DbReports {
 
@@ -17,9 +19,9 @@ public class DbReports {
         new DbReports().getReports();
 	}
 	
-	   public Map<String, ModelReports> getReports() {
+	   public static List<ModelReports> getReports() {
 	        String sql = "select * from reports";
-	        Map<String, ModelReports> reports = new HashMap();
+	        List<ModelReports> reports = new ArrayList<>();
 	        try (PreparedStatement ps = DatabaseConnect.getInstance().prepareStatement(sql)) {
 	            ResultSet rs = ps.executeQuery();
 	            while (rs.next()) {
@@ -27,7 +29,7 @@ public class DbReports {
 	            			rs.getDate("startdate"), rs.getDate("enddate"), rs.getBoolean("smoke_detector"), 
 	            			rs.getBoolean("wood"), rs.getString("remarks_of_defects"), rs.getBoolean("forgotten"), 
 	            			rs.getString("comments"));
-	                reports.put(rs.getString("koie_name"), report);
+	                reports.add(report);
 	            }
 	        } catch (SQLException e) {
 	            e.printStackTrace();

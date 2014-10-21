@@ -15,6 +15,7 @@ public class Reports extends Application {
 	    primaryStage.setScene(new Scene(root));
 	    primaryStage.show();
 	    ReportsController.setPrimaryStage(primaryStage);
+	    ReportsController.fillReportsTable();
 	}
 	
 	public static void main(String[] args) {
