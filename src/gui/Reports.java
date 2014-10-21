@@ -14,7 +14,10 @@ public class Reports extends Application {
 		Parent root = FXMLLoader.load(this.getClass().getResource("Reports.fxml"));
 	    primaryStage.setScene(new Scene(root));
 	    primaryStage.show();
+	   
+	    
 	    ReportsController.setPrimaryStage(primaryStage);
+	    
 	}
 	
 	public static void main(String[] args) {
