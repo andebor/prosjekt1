@@ -9,9 +9,9 @@ public class ModelReports {
 		private boolean status;
 		private Date startDate;
 		private Date endDate;
-		private boolean smoke_detector;
+		private boolean smokeDetector;
 		private boolean wood;
-		private String remarks_of_defects;
+		private String remarksOfDefects;
 		private boolean forgotten;
 		private String comments;
 		private Date timeStamp;
@@ -24,9 +24,9 @@ public class ModelReports {
 			this.status = status;
 			this.startDate = startdate;
 			this.endDate = enddate;
-			this.smoke_detector = smoke_detector;
+			this.smokeDetector = smoke_detector;
 			this.wood = wood;
-			this.remarks_of_defects = remarks_of_defects;
+			this.remarksOfDefects = remarks_of_defects;
 			this.forgotten = forgotten;
 			this.comments = comments;
 			this.timeStamp = timeStamp;

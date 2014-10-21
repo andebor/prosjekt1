@@ -3,34 +3,43 @@ import java.util.Date;
 public class ModelReservations {
 	
 	private int reservation_id;
-	private String koie_name;
-	private Date startdate;
-	private Date enddate;
-	private String tenant_name;
-	private String tenant_number;
-	private String tenant_epost;
+	private String koieName;
+	private Date startDate;
+	private Date endDate;
+	private String tenantName;
+	private String tenantNumber;
+	private String tenantEmail;
 	public ModelReservations(int reservation_id, String koie_name, Date startdate, Date enddate, String tenant_name, 
-			String tenant_number, String tenant_epost){
+			String tenant_number, String tenant_email){
 		this.reservation_id = reservation_id;
-		this.koie_name = koie_name;
-		this.startdate = startdate;
-		this.enddate = enddate;
-		this.tenant_name = tenant_name;
-		this.tenant_number = tenant_number;
-		this.tenant_epost = tenant_epost;
+		this.koieName = koie_name;
+		this.startDate = startdate;
+		this.endDate = enddate;
+		this.tenantName = tenant_name;
+		this.tenantNumber = tenant_number;
+		this.tenantEmail = tenant_email;
 	}
-	public String getKoiename() {
-		return koie_name;
+	public String getKoieName() {
+		return koieName;
 	}
-	public Date getStartdate() {
-		return startdate;
-	}
-	public String getTenantname() {
-		return tenant_name;
+	public Date getStartDate() {
+		return startDate;
 	}
 	
-	public String getTenantepost(){
-		return tenant_epost;
+	public Date getEndDate(){
+		return endDate;
+	}
+	
+	public String getTenantName() {
+		return tenantName;
+	}
+	
+	public String getTenantNumber() {
+		return tenantNumber;
+	}
+	
+	public String getTenantEmail(){
+		return tenantEmail;
 	}
 	
 }
