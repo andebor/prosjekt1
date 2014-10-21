@@ -15,9 +15,8 @@ public class Reports extends Application {
 	    primaryStage.setScene(new Scene(root));
 	    primaryStage.show();
 	   
-	    ReportsController controller = new ReportsController();
-	    controller.setPrimaryStage(primaryStage);
-	    controller.initialize(null, null);
+	    
+	    ReportsController.setPrimaryStage(primaryStage);
 	    
 	}
 	
