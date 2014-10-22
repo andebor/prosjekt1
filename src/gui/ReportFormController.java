@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -29,6 +30,7 @@ public class ReportFormController implements Initializable {
 	
 	@FXML
 	TextField reportComment,forgotten,smokeDetector,timeStamp,defects, reportId,woodStatus,koieName;
+	
 	@FXML
 	public void backToReports(ActionEvent event) throws IOException{
 		Reports reports = new Reports();
@@ -52,6 +54,9 @@ public class ReportFormController implements Initializable {
 			smokeDetector.setText(report.getSmokeDetector() ? "Ja" : "Nei");
 			forgotten.setText(report.getForgotten() ? "Nei" : "Ja");
 			reportComment.setText(report.getComments());
+
+			
+			
 		}
 		
 		
