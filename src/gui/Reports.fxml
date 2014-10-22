@@ -24,7 +24,7 @@
             <Image url="@images/koiene_logo.gif" />
          </image>
       </ImageView>
-      <TableView fx:id="reportsTable"  layoutX="15.0" layoutY="91.0" prefHeight="485.0" prefWidth="709.0">
+      <TableView fx:id="reportsTable" layoutX="15.0" layoutY="91.0" prefHeight="485.0" prefWidth="709.0">
          <columns>
             <TableColumn fx:id="koie" prefWidth="270.0" text="Koie" />
             <TableColumn fx:id="date" prefWidth="197.0" text="Dato">
@@ -36,6 +36,6 @@
             <TableColumn fx:id="dateDelivered" prefWidth="139.0" text="Dato levert" />
             <TableColumn fx:id="status" prefWidth="132.0" text="Status" />
          </columns>
-      </TableView >
+      </TableView>
    </children>
 </AnchorPane>
