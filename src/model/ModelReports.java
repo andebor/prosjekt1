@@ -33,7 +33,7 @@ public class ModelReports {
 		}
 
 		public String getKoieName() {
-			return koieName;
+			return koieName.substring(0,1).toUpperCase() + koieName.substring(1);
 		}
 
 		public Date getStartDate() {
