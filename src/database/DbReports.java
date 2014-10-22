@@ -20,9 +20,9 @@ public class DbReports {
 	        try (PreparedStatement ps = DatabaseConnect.getInstance().prepareStatement(sql)) {
 	            ResultSet rs = ps.executeQuery();
 	            while (rs.next()) {
-	            	ModelReports report = new ModelReports(rs.getInt("report_id"), rs.getString("koie_name"), rs.getBoolean("status"), 
+	            	ModelReports report = new ModelReports(rs.getInt("report_id"), rs.getString("koie_name"), rs.getInt("status"), 
 	            			rs.getDate("startdate"), rs.getDate("enddate"), rs.getBoolean("smoke_detector"), 
-	            			rs.getBoolean("wood"), rs.getString("remarks_of_defects"), rs.getBoolean("forgotten"), 
+	            			rs.getInt("wood"), rs.getString("remarks_of_defects"), rs.getBoolean("forgotten"), 
 	            			rs.getString("comments"),rs.getTimestamp("timestamp"));
 	                reports.add(report);
 	            }
@@ -40,9 +40,9 @@ public class DbReports {
 	        	ps.setInt(1, report_id);
 	        	ResultSet rs = ps.executeQuery();
 	            while (rs.next()) {
-	            	report = new ModelReports(rs.getInt("report_id"), rs.getString("koie_name"), rs.getBoolean("status"), 
+	            	report = new ModelReports(rs.getInt("report_id"), rs.getString("koie_name"), rs.getInt("status"), 
 	            			rs.getDate("startdate"), rs.getDate("enddate"), rs.getBoolean("smoke_detector"), 
-	            			rs.getBoolean("wood"), rs.getString("remarks_of_defects"), rs.getBoolean("forgotten"), 
+	            			rs.getInt("wood"), rs.getString("remarks_of_defects"), rs.getBoolean("forgotten"), 
 	            			rs.getString("comments"),rs.getTimestamp("timestamp"));    }
 	        } catch (SQLException e) {
 	            e.printStackTrace();

@@ -6,19 +6,19 @@ public class ModelReports {
 		
 		private int report_id;
 		private String koieName;
-		private boolean status;
+		private int status;
 		private Date startDate;
 		private Date endDate;
 		private boolean smokeDetector;
-		private boolean wood;
+		private int wood;
 		private String remarksOfDefects;
 		private boolean forgotten;
 		private String comments;
 		private Date timeStamp;
 		 
 
-		public ModelReports(int report_id, String koie_name, boolean status, Date startdate, Date enddate, boolean smoke_detector, 
-				boolean wood, String remarks_of_defects, boolean forgotten, String comments, Date timeStamp){
+		public ModelReports(int report_id, String koie_name, int status, Date startdate, Date enddate, boolean smoke_detector, 
+				int wood, String remarks_of_defects, boolean forgotten, String comments, Date timeStamp){
 			this.report_id = report_id;
 			this.koieName = koie_name;
 			this.status = status;
@@ -43,11 +43,11 @@ public class ModelReports {
 		public Date getEndDate(){
 			return endDate;
 		}
-		public boolean getWood() {
+		public int getWood() {
 			return wood;
 		}
 		
-		public boolean getStatus(){
+		public int getStatus(){
 			return status;
 		}
 		
