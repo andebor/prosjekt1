@@ -11,12 +11,14 @@ import database.DbReports;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class ReportsController implements Initializable {
@@ -45,7 +47,15 @@ public class ReportsController implements Initializable {
 	}
 	final ObservableList<ModelReports> data = FXCollections.observableArrayList(DbReports.getReports());
 	
-
+	@FXML
+	public void openReport(ActionEvent event) throws IOException{
+		ModelReports report = (ModelReports)reportsTable.getSelectionModel().getSelectedItem();
+		System.out.println(report.getKoieName());
+	}
+	
+	
+	
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		koie.setCellValueFactory(
@@ -61,10 +71,20 @@ public class ReportsController implements Initializable {
 		
 		reportsTable.setItems(data);
 		
+		reportsTable.setOnMouseClicked(new EventHandler<MouseEvent>(){
+			@Override
+			public void handle(MouseEvent event) {
+			    if (event.getClickCount()>1) {
+			    	ModelReports report = (ModelReports)reportsTable.getSelectionModel().getSelectedItem();
+			    	System.out.println(report.getReportId());
+			    }
+			}
+		});
+
+		
 	}
 	
-	
-	
+
 	
 	
 	

@@ -32,11 +32,12 @@ public class DbReports {
 	        return reports;
 	    }
 	   
-	   private ModelReports getReport(String report_id) {
-	        String sql = "select * from reservations where report_id = ?";
+	   public ModelReports getReport(int report_id) {
+		  
+	        String sql = "select * from reports where report_id = ?";
 	        ModelReports report = null;
 	        try (PreparedStatement ps = DatabaseConnect.getInstance().prepareStatement(sql)) {
-	        	ps.setString(1, report_id);
+	        	ps.setInt(1, report_id);
 	        	ResultSet rs = ps.executeQuery();
 	            while (rs.next()) {
 	            	report = new ModelReports(rs.getInt("report_id"), rs.getString("koie_name"), rs.getBoolean("status"), 

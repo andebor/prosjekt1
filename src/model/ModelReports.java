@@ -54,6 +54,10 @@ public class ModelReports {
 		public Date getTimeStamp(){
 			return timeStamp;
 		}
+		
+		public int getReportId(){
+			return report_id;
+		}
 
 
 }
