@@ -58,6 +58,22 @@ public class ModelReports {
 		public int getReportId(){
 			return report_id;
 		}
+		
+		public boolean getSmokeDetector(){
+			return smokeDetector;
+		}
+		
+		public String getDefects(){
+			return remarksOfDefects;
+		}
+		
+		public boolean getForgotten(){
+			return forgotten;
+		}
+		
+		public String getComments(){
+			return comments;
+		}
 
 
 }

@@ -19,6 +19,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Paint;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class ReportsController implements Initializable {
@@ -77,8 +79,9 @@ public class ReportsController implements Initializable {
 					super.updateItem(item, empty);
 
 					if (!empty) {
-
+						setTextFill(Paint.valueOf("black"));
 						if (item == 0) {
+							
 							setStyle("-fx-background-color: lightgreen");
 							setText("Alt i orden");
 
@@ -110,7 +113,15 @@ public class ReportsController implements Initializable {
 				if (event.getClickCount() > 1) {
 					ModelReports report = (ModelReports) reportsTable
 							.getSelectionModel().getSelectedItem();
-					System.out.println(report.getReportId());
+					ReportForm rf = new ReportForm();
+					try {
+						ReportFormController.setReports(report);
+						rf.start(primaryStage);
+						
+					} catch (IOException e) {
+					
+						e.printStackTrace();
+					}
 				}
 			}
 		});
