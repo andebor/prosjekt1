@@ -7,26 +7,22 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.image.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.LoginController">
-   
+
+<AnchorPane prefHeight="301.0" prefWidth="460.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.LoginController">
    <children>
-      <Button fx:id="login" layoutX="205.0" layoutY="235.0" mnemonicParsing="false" onAction="#openMainMenu" text="Logg inn" />
-      <TextField fx:id="username" layoutX="160.0" layoutY="100.0" promptText="Brukernavn" />
-      <Text layoutX="80.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Logg inn" wrappingWidth="370.0">
+      <PasswordField fx:id="pw" layoutX="170.0" layoutY="173.0" prefHeight="25.0" prefWidth="149.0" promptText="Passord" />
+      <Text fx:id="errorMessage" disable="true" fill="#f20303" layoutX="170.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Brukernavn eller passord er feil" visible="false" />
+      <ImageView fitHeight="100.0" fitWidth="58.0" layoutX="20.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/koiene_logo.gif" />
+         </image>
+      </ImageView>
+      <Text layoutX="90.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Logg inn" wrappingWidth="370.0">
          <font>
             <Font size="36.0" />
          </font>
       </Text>
-	
-      <ImageView fitHeight="100.0" fitWidth="58.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-        <image>
-            <Image url="@images/koiene_logo.gif" />
-         </image>
-      </ImageView>
-      <Text fx:id="errorMessage" disable="true" fill="#f20303" layoutX="160.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Brukernavn eller passord er feil" visible="false" />
-      <PasswordField fx:id="pw" layoutX="160.0" layoutY="163.0" prefHeight="25.0" prefWidth="149.0" promptText="Passord" />
-
-
+      <TextField fx:id="username" layoutX="170.0" layoutY="110.0" promptText="Brukernavn" />
+      <Button fx:id="login" layoutX="215.0" layoutY="245.0" mnemonicParsing="false" onAction="#openMainMenu" text="Logg inn" />
    </children>
-   
-</Pane>
+</AnchorPane>
