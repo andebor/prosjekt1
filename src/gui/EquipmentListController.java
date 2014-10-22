@@ -6,6 +6,7 @@ import java.sql.Date;
 import java.util.ResourceBundle;
 
 import model.ModelEquipmentLists;
+import model.ModelReports;
 import model.ModelReservations;
 import database.DbEquipmentList;
 import database.DbReservations;
@@ -15,6 +16,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -52,7 +54,40 @@ public class EquipmentListController implements Initializable{
 				new PropertyValueFactory<ModelEquipmentLists, Integer>("wood"));
 		status.setCellValueFactory(
 				new PropertyValueFactory<ModelEquipmentLists, Integer>("status"));
-	
+		
+		status.setCellFactory(column -> {
+			return new TableCell<ModelEquipmentLists, Integer>() {
+				@Override
+				protected void updateItem(Integer item, boolean empty) {
+					super.updateItem(item, empty);
+
+					if (!empty) {
+
+						if (item == 0) {
+							setStyle("-fx-background-color: lightgreen");
+							setText("Alt i orden");
+
+						} else if (item == 1) {
+							setStyle("-fx-background-color: khaki");
+							setText("Gjenglemt");
+
+						} else {
+
+							setStyle("-fx-background-color: lightsalmon");
+							setText("Mangler");
+						}
+
+					}
+
+					else {
+						setText(null);
+					}
+				}
+			};
+
+		});
+		
+		
 		equipmentTable.setItems(data);
 	}
 
