@@ -12,7 +12,7 @@ public class DbReservations {
         new DbReservations().getReservations();
 	}
 	
-	   public List<ModelReservations> getReservations() {
+	   public static List<ModelReservations> getReservations() {
 	        String sql = "select * from reservations";
 	        List<ModelReservations> reservations = new ArrayList<>();
 	        try (PreparedStatement ps = DatabaseConnect.getInstance().prepareStatement(sql)) {
@@ -20,7 +20,7 @@ public class DbReservations {
 	            while (rs.next()) {
 	            	ModelReservations reservation = new ModelReservations(rs.getInt("reservation_id"), rs.getString("koie_name"), 
 	            			rs.getDate("startdate"), rs.getDate("enddate"), rs.getString("tenant_name"), 
-	            			rs.getString("tenant_number"), rs.getString("tenant_epost"));
+	            			rs.getString("tenant_phone_number"), rs.getString("tenant_email"));
 	            	reservations.add(reservation);
 	            }
 	        } catch (SQLException e) {
