@@ -23,11 +23,11 @@
             <Image url="@images/koiene_logo.gif" />
          </image>
       </ImageView>
-      <TableView layoutX="15.0" layoutY="91.0" prefHeight="485.0" prefWidth="709.0">
+      <TableView fx:id="equipmentTable" layoutX="15.0" layoutY="91.0" prefHeight="485.0" prefWidth="709.0">
          <columns>
-            <TableColumn prefWidth="255.0" text="Koie" />
-            <TableColumn prefWidth="81.0" text="Ved kubber" />
-            <TableColumn prefWidth="372.0" text="Mangler" />
+            <TableColumn fx:id="koie" prefWidth="255.0" text="Koie" />
+            <TableColumn fx:id="wood" prefWidth="128.0" text="Ved kubber" />
+            <TableColumn fx:id="status" prefWidth="325.0" text="Status" />
          </columns>
       </TableView>
    </children>
