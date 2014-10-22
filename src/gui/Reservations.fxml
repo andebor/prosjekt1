@@ -24,18 +24,18 @@
             <Image url="@images/koiene_logo.gif" />
          </image>
       </ImageView>
-      <TableView layoutX="15.0" layoutY="92.0" prefHeight="484.0" prefWidth="710.0">
+      <TableView fx:id="reservationsTable" layoutX="15.0" layoutY="92.0" prefHeight="484.0" prefWidth="710.0">
          <columns>
-            <TableColumn prefWidth="166.0" text="Koie" />
-            <TableColumn minWidth="0.0" prefWidth="61.0" text="Dato">
+            <TableColumn fx:id="koie" prefWidth="166.0" text="Koie" />
+            <TableColumn fx:id="date" minWidth="0.0" prefWidth="61.0" text="Dato">
                <columns>
-                  <TableColumn prefWidth="75.0" text="Fra" />
-                  <TableColumn prefWidth="75.0" text="Til" />
+                  <TableColumn fx:id="from" prefWidth="75.0" text="Fra" />
+                  <TableColumn fx:id="to" prefWidth="75.0" text="Til" />
                </columns>
             </TableColumn>
-            <TableColumn prefWidth="123.0" text="Navn" />
-            <TableColumn prefWidth="150.0" text="Epost" />
-            <TableColumn prefWidth="134.0" text="Tlf" />
+            <TableColumn fx:id="name" prefWidth="123.0" text="Navn" />
+            <TableColumn fx:id="email" prefWidth="150.0" text="Epost" />
+            <TableColumn fx:id="number" prefWidth="134.0" text="Tlf" />
          </columns>
       </TableView>
    </children>
