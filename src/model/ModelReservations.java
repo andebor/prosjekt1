@@ -19,6 +19,11 @@ public class ModelReservations {
 		this.tenantNumber = tenant_number;
 		this.tenantEmail = tenant_email;
 	}
+	
+	public int getReservationId(){
+		return reservation_id;
+	}
+	
 	public String getKoieName() {
 		return koieName;
 	}

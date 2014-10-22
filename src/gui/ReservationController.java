@@ -15,30 +15,29 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
-public class ReservationController{
+public class ReservationController implements Initializable{
 	
 	private static Stage primaryStage;
+	private static ModelReservations reservation;
 	
 	public static void setPrimaryStage(Stage primaryStage){
 		ReservationController.primaryStage = primaryStage;
 	}
 	
+	public static void setReservations(ModelReservations reservation){
+		ReservationController.reservation = reservation;
+	}
+	
 	@FXML
 	private Button back, back1;
 
-//	@FXML
-//	TableView<ModelReservations> reservationsTable;
-//	@FXML
-//	TableColumn<ModelReservations, String> koie, name, email;
-//	@FXML
-//	TableColumn<ModelReservations, Date> date, from, to;
-//	@FXML
-//	TableColumn<ModelReservations, Integer> number;
-	
-	
+	@FXML
+	TextField koie, id, startDate, endDate, delivered, email, number, name;
+
 	@FXML
 	public void backToMainMenu(ActionEvent event)throws IOException{
 		MainMenu mm = new MainMenu();
@@ -50,24 +49,18 @@ public class ReservationController{
 		Reservations r = new Reservations();
 		r.start(primaryStage);
 	}
-//	final ObservableList<ModelReservations> data = FXCollections.observableArrayList(DbReservations.getReservations());
 	
-//	@Override
-//	public void initialize(URL location, ResourceBundle resources) {
-//		koie.setCellValueFactory(
-//				new PropertyValueFactory<ModelReservations, String>("koieName"));
-//		from.setCellValueFactory(
-//				new PropertyValueFactory<ModelReservations, Date>("startDate"));
-//		to.setCellValueFactory(
-//				new PropertyValueFactory<ModelReservations, Date>("endDate"));
-//		name.setCellValueFactory(
-//				new PropertyValueFactory<ModelReservations, String>("tenantName"));
-//		email.setCellValueFactory(
-//				new PropertyValueFactory<ModelReservations, String>("tenantEmail"));
-//		number.setCellValueFactory(
-//				new PropertyValueFactory<ModelReservations, Integer>("tenantNumber"));
-//		
-//		
-//	}
-//	
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		if (reservation != null){
+			koie.setText(reservation.getKoieName());
+			id.setText(String.valueOf(reservation.getReservationId()));
+			startDate.setText(reservation.getStartDate().toString());
+			endDate.setText(reservation.getEndDate().toString());
+//			delivered.setText(reservation);
+			email.setText(reservation.getTenantEmail());
+			number.setText(reservation.getTenantNumber());
+			name.setText(reservation.getTenantName());
+			}	
+	}
 }
