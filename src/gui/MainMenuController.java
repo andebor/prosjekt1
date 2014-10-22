@@ -46,7 +46,7 @@ public class MainMenuController {
 		EquipmentList el = new EquipmentList();
 		el.start(primaryStage);	
 	}
-	
+	@FXML
 	public void backToLogin(ActionEvent event)throws IOException{
 		Login li = new Login();
 		li.start(primaryStage);
