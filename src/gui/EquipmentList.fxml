@@ -26,8 +26,8 @@
       <TableView layoutX="15.0" layoutY="91.0" prefHeight="485.0" prefWidth="709.0">
          <columns>
             <TableColumn prefWidth="255.0" text="Koie" />
-            <TableColumn prefWidth="81.0" text="Ved kubber" />
-            <TableColumn prefWidth="372.0" text="Mangler" />
+            <TableColumn prefWidth="113.0" text="Vedkubber" />
+            <TableColumn prefWidth="340.0" text="Status" />
          </columns>
       </TableView>
    </children>
