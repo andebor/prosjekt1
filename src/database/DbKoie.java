@@ -9,7 +9,7 @@ import model.ModelReports;
 
 public class DbKoie {
 
-    private ModelKoie getKoie(String koieName) {
+    public ModelKoie getKoie(String koieName) {
         String sql = "select * from koie where koie_name = ?";
         ModelKoie koie = null;
         try (PreparedStatement ps = DatabaseConnect.getInstance().prepareStatement(sql)) {
