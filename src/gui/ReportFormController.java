@@ -29,7 +29,10 @@ public class ReportFormController implements Initializable {
 	Button back,backToMain;
 	
 	@FXML
-	TextField reportComment,forgotten,smokeDetector,timeStamp,defects, reportId,woodStatus,koieName;
+	TextField reportComment,forgotten,smokeDetector,timeStamp,reportId,woodStatus,koieName;
+	
+	@FXML
+	TextArea defects;
 	
 	@FXML
 	public void backToReports(ActionEvent event) throws IOException{
