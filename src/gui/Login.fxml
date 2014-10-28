@@ -10,19 +10,23 @@
 
 <AnchorPane prefHeight="301.0" prefWidth="460.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.LoginController">
    <children>
-      <PasswordField fx:id="pw" layoutX="170.0" layoutY="173.0" prefHeight="25.0" prefWidth="149.0" promptText="Passord" />
-      <Text fx:id="errorMessage" disable="true" fill="#f20303" layoutX="170.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Brukernavn eller passord er feil" visible="false" />
-      <ImageView fitHeight="100.0" fitWidth="58.0" layoutX="20.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/koiene_logo.gif" />
-         </image>
-      </ImageView>
-      <Text layoutX="90.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Logg inn" wrappingWidth="370.0">
-         <font>
-            <Font size="36.0" />
-         </font>
-      </Text>
-      <TextField fx:id="username" layoutX="170.0" layoutY="110.0" promptText="Brukernavn" />
-      <Button fx:id="login" layoutX="215.0" layoutY="245.0" mnemonicParsing="false" onAction="#openMainMenu" text="Logg inn" />
-   </children>
+   		<Text layoutX="90.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Logg inn" wrappingWidth="370.0">
+			<font>
+				<Font size="36.0" />
+			</font>
+		</Text>
+		<ImageView fitHeight="100.0" fitWidth="58.0" layoutX="20.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+        	<image>
+        		<Image url="@images/koiene_logo.gif" />
+        	</image>
+      	</ImageView>
+   		<TextField fx:id="username" layoutX="170.0" layoutY="110.0" promptText="Brukernavn" />
+		<PasswordField fx:id="pw" layoutX="170.0" layoutY="173.0" prefHeight="25.0" prefWidth="149.0" promptText="Passord" />
+		<Button fx:id="login" layoutX="215.0" layoutY="245.0" mnemonicParsing="false" onAction="#openMainMenu" text="Logg inn" />
+		<Text fx:id="errorMessage" disable="true" fill="#f20303" layoutX="170.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Brukernavn eller passord er feil" visible="false" />
+		
+		
+      
+		
+	</children>
 </AnchorPane>

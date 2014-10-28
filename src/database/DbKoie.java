@@ -26,14 +26,14 @@ public class DbKoie {
         return koie;
     }
     
-    public static List<ModelKoie> getAllKoie() {
-        String sql = "select * from koie";
-        List<ModelKoie> koier = new ArrayList<>();
+    public static List<String> getAllKoieNames() {
+        String sql = "select koie_name from koie";
+        List<String> koier = new ArrayList<>();
         try (PreparedStatement ps = DatabaseConnect.getInstance().prepareStatement(sql)) {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-            	ModelKoie koie = new ModelKoie(rs.getString("koie_name"), rs.getInt("number_of_beds"), rs.getString("description"));
-                koier.add(koie);
+            	
+                koier.add(rs.getString("koie_name"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
