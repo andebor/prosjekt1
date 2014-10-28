@@ -29,7 +29,10 @@ public class ReportFormController implements Initializable {
 	Button back,backToMain;
 	
 	@FXML
-	TextField reportComment,forgotten,smokeDetector,timeStamp,defects, reportId,woodStatus,koieName;
+	TextField forgotten,smokeDetector,timeStamp,reportId,woodStatus,koieName;
+	
+	@FXML
+	TextArea defects, reportComment;
 	
 	@FXML
 	public void backToReports(ActionEvent event) throws IOException{
@@ -50,6 +53,7 @@ public class ReportFormController implements Initializable {
 			woodStatus.setText(String.valueOf(report.getWood()));
 			reportId.setText(String.valueOf(report.getReportId()));
 			defects.setText(report.getDefects());
+			System.out.println(report.getDefects());
 			timeStamp.setText(report.getTimeStamp().toString());
 			smokeDetector.setText(report.getSmokeDetector() ? "Ja" : "Nei");
 			forgotten.setText(report.getForgotten() ? "Nei" : "Ja");
