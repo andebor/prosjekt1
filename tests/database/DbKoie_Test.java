@@ -35,7 +35,7 @@ public class DbKoie_Test {
 	public void testGetDescriptionWhenKoieNameIsRight(){
 		DbKoie dbKoie = new DbKoie();
 		ModelKoie koie = dbKoie.getKoie("Flåkoia");
-		String expected = "Flåkoia er bydg i 1984.";//LOLOL
+		String expected = "Flåkoia er bygd i 1968.";//LOLOL
 		String actual = koie.getDescription();
 		assertEquals(expected,actual);
 		
