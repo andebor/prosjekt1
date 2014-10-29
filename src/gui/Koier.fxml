@@ -20,7 +20,8 @@
             <Image url="@images/koiene_logo.gif" />
          </image>
       </ImageView>
-      <ChoiceBox fx:id="koieList" layoutX="24.0" layoutY="126.0" prefHeight="25.0" prefWidth="378.0"  />
-      <Button layoutX="408.0" layoutY="126.0" mnemonicParsing="false" text="Velg koie" />
+      <ChoiceBox fx:id="koieList" layoutX="24.0" layoutY="126.0" prefHeight="25.0" prefWidth="378.0" />
+      <Button fx:id="koie" layoutX="408.0" layoutY="126.0" mnemonicParsing="false" onAction="#toKoie" text="Velg koie" />
+      <Text fx:id="errorMessage" disable="true" fill="#f20303" layoutX="160.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Du må velge en koie" visible="false" />
    </children>
 </AnchorPane>

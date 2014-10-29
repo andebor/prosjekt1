@@ -24,12 +24,17 @@ if ($db_found) {
     $smoke = $_POST['smoke'];
     $forgotten = $_POST['forgotten'];
     $missing = $_POST['missing'];
-    $comment = $_POST['comment'];
     if (count($missing) > 0) {
-      $inventory_query = createUpdate($missing, $koie, $wood, $smoke);
+        $impMissing = implode(", ", $missing);
+        $impMissing = ucwords($impMissing);
     }
+    $comment = $_POST['comment'];
+    
     $status = findStatus($missing, $forgotten);
-    $new_report = "INSERT INTO reports (`koie_name`, `status`, `startdate`, `enddate`, `smoke_detector`, `wood`, `remarks_of_defects`, `forgotten`, `comments`) VALUES ('$koie', '$status', '$startdate', '$enddate', '$smoke', '$wood', '$missing', '$forgotten', '$comment')";
+
+    $inventory_query = createUpdate($missing, $koie, $wood, $smoke, $status);
+
+    $new_report = "INSERT INTO reports (`koie_name`, `status`, `startdate`, `enddate`, `smoke_detector`, `wood`, `remarks_of_defects`, `forgotten`, `comments`) VALUES ('$koie', '$status', '$startdate', '$enddate', '$smoke', '$wood', '$impMissing', '$forgotten', '$comment')";
     $test = mysql_query($new_report, $conn);
     if (! $test) {
       die('Could not enter data: ' . mysql_error());
@@ -63,17 +68,18 @@ mysql_close($conn2);
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <link rel="stylesheet" href="css/datepicker.css">
   </head>
   <body>
 <div id="container">
 
-<form class="form-horizontal" method="POST">
+<form class="form-horizontal" method="POST" onsubmit="return confirm('Er du sikker på at du vil sende rapporten?');">
 <fieldset>
 
 <!-- Form Name -->
 <legend>Koierapport</legend>
 
-<!-- Select Basic -->
+<!-- Velg koie -->
 <div class="form-group">
   <label class="col-md-4 control-label" for="select_koie">Velg koie</label>
   <div class="col-md-3">
@@ -105,21 +111,23 @@ mysql_close($conn2);
   </div>
 </div>
 
+<!-- Start dato -->
 <div class="form-group">
   <label class="col-md-4 control-label" for="startdate">Dato - fra:</label>
   <div class="col-md-3">
-    <input type='date' class="form-control" name="startdate" id="startdate" />  
+    <input type='text' class="form-control" name="startdate" id="startdate" placeholder="Velg..." />  
   </div>
 </div>
 
+<!-- Slutt dato -->
 <div class="form-group">
   <label class="col-md-4 control-label" for="enddate">Dato - til:</label>
   <div class="col-md-3">
-    <input type='date' class="form-control" name="enddate" id="enddate" />  
+    <input type='text' class="form-control" name="enddate" id="enddate" placeholder="Velg..." />  
   </div>
 </div>
 
-<!-- Multiple Radios (inline) -->
+<!-- Vedstokker -->
 <div class="form-group">
   <label class="col-md-4 control-label" for="wood">Antall vedstokker ved koia </label>
   <div class="col-md-4"> 
@@ -133,12 +141,12 @@ mysql_close($conn2);
     </label> 
     <label class="radio-inline" for="wood-2">
       <input type="radio" name="wood" id="wood-2" value="3">
-      &gt;30
+      Mer enn 30
     </label>
   </div>
 </div>
 
-<!-- Multiple Radios (inline) -->
+<!-- Røykvarsler -->
 <div class="form-group">
   <label class="col-md-4 control-label" for="smoke">Virket røykvarsler?</label>
   <div class="col-md-4"> 
@@ -153,25 +161,10 @@ mysql_close($conn2);
   </div>
 </div>
 
-<!-- Multiple Radios (inline) -->
+<!-- Mangler -->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="smoke">Glemte dere noe?</label>
-  <div class="col-md-4"> 
-    <label class="radio-inline" for="forgotten-0">
-      <input type="radio" name="forgotten" id="smoke-0" value="1">
-      JA
-    </label> 
-    <label class="radio-inline" for="forgotten-1">
-      <input type="radio" name="forgotten" id="smoke-1" value="0" checked="checked">
-      NEI
-    </label>
-  </div>
-</div>
-
-<!-- Select Multiple -->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="missing">Manglet noe</label>
-  <div class="col-md-3">
+  <label class="col-md-4 control-label" for="missing">Manglet noe?</label>
+  <div class="col-md-4">
     <select id="missing" name="missing[]" class="form-control" multiple="multiple">
       <option value="primus">Primus m/bruksanvisning</option>
       <option value="øks">Øks</option>
@@ -198,7 +191,23 @@ mysql_close($conn2);
   </div>
 </div>
 
-<!-- Textarea -->
+<!-- Gjenglemt -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="smoke">Glemte dere noe?</label>
+  <div class="col-md-4"> 
+    <label class="radio-inline" for="forgotten-0">
+      <input type="radio" name="forgotten" id="smoke-0" value="1">
+      JA
+    </label> 
+    <label class="radio-inline" for="forgotten-1">
+      <input type="radio" name="forgotten" id="smoke-1" value="0" checked="checked">
+      NEI
+    </label>
+    <p class="help-block">Hvis JA, spesifiser i kommentarfeltet.</p>
+  </div>
+</div>
+
+<!-- Kommentar -->
 <div class="form-group">
   <label class="col-md-4 control-label" for="comment">Kommentar:</label>
   <div class="col-md-3">                     
@@ -214,13 +223,49 @@ mysql_close($conn2);
   </div>
 </div>
 
+
 </fieldset>
 </form>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-multiselect.js"></script>
+    <script src="js/bootstrap-datepicker.js"></script>
+        <script type="text/javascript">
+            // When the document is ready
+            $(document).ready(function () {
+                
+                $('#startdate').datepicker({
+                    format: "yyyy-mm-dd",
+                    autoclose: true,
+                    startDate: '-2w',
+                    endDate: new Date()
+                });
+
+                $('#enddate').datepicker({
+                    format: "yyyy-mm-dd",
+                    autoclose: true,
+                    startDate: '-2w',
+                    endDate: new Date() //hvis trøbbel med å velge i dag, prøv new Date(new Date() -1)
+
+                });    
+            
+            });
+        </script>
+    <script type="text/javascript">
+    $(document).ready(function() {  //få til autoclose
+        $('#missing').multiselect({
+            includeSelectAllOption: false,
+            enableFiltering: false
+        });
+
+        $('#select_koie').multiselect({
+
+        });
+    });
+</script>
 </div>
   </body>
 </html>

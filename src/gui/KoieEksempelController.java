@@ -2,39 +2,48 @@ package gui;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import database.DbKoie;
-import database.DbReports;
 import model.ModelKoie;
-import model.ModelReports;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class KoierController implements Initializable {
-
+public class KoieEksempelController implements Initializable {
 	private static Stage primaryStage;
+	private static ModelKoie koie;
 	
 	public static void setPrimaryStage(Stage primaryStage){
-		KoierController.primaryStage = primaryStage;
+		KoieEksempelController.primaryStage = primaryStage;
 	}
 	
+	public static void setKoier(ModelKoie koie){
+		KoieEksempelController.koie = koie;
+	}
+	
+	@FXML 
+	Button back,backToMain;
+	
 	@FXML
-	private Button back, koie;
+	Text koieName;
+	
 	@FXML
 	private ChoiceBox<String> koieList;
 	@FXML
 	private Text errorMessage;
 	
 	
+	@FXML
+	public void back(ActionEvent event) throws IOException{
+		Koier koie = new Koier();
+		koie.start(primaryStage);
+	}
 	
 	@FXML
 	public void backToMainMenu(ActionEvent event) throws IOException{
@@ -60,12 +69,17 @@ public class KoierController implements Initializable {
 			errorMessage.setVisible(true);
 		}
 	}
-	
-	final ObservableList<String> data = FXCollections
-			.observableArrayList(DbKoie.getAllKoieNames());
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		koieList.setItems(data);
+		if (koie != null){
+			koieName.setText(koie.getKoieName());
+
+			
+			
+		}
+		
 		
 	}
+
 }
