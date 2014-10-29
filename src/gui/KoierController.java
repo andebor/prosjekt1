@@ -16,6 +16,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class KoierController implements Initializable {
@@ -30,6 +31,8 @@ public class KoierController implements Initializable {
 	private Button back, koie;
 	@FXML
 	private ChoiceBox<String> koieList;
+	@FXML
+	private Text errorMessage;
 	
 	
 	
@@ -41,8 +44,21 @@ public class KoierController implements Initializable {
 	
 	@FXML
 	public void toKoie(ActionEvent event)throws IOException{
+		if(koieList.getValue() != null){
+		ModelKoie mkoie = DbKoie.getKoie(koieList.getValue());
 		KoieEksempel koie = new KoieEksempel();
-		koie.start(primaryStage);
+		try {
+			KoieEksempelController.setKoier(mkoie);
+			koie.start(primaryStage);
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+		}
+		}
+		else{
+			errorMessage.setVisible(true);
+		}
 	}
 	
 	final ObservableList<String> data = FXCollections

@@ -4,12 +4,15 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import database.DbKoie;
 import model.ModelKoie;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class KoieEksempelController implements Initializable {
@@ -28,7 +31,12 @@ public class KoieEksempelController implements Initializable {
 	Button back,backToMain;
 	
 	@FXML
-	TextField koieName;
+	Text koieName;
+	
+	@FXML
+	private ChoiceBox<String> koieList;
+	@FXML
+	private Text errorMessage;
 	
 	
 	@FXML
@@ -41,6 +49,25 @@ public class KoieEksempelController implements Initializable {
 	public void backToMainMenu(ActionEvent event) throws IOException{
 		MainMenu mm = new MainMenu();
 		mm.start(primaryStage);
+	}
+	
+	@FXML
+	public void toKoie(ActionEvent event)throws IOException{
+		if(koieList.getValue() != null){
+		ModelKoie mkoie = DbKoie.getKoie(koieList.getValue());
+		KoieEksempel koie = new KoieEksempel();
+		try {
+			KoieEksempelController.setKoier(mkoie);
+			koie.start(primaryStage);
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+		}
+		}
+		else{
+			errorMessage.setVisible(true);
+		}
 	}
 
 	@Override
