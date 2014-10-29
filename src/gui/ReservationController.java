@@ -1,6 +1,9 @@
 package gui;
 
+import java.awt.Desktop;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.sql.Date;
 import java.util.ResourceBundle;
@@ -34,7 +37,7 @@ public class ReservationController implements Initializable{
 	}
 	
 	@FXML
-	private Button back, back1;
+	private Button back, back1,emailBtn;
 
 	@FXML
 	TextField koie, id, startDate, endDate, delivered, email, number, name;
@@ -49,6 +52,19 @@ public class ReservationController implements Initializable{
 	public void backToReservations(ActionEvent event) throws IOException{
 		Reservations r = new Reservations();
 		r.start(primaryStage);
+	}
+	@FXML
+	public void sendEmail(ActionEvent event){
+		 Desktop desktop = Desktop.getDesktop(); 
+		 try {
+			desktop.mail(new URI("mailto:"+email.getText()));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (URISyntaxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	@Override
