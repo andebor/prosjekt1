@@ -14,6 +14,7 @@ public class KoieEksempel extends Application{
 		Parent root = FXMLLoader.load(KoieEksempel.class.getResource("KoieEksempel.fxml"));
 		primaryStage.setScene(new Scene(root));
 		primaryStage.show();
+		KoieEksempelController.setPrimaryStage(primaryStage); 
 	}
 	
 	public static void main(String[] args) {
