@@ -22,12 +22,6 @@
          </font>
       </Text>
       <Button fx:id="back" layoutX="575.0" layoutY="55.0" mnemonicParsing="false" onAction="#backToReports" prefHeight="25.0" prefWidth="140.0" text="Tilbake" />
-      <ChoiceBox layoutX="251.0" layoutY="97.0" prefHeight="25.0" prefWidth="164.0" />
-      <Text layoutX="72.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Status:" wrappingWidth="140.0">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Text>
       <Text layoutX="449.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registrerte mangler:" wrappingWidth="181.13671875">
          <font>
             <Font size="14.0" />
@@ -38,11 +32,11 @@
             <Font size="14.0" />
          </font>
       </Text>
+      <ListView fx:id="defectsList" layoutX="449.0" layoutY="196.0" prefHeight="136.0" prefWidth="252.0"/>
       <TextField fx:id="forgotten" disable="true" layoutX="251.0" layoutY="268.0" opacity="100" prefHeight="25.0" prefWidth="164.0" text="Ja/Nei" />
       <TextField fx:id="smokeDetector" disable="true" layoutX="251.0" layoutY="240.0" opacity="100" prefHeight="25.0" prefWidth="164.0" text="Ja/Nei" />
       <TextField fx:id="timeStamp" disable="true" layoutX="251.0" layoutY="184.0" opacity="100" prefHeight="25.0" prefWidth="164.0" text="yyyy-mm-dd" />
-      <TextArea fx:id="defects" editable="false" opacity="100" disable="true" layoutX="449.0" layoutY="196.0" prefHeight="136.0" prefWidth="252.0" text="mangler" />
-      <TextArea fx:id="reportComment" disable="true" layoutX="80.0" layoutY="348.0" opacity="100" prefHeight="203.0" prefWidth="639.0" text="Kommentar fra rapporten" />
+      <TextArea wrapText="true" fx:id="reportComment" editable="false" layoutX="80.0" layoutY="348.0" opacity="100" prefHeight="203.0" prefWidth="639.0" text="Kommentar fra rapporten" />
       <TextField fx:id="reportId" disable="true" layoutX="251.0" layoutY="128.0" opacity="100" prefHeight="25.0" prefWidth="164.0" text="Id" />
       <TextField fx:id="woodStatus" disable="true" layoutX="251.0" layoutY="212.0" opacity="100" prefHeight="25.0" prefWidth="164.0" text="Antall vedkubber fylles inn" />
       <TextField fx:id="koieName" disable="true" layoutX="251.0" layoutY="156.0" opacity="100" prefHeight="25.0" prefWidth="164.0" text="Koienavn fylles inn" />
@@ -77,6 +71,5 @@
             <Image url="@images/koiene_logo.gif" />
          </image>
       </ImageView>
-      <Button layoutX="575.0" layoutY="576.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="140.0" text="Bekreft endring" />
    </children>
 </AnchorPane>
