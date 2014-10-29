@@ -47,9 +47,9 @@
          </image>
       </ImageView>
       <Button layoutX="179.0" layoutY="576.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="Lagre" />
-      <TableView layoutX="26.0" layoutY="228.0" prefHeight="342.0" prefWidth="258.0">
+      <TableView fx:id="equipmentList" layoutX="26.0" layoutY="228.0" prefHeight="342.0" prefWidth="258.0">
          <columns>
-            <TableColumn prefWidth="109.0" text="Utstyr" />
+            <TableColumn fx:id="equipments" prefWidth="109.0" text="Utstyr" />
             <TableColumn prefWidth="44.0" text="Antall" />
             <TableColumn prefWidth="104.0" text="Forventet antall " />
          </columns>

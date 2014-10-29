@@ -40,5 +40,22 @@ public class DbEquipmentList {
         }
         return equipment;
     }
+	
+	public static List<ModelEquipmentLists> getEquipment() {
+        String sql = "show columns from current_inventory";
+        List<ModelEquipmentLists> equipments = new ArrayList<>();
+        try (PreparedStatement ps = DatabaseConnect.getInstance().prepareStatement(sql)) {
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+            	rs.getString("Field");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return equipments;
+    }
+	public static void main(String[] args) {
+		getEquipment();
+	}
 
 }

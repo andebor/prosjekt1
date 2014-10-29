@@ -59,7 +59,10 @@ public class KoieEksempelController implements Initializable {
 	TableColumn<ModelReports, Date> date;
 	@FXML
 	TableColumn<ModelReports, Integer> status, reportID;
-	
+	@FXML
+	TableView<ModelEquipmentLists> equipmentList;
+	@FXML
+	TableColumn<ModelEquipmentLists, String> equipments;
 	
 	@FXML
 	public void back(ActionEvent event) throws IOException{
@@ -96,6 +99,8 @@ public class KoieEksempelController implements Initializable {
 			.observableArrayList(DbKoie.getAllKoieNames());
 	final ObservableList<ModelReports> dataReport = FXCollections
 			.observableArrayList(DbReports.getReport(koie.getKoieName()));
+	final ObservableList<ModelEquipmentLists> dataEquipment = FXCollections
+			.observableArrayList(DbEquipmentList.getEquipmentLists());
 	
 	
 	@Override
@@ -168,6 +173,10 @@ public class KoieEksempelController implements Initializable {
 		});
 		
 		reportsTable.setItems(dataReport);
+		
+		equipments.setCellValueFactory(new PropertyValueFactory<ModelEquipmentLists, String>("status"));	
+		
+		equipmentList.setItems(dataEquipment);
 		}
 		
 	}
