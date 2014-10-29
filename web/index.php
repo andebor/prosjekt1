@@ -25,7 +25,8 @@ if ($db_found) {
     $forgotten = $_POST['forgotten'];
     $missing = $_POST['missing'];
     if (count($missing) > 0) {
-        $impMissing = implode(",", $missing);
+        $impMissing = implode(", ", $missing);
+        $impMissing = ucwords($impMissing);
     }
     $comment = $_POST['comment'];
     
