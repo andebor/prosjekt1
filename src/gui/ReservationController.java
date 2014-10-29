@@ -37,7 +37,7 @@ public class ReservationController implements Initializable{
 	}
 	
 	@FXML
-	private Button back, back1,emailBtn;
+	private Button back, back1, standardMail, customMail;
 
 	@FXML
 	TextField koie, id, startDate, endDate, delivered, email, number, name;
@@ -54,9 +54,27 @@ public class ReservationController implements Initializable{
 		r.start(primaryStage);
 	}
 	@FXML
-	public void sendEmail(ActionEvent event){
+	public void sendStandardEmail(ActionEvent event){
 		 Desktop desktop = Desktop.getDesktop(); 
 		 try {
+			 String body = "Hei%0DDu%20har%20reservert"
+			 		+ "%20"+reservation.getKoieName()+"%20i%20perioden%20"+reservation.getStartDate().toString()
+			 		+"%20til%20"+reservation.getEndDate().toString()+"%0D"
+			 		+ "Husk%20å%20sende%20inn%20rapport%20etter%20oppholdet%20på%20http://org.ntnu.no/gruppetre/%0D"
+			 		+"Hilsen%20Koiestyret";
+			desktop.mail(new URI("mailto:"+email.getText()+"?subject=Koierapport&body="+body));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (URISyntaxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	@FXML
+	public void sendCustomEmail(ActionEvent event){
+		Desktop desktop = Desktop.getDesktop();
+		try{
 			desktop.mail(new URI("mailto:"+email.getText()));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -78,6 +96,12 @@ public class ReservationController implements Initializable{
 			delivered.setText(DbReports.checkReport
 					(reservation.getKoieName(), reservation.getStartDate().toString(), reservation.getEndDate().toString()) ?
 					"Ja" : "Nei");
+			if (delivered.getText().equals("Ja")){
+				delivered.setStyle("-fx-background-color: lightgreen");
+			}
+			else{
+				delivered.setStyle("-fx-background-color: lightsalmon");
+			}
 			email.setText(reservation.getTenantEmail());
 			number.setText(reservation.getTenantNumber());
 			name.setText(reservation.getTenantName());
