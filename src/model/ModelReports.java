@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class ModelReports {
 		
-		private int report_id;
+		private int reportId;
 		private String koieName;
 		private int status;
 		private Date startDate;
@@ -17,9 +17,9 @@ public class ModelReports {
 		private Date timeStamp;
 		 
 
-		public ModelReports(int report_id, String koie_name, int status, Date startdate, Date enddate, boolean smoke_detector, 
+		public ModelReports(int reportId, String koie_name, int status, Date startdate, Date enddate, boolean smoke_detector, 
 				int wood, String remarks_of_defects, boolean forgotten, String comments, Date timeStamp){
-			this.report_id = report_id;
+			this.reportId = reportId;
 			this.koieName = koie_name;
 			this.status = status;
 			this.startDate = startdate;
@@ -56,7 +56,7 @@ public class ModelReports {
 		}
 		
 		public int getReportId(){
-			return report_id;
+			return reportId;
 		}
 		
 		public boolean getSmokeDetector(){
