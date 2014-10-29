@@ -223,9 +223,6 @@ mysql_close($conn2);
     <button type="submit" id="submit" name="submit" value="Submit" class="btn btn-primary">Send!</button>
   </div>
 </div>
-<?php
-print_r($inventory_query);
-?>
 
 </fieldset>
 </form>
