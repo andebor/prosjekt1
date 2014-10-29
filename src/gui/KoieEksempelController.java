@@ -6,6 +6,8 @@ import java.util.ResourceBundle;
 
 import database.DbKoie;
 import model.ModelKoie;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -28,7 +30,7 @@ public class KoieEksempelController implements Initializable {
 	}
 	
 	@FXML 
-	Button back,backToMain;
+	Button back, backToMain, koiee;
 	
 	@FXML
 	Text koieName;
@@ -70,8 +72,12 @@ public class KoieEksempelController implements Initializable {
 		}
 	}
 
+	final ObservableList<String> data = FXCollections
+			.observableArrayList(DbKoie.getAllKoieNames());
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		koieList.setItems(data);
 		if (koie != null){
 			koieName.setText(koie.getKoieName());
 
