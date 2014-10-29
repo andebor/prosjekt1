@@ -6,6 +6,7 @@ import java.sql.Date;
 import java.util.ResourceBundle;
 
 import model.ModelReservations;
+import database.DbReports;
 import database.DbReservations;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -57,7 +58,10 @@ public class ReservationController implements Initializable{
 			id.setText(String.valueOf(reservation.getReservationId()));
 			startDate.setText(reservation.getStartDate().toString());
 			endDate.setText(reservation.getEndDate().toString());
-//			delivered.setText(reservation);
+			
+			delivered.setText(DbReports.checkReport
+					(reservation.getKoieName(), reservation.getStartDate().toString(), reservation.getEndDate().toString()) ?
+					"Ja" : "Nei");
 			email.setText(reservation.getTenantEmail());
 			number.setText(reservation.getTenantNumber());
 			name.setText(reservation.getTenantName());

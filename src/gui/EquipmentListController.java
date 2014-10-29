@@ -77,7 +77,6 @@ public class EquipmentListController implements Initializable{
 							setStyle("-fx-background-color: lightsalmon");
 							setText("Mangler");
 						}
-
 					}
 
 					else {
