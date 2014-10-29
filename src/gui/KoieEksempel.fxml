@@ -10,9 +10,9 @@
 <?import javafx.scene.layout.*?>
 
 
-<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.KoieEksempelController">
    <children>
-      <Button layoutX="569.0" layoutY="55.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="134.0" text="Tilbake" />
+      <Button fx:id="back" layoutX="569.0" layoutY="55.0" mnemonicParsing="false" onAction="#back" prefHeight="25.0" prefWidth="134.0" text="Tilbake" />
       <TextField layoutX="371.0" layoutY="396.0" prefHeight="25.0" prefWidth="100.0" promptText="sengeplasser" />
       <TextField layoutX="371.0" layoutY="324.0" prefHeight="66.0" prefWidth="252.0" promptText="beskrivelse" />
       <TextField layoutX="105.0" layoutY="165.0" promptText="antall besøk/dato" />
@@ -21,12 +21,9 @@
       <Text layoutX="26.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vedkubber:" wrappingWidth="84.13671875" />
       <Text layoutX="297.0" layoutY="413.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sengeplasser:" wrappingWidth="73.13671875" />
       <Text layoutX="298.0" layoutY="339.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Beskrivelse:" wrappingWidth="84.13671875" />
-      <Text layoutX="90.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Regnbuekoia på bakklandet" wrappingWidth="468.13671875">
-         <font>
-            <Font size="36.0" />
-         </font>
-      </Text>
-      <Button layoutX="569.0" layoutY="24.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="134.0" text="Hovedmeny" />
+      <TextField fx:id="koieName" layoutX="90.0" layoutY="50.0" promptText="koienavn" />
+      
+      <Button fx:id="backToMain" layoutX="569.0" layoutY="24.0" mnemonicParsing="false" prefHeight="25.0" onAction="#backToMainMenu" prefWidth="134.0" text="Hovedmeny" />
       <ImageView fitHeight="100.0" fitWidth="58.0" layoutX="20.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/koiene_logo.gif" />
