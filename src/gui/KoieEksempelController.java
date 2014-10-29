@@ -5,8 +5,10 @@ import java.net.URL;
 import java.sql.Date;
 import java.util.ResourceBundle;
 
+import database.DbEquipmentList;
 import database.DbKoie;
 import database.DbReports;
+import model.ModelEquipmentLists;
 import model.ModelKoie;
 import model.ModelReports;
 import javafx.collections.FXCollections;
@@ -29,6 +31,7 @@ import javafx.stage.Stage;
 public class KoieEksempelController implements Initializable {
 	private static Stage primaryStage;
 	private static ModelKoie koie;
+	private static ModelEquipmentLists equipment;
 	
 	public static void setPrimaryStage(Stage primaryStage){
 		KoieEksempelController.primaryStage = primaryStage;
@@ -43,7 +46,7 @@ public class KoieEksempelController implements Initializable {
 	@FXML
 	Text koieName;
 	@FXML
-	TextField beds;
+	TextField beds, wood, dugnad;
 	@FXML
 	TextArea description;
 	@FXML
@@ -101,6 +104,31 @@ public class KoieEksempelController implements Initializable {
 		koieName.setText(koie.getKoieName());
 		beds.setText(String.valueOf(koie.getNumberOfBeds()));
 		description.setText(koie.getDescription());
+		if(DbEquipmentList.getEquipmentList(koie.getKoieName()) != null){
+			equipment = DbEquipmentList.getEquipmentList(koie.getKoieName());
+			if(equipment.getWood() == 1){
+				wood.setText("0-15");
+			}
+			else if(equipment.getWood() == 2){
+				wood.setText("15-30");
+			}
+			else{
+				wood.setText("Mer enn 30");
+			}
+		}
+		if(DbEquipmentList.getEquipmentList(koie.getKoieName()) != null){
+			equipment = DbEquipmentList.getEquipmentList(koie.getKoieName());
+			if(equipment.getWood() == 1){
+				dugnad.setText("Så fort som mulig");
+			}
+			else if(equipment.getWood() == 2){
+				dugnad.setText("Ca 3 mnd");
+			}
+			else{
+				dugnad.setText("Ca 6 mnd");
+			}
+		}
+		
 		if(DbReports.getReport(koie.getKoieName()) != null){
 		reportID.setCellValueFactory(new PropertyValueFactory<ModelReports, Integer>("reportId"));
 		date.setCellValueFactory(new PropertyValueFactory<ModelReports, Date>("timeStamp"));
