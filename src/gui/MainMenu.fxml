@@ -8,46 +8,46 @@
 
 
 <AnchorPane prefHeight="369.0" prefWidth="474.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MainMenuController">
-   <children>
-      <Button fx:id="logOut" layoutX="370.0" layoutY="310.0" mnemonicParsing="false" onAction="#backToLogin" prefHeight="8.0" prefWidth="65.0" text="Logg ut">
-         <font>
-            <Font size="10.0" />
-         </font>
-      </Button>
-      <Text layoutX="90.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hovedmeny" wrappingWidth="384.13671875">
-         <font>
-            <Font size="36.0" />
-         </font>
-      </Text>
-      <ImageView fitHeight="100.0" fitWidth="58.0" layoutX="20.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/koiene_logo.gif" />
-         </image>
-      </ImageView>
-      <Button fx:id="equipmentList" layoutX="70.0" layoutY="290.0" mnemonicParsing="false" onAction="#openEquipmentList" prefHeight="43.0" prefWidth="144.0" text="Utstyrsoversikt">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Button>
-      <Button fx:id="reservations" layoutX="290.0" layoutY="210.0" mnemonicParsing="false" onAction="#openReservations" prefHeight="43.0" prefWidth="144.0" text="Reservasjoner">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Button>
-      <Button fx:id="reports" layoutX="70.0" layoutY="210.0" mnemonicParsing="false" onAction="#openReports" prefHeight="43.0" prefWidth="144.0" text="Rapporter">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Button>
-      <Button fx:id="koier" layoutX="70.0" layoutY="130.0" mnemonicParsing="false" onAction="#openKoie" prefHeight="43.0" prefWidth="144.0" text="Koier">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Button>
-      <Button fx:id="kart" layoutX="290.0" layoutY="130.0" mnemonicParsing="false" onAction="#openKart" prefHeight="43.0" prefWidth="144.0" text="Kart">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Button>
-   </children>
+	<children>
+		<Text layoutX="90.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hovedmeny" wrappingWidth="384.13671875">
+			<font>
+				<Font size="36.0" />
+			</font>
+		</Text>
+		<ImageView fitHeight="100.0" fitWidth="58.0" layoutX="20.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+			<image>
+				<Image url="@images/koiene_logo.gif" />
+			</image>
+		</ImageView>
+		<Button fx:id="koier" layoutX="70.0" layoutY="130.0" mnemonicParsing="false" onAction="#openKoie" prefHeight="43.0" prefWidth="144.0" text="Koier">
+			<font>
+				<Font size="18.0" />
+			</font>
+		</Button>
+		<Button fx:id="kart" layoutX="290.0" layoutY="130.0" mnemonicParsing="false" onAction="#openKart" prefHeight="43.0" prefWidth="144.0" text="Kart">
+			<font>
+				<Font size="18.0" />
+			</font>
+		</Button>
+			<Button fx:id="reports" layoutX="70.0" layoutY="210.0" mnemonicParsing="false" onAction="#openReports" prefHeight="43.0" prefWidth="144.0" text="Rapporter">
+			<font>
+				<Font size="18.0" />
+			</font>
+		</Button>
+		<Button fx:id="reservations" layoutX="290.0" layoutY="210.0" mnemonicParsing="false" onAction="#openReservations" prefHeight="43.0" prefWidth="144.0" text="Reservasjoner">
+			<font>
+				<Font size="18.0" />
+			</font>
+		</Button>
+		<Button fx:id="equipmentList" layoutX="70.0" layoutY="290.0" mnemonicParsing="false" onAction="#openEquipmentList" prefHeight="43.0" prefWidth="144.0" text="Utstyrsoversikt">
+			<font>
+				<Font size="18.0" />
+			</font>
+		</Button>
+		<Button fx:id="logOut" layoutX="370.0" layoutY="310.0" mnemonicParsing="false" onAction="#backToLogin" prefHeight="8.0" prefWidth="65.0" text="Logg ut">
+			<font>
+				<Font size="10.0" />
+			</font>
+		</Button>
+	</children>
 </AnchorPane>

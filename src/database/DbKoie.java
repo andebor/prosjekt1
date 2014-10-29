@@ -3,6 +3,8 @@ package database;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import model.ModelKoie;
 import model.ModelReports;
@@ -22,6 +24,21 @@ public class DbKoie {
             e.printStackTrace();
         }
         return koie;
+    }
+    
+    public static List<String> getAllKoieNames() {
+        String sql = "select koie_name from koie";
+        List<String> koier = new ArrayList<>();
+        try (PreparedStatement ps = DatabaseConnect.getInstance().prepareStatement(sql)) {
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+            	
+                koier.add(rs.getString("koie_name"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return koier;
     }
     
 }
