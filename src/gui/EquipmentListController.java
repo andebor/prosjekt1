@@ -20,6 +20,7 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
 public class EquipmentListController implements Initializable{
@@ -62,7 +63,7 @@ public class EquipmentListController implements Initializable{
 					super.updateItem(item, empty);
 
 					if (!empty) {
-
+						setTextFill(Paint.valueOf("black"));
 						if (item == 0) {
 							setStyle("-fx-background-color: lightgreen");
 							setText("Alt i orden");

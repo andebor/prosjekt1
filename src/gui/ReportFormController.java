@@ -2,13 +2,16 @@ package gui;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
-
 import model.ModelReports;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -32,7 +35,14 @@ public class ReportFormController implements Initializable {
 	TextField forgotten,smokeDetector,timeStamp,reportId,woodStatus,koieName;
 	
 	@FXML
-	TextArea defects, reportComment;
+	TextArea reportComment;
+	
+	@FXML
+	ListView<String> defectsList;
+	
+	
+	
+	ObservableList<String> data;
 	
 	@FXML
 	public void backToReports(ActionEvent event) throws IOException{
@@ -49,25 +59,34 @@ public class ReportFormController implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		if (report != null){
+			ArrayList<String> defectList = new ArrayList<String>();
+			String tempString = "";
+			for (int i = 0; i < report.getDefects().length(); i++){
+				char c = report.getDefects().charAt(i);
+				if (c == ','){
+					defectList.add(tempString);
+					tempString = "";
+				}
+				else if(tempString == ""){
+					if (c == ' '){
+						continue;
+					}
+					tempString += c;
+					tempString = tempString.toUpperCase();
+				}
+				else{
+					tempString += c;
+				}
+			}
+			data = FXCollections.observableArrayList (defectList);
+			defectsList.setItems(data);
 			koieName.setText(report.getKoieName());
 			woodStatus.setText(String.valueOf(report.getWood()));
 			reportId.setText(String.valueOf(report.getReportId()));
-			defects.setText(report.getDefects());
-			System.out.println(report.getDefects());
 			timeStamp.setText(report.getTimeStamp().toString());
 			smokeDetector.setText(report.getSmokeDetector() ? "Ja" : "Nei");
 			forgotten.setText(report.getForgotten() ? "Nei" : "Ja");
 			reportComment.setText(report.getComments());
-
-			
-			
-		}
-		
-		
+		}	
 	}
-
-	
-	
-	
-
 }
