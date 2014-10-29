@@ -15,8 +15,8 @@
       <Button fx:id="back" layoutX="569.0" layoutY="55.0" mnemonicParsing="false" onAction="#back" prefHeight="25.0" prefWidth="134.0" text="Tilbake" />
       <TextField fx:id="beds" disable="true" opacity="100" layoutX="371.0" layoutY="396.0" prefHeight="25.0" prefWidth="100.0" promptText="sengeplasser" />
       <TextArea fx:id="description" wrapText="true" editable="false"  opacity="100" layoutX="371.0" layoutY="324.0" prefHeight="66.0" prefWidth="252.0" promptText="beskrivelse" />
-      <TextField layoutX="105.0" layoutY="185.0" promptText="antall besøk/dato" />
-      <TextField layoutX="105.0" layoutY="145.0" promptText="antall vedkubber" />
+      <TextField fx:id="dugnad" disable="true" opacity="100" layoutX="105.0" layoutY="185.0" promptText="antall besøk/dato" />
+      <TextField fx:id="wood" disable="true" opacity="100" layoutX="105.0" layoutY="145.0" promptText="antall vedkubber" />
       <Text layoutX="26.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tid til dugnad:" wrappingWidth="84.13671875" />
       <Text layoutX="26.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vedkubber:" wrappingWidth="84.13671875" />
       <Text layoutX="297.0" layoutY="413.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sengeplasser:" wrappingWidth="73.13671875" />
@@ -38,7 +38,7 @@
          <columns>
             <TableColumn fx:id="reportID" prefWidth="105.0" text="Raport ID" />
             <TableColumn fx:id="date" minWidth="0.0" prefWidth="129.0" text="Dato levert" />
-            <TableColumn fx:id="status" text="Status" prefWidth="100.0" />
+            <TableColumn fx:id="status" text="Status" prefWidth="86.0" />
          </columns>
       </TableView>
       <ImageView fitHeight="182.0" fitWidth="322.0" layoutX="297.0" layoutY="137.0" pickOnBounds="true" preserveRatio="true">

@@ -6,9 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.ModelEquipmentList;
 import model.ModelEquipmentLists;
-import model.ModelReservations;
 
 public class DbEquipmentList {
 	
@@ -27,19 +25,20 @@ public class DbEquipmentList {
         return equipments;
     }
 	
-	private ModelEquipmentList getEquipmentList(String koieName) {
-        String sql = "select * from equipment_list where koie_name = ?";
-        ModelEquipmentList koie = null;
+
+	public static ModelEquipmentLists getEquipmentList(String koieName) {
+        String sql = "select * from current_inventory where koie = ?";
+        ModelEquipmentLists equipment = null;
         try (PreparedStatement ps = DatabaseConnect.getInstance().prepareStatement(sql)) {
         	ps.setString(1, koieName);
         	ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                koie = new ModelEquipmentList(rs.getInt("equipment_id"), rs.getString("equipment_name"), rs.getString("koie_name"), rs.getBoolean("status"));
+            	equipment = new ModelEquipmentLists(rs.getString("koie"), rs.getInt("wood"), rs.getInt("status"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return koie;
+        return equipment;
     }
 
 }
