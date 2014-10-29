@@ -58,6 +58,7 @@ mysql_close($conn2);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Koierapport</title>
+    <link rel="icon" type="image/png" href="favicon.ico">
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -132,7 +133,7 @@ mysql_close($conn2);
   <label class="col-md-4 control-label" for="wood">Antall vedstokker ved koia </label>
   <div class="col-md-4"> 
     <label class="radio-inline" for="wood-0">
-      <input type="radio" name="wood" id="wood-0" value="1" checked="checked">
+      <input type="radio" name="wood" id="wood-0" value="1">
       0-15
     </label> 
     <label class="radio-inline" for="wood-1">
@@ -140,7 +141,7 @@ mysql_close($conn2);
       15-30
     </label> 
     <label class="radio-inline" for="wood-2">
-      <input type="radio" name="wood" id="wood-2" value="3">
+      <input type="radio" name="wood" id="wood-2" value="3" checked="checked">
       Mer enn 30
     </label>
   </div>
@@ -211,7 +212,7 @@ mysql_close($conn2);
 <div class="form-group">
   <label class="col-md-4 control-label" for="comment">Kommentar:</label>
   <div class="col-md-3">                     
-    <textarea class="form-control" id="comment" name="comment"></textarea>
+    <textarea class="form-control" id="comment" name="comment" maxlength="800"></textarea>
   </div>
 </div>
 
@@ -222,7 +223,6 @@ mysql_close($conn2);
     <button type="submit" id="submit" name="submit" value="Submit" class="btn btn-primary">Send!</button>
   </div>
 </div>
-
 
 </fieldset>
 </form>

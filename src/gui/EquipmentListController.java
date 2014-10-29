@@ -53,6 +53,30 @@ public class EquipmentListController implements Initializable{
 				new PropertyValueFactory<ModelEquipmentLists, String>("koieName"));
 		wood.setCellValueFactory(
 				new PropertyValueFactory<ModelEquipmentLists, Integer>("wood"));
+		
+		wood.setCellFactory(column ->{
+			return new TableCell<ModelEquipmentLists,Integer>(){
+				@Override
+				protected void updateItem(Integer item, boolean empty){
+					super.updateItem(item, empty);
+					
+					if(!empty){
+						if (item == 1) {
+							setText("0-15");
+						}
+						else if(item == 2){
+							setText("15-30");
+						}
+						else{
+							setText("Mer enn 30");
+						}
+					}
+					else{
+						setText(null);
+					}
+				}
+			};
+		});
 		status.setCellValueFactory(
 				new PropertyValueFactory<ModelEquipmentLists, Integer>("status"));
 		
@@ -77,7 +101,6 @@ public class EquipmentListController implements Initializable{
 							setStyle("-fx-background-color: lightsalmon");
 							setText("Mangler");
 						}
-
 					}
 
 					else {

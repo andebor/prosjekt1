@@ -7,9 +7,9 @@ function createUpdate($columnArray, $koie, $wood, $smoke, $status) {
         }
         $imploded = implode(', ', $pairs);
         
-        return "UPDATE current_inventory SET " . $imploded . ", `wood` = '" . $wood . "', `smoke` = '" . $smoke . "', `status`= '" . $status . "', WHERE koie = '$koie'";
+        return "UPDATE current_inventory SET " . $imploded . ", `wood` = '" . $wood . "', `smoke` = '" . $smoke . "', `status`= '" . $status . "' WHERE koie = '" . $koie . "'";
     }
-    return "UPDATE current_inventory SET `status`= '" . $status . "', `wood` = '" . $wood . "', `smoke` = '" . $smoke . "' WHERE koie = '$koie'";
+    return "UPDATE current_inventory SET `status`= '" . $status . "', `wood` = '" . $wood . "', `smoke` = '" . $smoke . "' WHERE koie = '" . $koie . "'";
 }
 
 // Setter status basert på gjenlemt og mangler input
