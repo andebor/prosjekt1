@@ -49,4 +49,26 @@ public class DbReports {
 	        }
 	        return report;
 	    }
+	   
+	   public static boolean checkReport(String koieName, String startDate, String endDate) {
+	        String sql = "select * from reports where koie_name = ? and startdate = ? and enddate = ?";
+	        try (PreparedStatement ps = DatabaseConnect.getInstance().prepareStatement(sql)) {
+	        	ps.setString(1, koieName);
+	        	ps.setString(2, startDate);
+	        	ps.setString(3, endDate);
+	        	ResultSet rs = ps.executeQuery();
+	            if(rs.next()){
+	            	return true;
+	            }
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	        return false;
+	    }
+	   
+	   public static void main(String[] args) {
+		 
+		   System.out.println(checkReport("mortenskåten", "2014-10-28", "2014-10-29"));
+	}
+
 }
