@@ -27,7 +27,7 @@ public class KoierController implements Initializable {
 	}
 	
 	@FXML
-	private Button back;
+	private Button back, koie;
 	@FXML
 	private ChoiceBox<String> koieList;
 	
@@ -37,6 +37,12 @@ public class KoierController implements Initializable {
 	public void backToMainMenu(ActionEvent event) throws IOException{
 		MainMenu mm = new MainMenu();
 		mm.start(primaryStage);
+	}
+	
+	@FXML
+	public void toKoie(ActionEvent event)throws IOException{
+		KoieEksempel koie = new KoieEksempel();
+		koie.start(primaryStage);
 	}
 	
 	final ObservableList<String> data = FXCollections
