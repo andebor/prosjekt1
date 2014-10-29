@@ -16,7 +16,7 @@
             <Font size="14.0" />
          </font>
       </Text>
-      <Text layoutX="72.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Antall vedkubber:" wrappingWidth="151.13671875">
+      <Text layoutX="72.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Antall vedstokker:" wrappingWidth="151.13671875">
          <font>
             <Font size="14.0" />
          </font>
