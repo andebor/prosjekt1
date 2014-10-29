@@ -81,7 +81,15 @@ public class ReportFormController implements Initializable {
 			data = FXCollections.observableArrayList (defectList);
 			defectsList.setItems(data);
 			koieName.setText(report.getKoieName());
-			woodStatus.setText(String.valueOf(report.getWood()));
+			if (report.getWood() == 1){
+				woodStatus.setText("0-15");
+			}
+			else if (report.getWood() == 2){
+				woodStatus.setText("15-30");
+			}
+			else{
+				woodStatus.setText("Mer enn 30");
+			}
 			reportId.setText(String.valueOf(report.getReportId()));
 			timeStamp.setText(report.getTimeStamp().toString());
 			smokeDetector.setText(report.getSmokeDetector() ? "Ja" : "Nei");
