@@ -20,10 +20,10 @@
         		<Image url="@images/koiene_logo.gif" />
         	</image>
       	</ImageView>
-   		<TextField fx:id="username" layoutX="170.0" layoutY="110.0" promptText="Brukernavn" />
+   		<TextField fx:id="e_post" layoutX="170.0" layoutY="110.0" promptText="E-post" />
 		<PasswordField fx:id="pw" layoutX="170.0" layoutY="173.0" prefHeight="25.0" prefWidth="149.0" promptText="Passord" />
 		<Button fx:id="login" layoutX="215.0" layoutY="245.0" mnemonicParsing="false" onAction="#openMainMenu" text="Logg inn" />
-		<Text fx:id="errorMessage" disable="true" fill="#f20303" layoutX="170.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Brukernavn eller passord er feil" visible="false" />
+		<Text fx:id="errorMessage" disable="true" fill="#f20303" layoutX="170.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E-post eller passord er feil" visible="false" />
 		
 		
       
