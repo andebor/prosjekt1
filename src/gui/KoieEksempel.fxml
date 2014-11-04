@@ -35,8 +35,8 @@
       <Text layoutX="297.0" layoutY="434.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Leverte rapporter:" wrappingWidth="84.13671875" />
       <TableView fx:id="reportsTable" layoutX="297.0" layoutY="454.0" prefHeight="136.0" prefWidth="322.0">
          <columns>
-            <TableColumn fx:id="reportID" prefWidth="105.0" text="Raport ID" />
-            <TableColumn fx:id="date" minWidth="0.0" prefWidth="129.0" text="Dato levert" />
+            <TableColumn fx:id="reportID" prefWidth="95.0" text="Raport ID" />
+            <TableColumn fx:id="date" minWidth="0.0" prefWidth="139.0" text="Dato levert" />
             <TableColumn fx:id="status" text="Status" prefWidth="86.0" />
          </columns>
       </TableView>
