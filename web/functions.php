@@ -1,5 +1,5 @@
 <?php
-// Sjekker om det er mangler og legger disse til i update query
+// Sjekker om det er mangler og legger disse til i update query IKKE LENGER I BRUK!!
 function createUpdate($columnArray, $koie, $wood, $smoke, $status) {
     if (count($columnArray) > 0) {
         foreach ($columnArray as $key => $value) {
@@ -25,9 +25,17 @@ function findStatus($missing, $forgotten) {
     return $status;
 }
 
-// sjekker om det finnes en reservasjon med samme start- og sluttdato   
-//function checkDate($inputstart, $inputend) {
+// update for motsatt current inventory 
+function createUpdate2($columnArray, $koie, $wood, $smoke, $status) {
+    if (count($columnArray) > 0) {
+        foreach ($columnArray as $key => $value) {
+          $pairs [] = "WHEN '$value' THEN 0";
+        }
+        $imploded = implode(' ', $pairs);
 
-//}
+        return "UPDATE current_inventory2 SET " . $koie . "= CASE utstyr WHEN 'status' THEN " . $status . " " . $imploded . " WHEN 'wood' THEN " . $wood . " WHEN 'smoke' THEN " . $smoke . " ELSE " . $koie . " END";
+    }
+    return "UPDATE current_inventory2 SET " . $koie . "= CASE utstyr WHEN 'status' THEN " . $status . " WHEN 'wood' THEN " . $wood . " WHEN 'smoke' THEN " . $smoke . " ELSE " . $koie . " END";
+}
 
 ?>
