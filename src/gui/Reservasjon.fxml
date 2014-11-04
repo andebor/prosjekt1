@@ -10,14 +10,16 @@
 <?import javafx.scene.layout.*?>
 
 
-<AnchorPane prefHeight="467.0" prefWidth="727.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ReservationController">
+<AnchorPane prefHeight="575" prefWidth="729" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ReservationController">
    <children>
       <Button fx:id="back" onAction="#backToMainMenu" layoutX="575.0" layoutY="24.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="140.0" text="Hovedmeny" />
-      <TextField fx:id="delivered" opacity="100" disable="true" layoutX="251.0" layoutY="383.0" prefHeight="25.0" prefWidth="229.0" text="Ja/Nei" />
+      <TextField fx:id="delivered" opacity="100" disable="true" layoutX="251.0" layoutY="432.0" prefHeight="25.0" prefWidth="229.0" text="Ja/Nei" />
       <TextField fx:id="endDate" opacity="100" disable="true" layoutX="372.0" layoutY="202.0" prefHeight="25.0" prefWidth="108.0" text="til: dd/mm/yy" />
       <TextField fx:id="email" opacity="100" disable="true" layoutX="251.0" layoutY="334.0" prefHeight="25.0" prefWidth="229.0" text="e-mail" />
       <TextField fx:id="number" opacity="100" disable="true" layoutX="251.0" layoutY="289.0" prefHeight="25.0" prefWidth="229.0" text="tlf" />
-      <Text layoutX="84.0" layoutY="401.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Levert rapport:" wrappingWidth="151.13671875">
+      <Button fx:id="standardMail" onAction="#sendStandardEmail" layoutX="251.0" layoutY="383.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="Standard email" />
+      <Button fx:id="customMail" onAction="#sendCustomEmail" layoutX="361.0" layoutY="383.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="Annen email" />
+      <Text layoutX="84.0" layoutY="451.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Levert rapport:" wrappingWidth="151.13671875">
          <font>
             <Font size="14.0" />
          </font>

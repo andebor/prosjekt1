@@ -6,13 +6,16 @@ import java.sql.Date;
 import java.util.ResourceBundle;
 
 import model.ModelEquipmentLists;
+import model.ModelKoie;
 import model.ModelReports;
 import model.ModelReservations;
 import database.DbEquipmentList;
+import database.DbKoie;
 import database.DbReservations;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -20,6 +23,7 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
@@ -45,6 +49,8 @@ public class EquipmentListController implements Initializable{
 		MainMenu mm = new MainMenu();
 		mm.start(primaryStage);
 	}
+	
+	
 	final ObservableList<ModelEquipmentLists> data = FXCollections.observableArrayList(DbEquipmentList.getEquipmentLists());
 
 	@Override
@@ -113,6 +119,28 @@ public class EquipmentListController implements Initializable{
 		
 		
 		equipmentTable.setItems(data);
+		
+		
+		equipmentTable.setOnMouseClicked(new EventHandler<MouseEvent>() {
+			@Override
+			public void handle(MouseEvent event) {
+				if (event.getClickCount() > 1) {
+					ModelEquipmentLists tempObject = (ModelEquipmentLists) equipmentTable
+							.getSelectionModel().getSelectedItem();
+					ModelKoie mkoie = DbKoie.getKoie(tempObject.getKoieName());
+					KoieEksempel koie = new KoieEksempel();
+					try {
+						KoieEksempelController.setKoier(mkoie);
+						koie.start(primaryStage);
+
+					} catch (IOException e) {
+
+						e.printStackTrace();
+					}
+				}
+			}
+		});
+
 	}
 
 }

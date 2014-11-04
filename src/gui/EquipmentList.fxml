@@ -9,9 +9,8 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="578.0" prefWidth="724.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.EquipmentListController">
+<AnchorPane prefHeight="575" prefWidth="729" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.EquipmentListController">
    <children>
-      <Button fx:id="back1" layoutX="575.0" layoutY="55.0" mnemonicParsing="false" onAction="#backToMainMenu" prefHeight="25.0" prefWidth="140.0" text="Tilbake" />
       <Text layoutX="90.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Utstyrsoversikt" wrappingWidth="468.13671875">
          <font>
             <Font size="36.0" />
