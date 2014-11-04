@@ -15,8 +15,12 @@ if(! $conn )
 }
 if ($db_found) {
 
+  //Henter liste over utstyr som kan meldes som mangel
+  $inventory_list = mysql_query("SELECT utstyr FROM `current_inventory2` WHERE utstyr <> 'wood' AND utstyr <> 'smoke' AND utstyr <> 'status' ORDER BY utstyr");
+
   if($_POST['submit'] == "Submit")
   {
+    // Lager variabler fra form submit
     $koie = $_POST['select_koie'];
     $startdate = $_POST['startdate'];
     $enddate = $_POST['enddate'];
@@ -24,15 +28,15 @@ if ($db_found) {
     $smoke = $_POST['smoke'];
     $forgotten = $_POST['forgotten'];
     $missing = $_POST['missing'];
+    $comment = $_POST['comment'];
     if (count($missing) > 0) {
         $impMissing = implode(", ", $missing);
         $impMissing = ucwords($impMissing);
     }
-    $comment = $_POST['comment'];
     
     $status = findStatus($missing, $forgotten);
 
-    $inventory_query = createUpdate($missing, $koie, $wood, $smoke, $status);
+    $inventory_query = createUpdate2($missing, $koie, $wood, $smoke, $status);
 
     $new_report = "INSERT INTO reports (`koie_name`, `status`, `startdate`, `enddate`, `smoke_detector`, `wood`, `remarks_of_defects`, `forgotten`, `comments`) VALUES ('$koie', '$status', '$startdate', '$enddate', '$smoke', '$wood', '$impMissing', '$forgotten', '$comment')";
     $test = mysql_query($new_report, $conn);
@@ -167,27 +171,11 @@ mysql_close($conn2);
   <label class="col-md-4 control-label" for="missing">Manglet noe?</label>
   <div class="col-md-4">
     <select id="missing" name="missing[]" class="form-control" multiple="multiple">
-      <option value="primus">Primus m/bruksanvisning</option>
-      <option value="øks">Øks</option>
-      <option value="sag">Sag</option>
-      <option value="sagkrakk">Sagkrakk</option>
-      <option value="spade">Spade</option>
-      <option value="parafinlampe">Parafinlampe</option>
-      <option value="vaskemiddel">Vaskemiddel</option>
-      <option value="oppvaskkost">Oppvaskkost</option>
-      <option value="kjøkkenklut">Kjøkkenklut</option>
-      <option value="kopphåndkle">Kopphåndkle</option>
-      <option value="bestikk">Bestikk</option>
-      <option value="tallerkener">Tallerkener</option>
-      <option value="stekepanne">Stekepanne</option>
-      <option value="gryter">Gryter</option>
-      <option value="hjulvisp">Hjulvisp</option>
-      <option value="koiebok">Koiebok(hyttebok)</option>
-      <option value="hammer">Hammer</option>
-      <option value="tommestokk">Tommestokk</option>
-      <option value="brannteppe">Brannteppe</option>
-      <option value="brannapparat">Brannslukningsapparat</option>
-      <option value="lysestaker">Stødige lysestaker</option>
+      <?php
+      while($row = mysql_fetch_array($inventory_list)) {
+        echo "<option value=\"" . $row["utstyr"] . "\">" . $row["utstyr"] . "</option>\r\n";
+      }
+      ?>
     </select>
   </div>
 </div>
