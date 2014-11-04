@@ -22,7 +22,7 @@ public class LoginController {
 	@FXML
 	private Button login;
 	@FXML
-	private TextField username;
+	private TextField e_post;
 	@FXML
 	private Text errorMessage;
 	@FXML
@@ -30,7 +30,7 @@ public class LoginController {
 	
 	@FXML
 	public void openMainMenu(ActionEvent event)throws IOException{
-		if (DbAdmin.checkAdmin(username.getText(),pw.getText())){
+		if (DbAdmin.checkAdmin(e_post.getText(),pw.getText())){
 			MainMenu mm = new MainMenu();
 			mm.start(primaryStage);
 		}
