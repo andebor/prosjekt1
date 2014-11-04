@@ -10,30 +10,37 @@
   <div id="map" style="width: 790px; height: 580px;"></div>
 
   <script type="text/javascript">
+    function tilKoia(){
+        var dt = new Date();
+        document.write(dt.toTimeString());
+        // var elem = document.getElementById("divElem");
+        // elem.textContent = dt.toTimeString();
+        window.setTimeout("tilKoia();", 5000);
+    }
     // Define your koieListe: HTML content for the info window, latitude, longitude
     var koieListe = [
-      ['<h4>Fosenkoia</h4>', 63.56813, 10.29541],
-      ['<h4>Øvensenget</h4>', 62.41219, 11.18655],
-      ['<h4>Kamtjønnkoia</h4>', 62.74317, 09.29119],
-      ['<h4>Vekvessætra</h4>',62.70850, 09.80087],
-      ['<h4>Taagaab</h4>', 62.82197, 10.60875],
-      ['<h4>Kvernmovollen</h4>', 62.92831, 10.97890],
-      ['<h4>Mortenskåten</h4>', 63.01650, 10.95894],
-      ['<h4>Hognabu</h4>',  63.10875, 11.53450],
-      ['<h4>Holmsåkoia</h4>', 63.08642, 11.64870],
-      ['<h4>Stabburet</h4>', 63.14200, 11.72236],
-      ['<h4>Telin</h4>', 62.87615, 09.66196],
-      ['<h4>Iglbu</h4>', 62.96119, 10.09028],
-      ['<h4>Flåkoia</h4>', 63.15702, 10.36538],
-      ['<h4>Nicokoia</h4>',  63.16349, 10.52637],
-      ['<h4>Lynhøgen</h4>', 63.21028, 10.70875],
-      ['<h4>Heinfjordstua</h4>', 63.31492, 10.75206],
-      ['<h4>Selbukåten</h4>', 63.32851, 11.02758],
-      ['<h4>Sonvasskoia</h4>', 63.39030, 11.41852],
-      ['<h4>Rindalsløa</h4>', 63.01999, 09.19786],
-      ['<h4>Stakkslettbua</h4>',  63.14713, 09.11576],
-      ['<h4>Kåsen</h4>',  63.12375, 09.44338],
-      ['<h4>Holvassgamma</h4>', 63.82745, 10.37133]
+      ['<h4>Fosenkoia</h4> <p>Trykk for å gå til Koia</p> <button onclick="tilKoia()">Til Koia</button>  ', 63.56813, 10.29541],
+      ['<h4>Øvensenget</h4> <p>Trykk for å gå til Koia</p> <button onclick="tilKoia()">Til Koia</button>', 62.41219, 11.18655],
+      ['<h4>Kamtjønnkoia</h4> <p>Trykk for å gå til Koia</p> <button onclick="tilKoia()">Til Koia</button>', 62.74317, 09.29119],
+      ['<h4>Vekvessætra</h4> <p>Trykk for å gå til Koia</p> <button onclick="tilKoia()">Til Koia</button>',62.70850, 09.80087],
+      ['<h4>Taagaab</h4> <p>Trykk for å gå til Koia</p> <button onclick="tilKoia()">Til Koia</button>', 62.82197, 10.60875],
+      ['<h4>Kvernmovollen</h4> <p>Trykk for å gå til Koia</p> <button onclick="tilKoia()">Til Koia</button>', 62.92831, 10.97890],
+      ['<h4>Mortenskåten</h4> <p>Trykk for å gå til Koia</p> <button onclick="tilKoia()">Til Koia</button>', 63.01650, 10.95894],
+      ['<h4>Hognabu</h4> <p>Trykk for å gå til Koia</p> <button onclick="tilKoia()">Til Koia</button>',  63.10875, 11.53450],
+      ['<h4>Holmsåkoia</h4> <p>Trykk for å gå til Koia</p> <button onclick="tilKoia()">Til Koia</button>', 63.08642, 11.64870],
+      ['<h4>Stabburet</h4> <p>Trykk for å gå til Koia</p> <button onclick="tilKoia()">Til Koia</button>', 63.14200, 11.72236],
+      ['<h4>Telin</h4> <p>Trykk for å gå til Koia</p> <button onclick="tilKoia()">Til Koia</button>', 62.87615, 09.66196],
+      ['<h4>Iglbu</h4> <p>Trykk for å gå til Koia</p> <button onclick="tilKoia()">Til Koia</button>', 62.96119, 10.09028],
+      ['<h4>Flåkoia</h4> <p>Trykk for å gå til Koia</p> <button onclick="tilKoia()">Til Koia</button>', 63.15702, 10.36538],
+      ['<h4>Nicokoia</h4> <p>Trykk for å gå til Koia</p> <button onclick="tilKoia()">Til Koia</button>',  63.16349, 10.52637],
+      ['<h4>Lynhøgen</h4> <p>Trykk for å gå til Koia</p> <button onclick="tilKoia()">Til Koia</button>', 63.21028, 10.70875],
+      ['<h4>Heinfjordstua</h4> <p>Trykk for å gå til Koia</p> <button onclick="tilKoia()">Til Koia</button>', 63.31492, 10.75206],
+      ['<h4>Selbukåten</h4> <p>Trykk for å gå til Koia</p> <button onclick="tilKoia()">Til Koia</button>', 63.32851, 11.02758],
+      ['<h4>Sonvasskoia</h4> <p>Trykk for å gå til Koia</p> <button onclick="tilKoia()">Til Koia</button>', 63.39030, 11.41852],
+      ['<h4>Rindalsløa</h4> <p>Trykk for å gå til Koia</p> <button onclick="tilKoia()">Til Koia</button>', 63.01999, 09.19786],
+      ['<h4>Stakkslettbua</h4> <p>Trykk for å gå til Koia</p> <button onclick="tilKoia()">Til Koia</button>',  63.14713, 09.11576],
+      ['<h4>Kåsen</h4> <p>Trykk for å gå til Koia</p> <button onclick="tilKoia()">Til Koia</button>',  63.12375, 09.44338],
+      ['<h4>Holvassgamma</h4> <p>Trykk for å gå til Koia</p> <button onclick="tilKoia()">Til Koia</button>', 63.82745, 10.37133]
 
     ];
     
@@ -65,7 +72,7 @@
     });
 
     var infowindow = new google.maps.InfoWindow({
-      maxWidth: 160
+      maxWidth: 260
     });
 
     var marker;
