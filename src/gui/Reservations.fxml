@@ -10,9 +10,8 @@
 <?import javafx.scene.layout.*?>
 
 
-<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ReservationsController">
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ReservationsController" prefHeight="575" prefWidth="729">
    <children>
-      <Button fx:id="back1" layoutX="575.0" layoutY="55.0" mnemonicParsing="false" onAction="#backToMainMenu" prefHeight="25.0" prefWidth="140.0" text="Tilbake" />
       <Text layoutX="90.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reservasjoner" wrappingWidth="468.13671875">
          <font>
             <Font size="36.0" />
@@ -24,7 +23,7 @@
             <Image url="@images/koiene_logo.gif" />
          </image>
       </ImageView>
-      <TableView fx:id="reservationsTable" layoutX="15.0" layoutY="92.0" prefHeight="484.0" prefWidth="710.0">
+      <TableView fx:id="reservationsTable" layoutX="10.0" layoutY="92.0" prefHeight="484.0" prefWidth="710.0">
          <columns>
             <TableColumn fx:id="koie" prefWidth="166.0" text="Koie" />
             <TableColumn fx:id="date" minWidth="0.0" prefWidth="61.0" text="Dato">

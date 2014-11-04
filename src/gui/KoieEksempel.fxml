@@ -10,9 +10,8 @@
 <?import javafx.scene.layout.*?>
 
 
-<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.KoieEksempelController">
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.KoieEksempelController" prefHeight="575" prefWidth="729" >
    <children>
-      <Button fx:id="back" layoutX="569.0" layoutY="55.0" mnemonicParsing="false" onAction="#back" prefHeight="25.0" prefWidth="134.0" text="Tilbake" />
       <TextField fx:id="beds" disable="true" opacity="100" layoutX="371.0" layoutY="396.0" prefHeight="25.0" prefWidth="100.0" promptText="sengeplasser" />
       <TextArea fx:id="description" wrapText="true" editable="false"  opacity="100" layoutX="371.0" layoutY="324.0" prefHeight="66.0" prefWidth="252.0" promptText="beskrivelse" />
       <TextField fx:id="dugnad" disable="true" opacity="100" layoutX="105.0" layoutY="185.0" promptText="antall besøk/dato" />
@@ -26,7 +25,7 @@
         	<Font size="36.0" />
         </font>
        </Text>  
-      <Button fx:id="backToMain" layoutX="569.0" layoutY="24.0" mnemonicParsing="false" prefHeight="25.0" onAction="#backToMainMenu" prefWidth="134.0" text="Hovedmeny" />
+      <Button fx:id="backToMain" layoutX="575.0" layoutY="23.0" mnemonicParsing="false" prefHeight="25.0" onAction="#backToMainMenu" prefWidth="140.0" text="Hovedmeny" />
       <ImageView fitHeight="100.0" fitWidth="58.0" layoutX="20.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/koiene_logo.gif" />
@@ -50,8 +49,7 @@
       <TableView fx:id="equipmentList" layoutX="26.0" layoutY="228.0" prefHeight="342.0" prefWidth="258.0">
          <columns>
             <TableColumn fx:id="equipments" prefWidth="109.0" text="Utstyr" />
-            <TableColumn prefWidth="44.0" text="Antall" />
-            <TableColumn prefWidth="104.0" text="Forventet antall " />
+            <TableColumn prefWidth="100.0" text="Antall" />
          </columns>
       </TableView>
       <ChoiceBox fx:id="koieList" layoutX="18.0" layoutY="94.0" prefHeight="25.0" prefWidth="322.0" />
