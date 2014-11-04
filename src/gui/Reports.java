@@ -15,7 +15,7 @@ public class Reports extends Application {
 				"Reports.fxml"));
 		primaryStage.setScene(new Scene(root));
 		primaryStage.show();
-
+		
 		ReportsController.setPrimaryStage(primaryStage);
 
 	}
