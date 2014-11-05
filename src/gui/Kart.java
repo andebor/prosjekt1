@@ -80,16 +80,15 @@ public class Kart extends Application {
         HBox hbox = new HBox();
         hbox.setPadding(new Insets(10, 12, 15, 12));
         hbox.setSpacing(50);   // Gap between nodes
-        Image image = new Image("http://org.ntnu.no/koiene/ikon/koiene_logo.gif");
-        ImageView iv1 = new ImageView();
+       
+        Image kartTekst = new Image("http://folk.ntnu.no/ssbolsta/sites/images/PNG.png");
+    
         ImageView iv2 = new ImageView();
-        iv2.setImage(image);
-        iv2.setFitHeight(1);
-        iv2.setFitWidth(450);
-        iv2.setOpacity(0);
-        iv1.setImage(image);
-        iv1.setFitWidth(55);
-        iv1.setFitHeight(55);
+        iv2.setImage(kartTekst);
+        iv2.setFitHeight(66);
+        iv2.setFitWidth(544);
+       
+    
        
 
         Button backButton = new Button("Hovedmeny");
@@ -115,7 +114,7 @@ public class Kart extends Application {
         });
         hbox.getChildren().addAll(backButton);
         hbox.getChildren().addAll(iv2);
-        hbox.getChildren().addAll(iv1);
+ 
         group.getChildren().addAll(hbox);
         
         return group;
@@ -137,7 +136,7 @@ public class Kart extends Application {
 
     private AnchorPane addAnchorPane(GridPane grid) {
   	    WebView kartet = new WebView();
-  	    kartet.setMaxHeight(495);
+  	    kartet.setMaxHeight(484);
   	    kartet.setMaxWidth(729);
         WebEngine webEngine = kartet.getEngine();
         URL urlGoogleMaps = getClass().getResource("map.html");
