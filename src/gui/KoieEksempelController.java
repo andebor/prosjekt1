@@ -15,8 +15,10 @@ import model.ModelReports;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
@@ -29,6 +31,9 @@ import javafx.scene.control.cell.ComboBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -189,7 +194,7 @@ public class KoieEksempelController implements Initializable {
 							setText("Utstyr i orden");
 						} else {
 							setStyle("-fx-background-color: lightsalmon");
-							setText("Mangler utstyr");
+							setText("Mangler i utstyr");
 						} 
 					}
 					else {
@@ -203,10 +208,45 @@ public class KoieEksempelController implements Initializable {
 		Image img = new Image(koie.getImage());
 		koiePic.setImage(img);
 		equipmentList.setItems(dataEquipment);
+		editEquipmentStatus();
 		
 		}
 		
 	}
-	
+	private void editEquipmentStatus(){
+		equipmentList.setOnMouseClicked(new EventHandler<MouseEvent>() {
+			@Override
+			public void handle(MouseEvent event) {
+				if (event.getClickCount() > 1) {
+					ModelEquipment equipment = (ModelEquipment) equipmentList
+							.getSelectionModel().getSelectedItem();
+					
+					Stage newStage = new Stage();
+					VBox comp = new VBox();
+					Text nameField = new Text("Vil du endre status på " + equipment.getEquipment().toLowerCase()+" på "+koie.getKoieName()+"?");
+					ComboBox<String> status = new ComboBox<String>();
+					
+					equipment.makeStatusMap();
+					if(equipment.getEquipmentStatus(koie.getKoieName()) == 0){
+						status.setValue("Alt i orden");
+						status.getItems().addAll("Utstyr i orden", "Mangler i utstyr");
+					}
+					else{
+						status.setValue("Mangler i utstyr");
+						status.getItems().addAll("Mangler i utstyr","Alt i orden");
+					}
+					
+					comp.getChildren().add(nameField);
+					comp.getChildren().add(status);
+					
+					
+					Scene stageScene = new Scene(comp, 400, 300);
+					newStage.setScene(stageScene);
+					newStage.show();
+					
+				}
+			}
+		});
+	}
 	
 }
