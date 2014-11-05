@@ -1,5 +1,8 @@
 package model;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class ModelEquipment {
 	
 	private int id;
@@ -27,45 +30,48 @@ public class ModelEquipment {
 	private int Taagaabu;
 	private int Vekvessætra;
 	private int Øvensenget;
+	private Map<String,Integer> statusMap;
 
-	public ModelEquipment(int id, String equipment, int Flåkoia, int Fosenkoia, int Heinfjordstua, int Hognabu, int Holmsåkoia, 
-			int Holvassgamma, int Iglbu, int Kamtjønnkoia, int Kråklikåten, int Kvernmovollen, int Kåsen, int Lynhøgen, 
-			int Mortenskåten, int Nicokoia, int Rindalsløa, int Selbukåten, int Sonvasskoia, int Stabburet, int Stakkslettbua,
-			int Telin, int Taagaabu, int Vekvessætra, int Øvensenget){
+	public ModelEquipment(int id, String equipment, int flåkoia, int fosenkoia,
+			int heinfjordstua, int hognabu, int holmsåkoia, int holvassgamma,
+			int iglbu, int kamtjønnkoia, int kråklikåten, int kvernmovollen,
+			int kåsen, int lynhøgen, int mortenskåten, int nicokoia,
+			int rindalsløa, int selbukåten, int sonvasskoia, int stabburet,
+			int stakkslettbua, int telin, int taagaabu, int vekvessætra,
+			int øvensenget){
 		
 		this.id = id;
 		this.equipment = equipment;
-		this.Flåkoia = Flåkoia;
-		this.Fosenkoia = Fosenkoia;
-		this.Heinfjordstua = Heinfjordstua;
-		this.Hognabu = Hognabu;
-		this.Holmsåkoia = Holmsåkoia;
-		this.Holvassgamma = Holvassgamma;
-		this.Iglbu = Iglbu;
-		this.Kamtjønnkoia = Kamtjønnkoia;
-		this.Kråklikåten = Kråklikåten;
-		this.Kvernmovollen = Kvernmovollen;
-		this.Kåsen = Kåsen;
-		this.Lynhøgen = Lynhøgen;
-		this.Mortenskåten = Mortenskåten;
-		this.Nicokoia = Nicokoia;
-		this.Rindalsløa = Rindalsløa;
-		this.Selbukåten = Selbukåten;
-		this.Sonvasskoia = Sonvasskoia;
-		this.Stabburet = Stabburet;
-		this.Stakkslettbua = Stakkslettbua;
-		this.Telin = Telin;
-		this.Taagaabu = Taagaabu;
-		this.Vekvessætra = Vekvessætra;
-		this.Øvensenget = Øvensenget;
+		this.id = id;
+		this.equipment = equipment;
+		Flåkoia = flåkoia;
+		Fosenkoia = fosenkoia;
+		Heinfjordstua = heinfjordstua;
+		Hognabu = hognabu;
+		Holmsåkoia = holmsåkoia;
+		Holvassgamma = holvassgamma;
+		Iglbu = iglbu;
+		Kamtjønnkoia = kamtjønnkoia;
+		Kråklikåten = kråklikåten;
+		Kvernmovollen = kvernmovollen;
+		Kåsen = kåsen;
+		Lynhøgen = lynhøgen;
+		Mortenskåten = mortenskåten;
+		Nicokoia = nicokoia;
+		Rindalsløa = rindalsløa;
+		Selbukåten = selbukåten;
+		Sonvasskoia = sonvasskoia;
+		Stabburet = stabburet;
+		Stakkslettbua = stakkslettbua;
+		Telin = telin;
+		Taagaabu = taagaabu;
+		Vekvessætra = vekvessætra;
+		Øvensenget = øvensenget;
+		
 	}
 
 	public int getId() {
 		return id;
-	}
-
-	public String getEquipment() {
-		return equipment;
 	}
 
 	public int getFlåkoia() {
@@ -159,4 +165,40 @@ public class ModelEquipment {
 	public int getØvensenget() {
 		return Øvensenget;
 	}
+
+	public String getEquipment() {
+		return equipment;
+	}
+
+	public int getEquipmentStatus(String koieName){
+		return statusMap.get(koieName);
+	}
+
+	public void makeStatusMap(){
+		statusMap = new HashMap<String,Integer>();
+		statusMap.put("Flåkoia", Flåkoia);
+		statusMap.put("Fosenkoia", Fosenkoia);
+		statusMap.put("Heinfjordstua", Heinfjordstua);
+		statusMap.put("Hognabu", Hognabu);
+		statusMap.put("Holmsåkoia", Holmsåkoia);
+		statusMap.put("Holvassgamma", Holvassgamma);
+		statusMap.put("Iglbu", Iglbu);
+		statusMap.put("Kamtjønnkoia", Kamtjønnkoia);
+		statusMap.put("Kråklikåten", Kråklikåten);
+		statusMap.put("Kvernmovollen", Kvernmovollen);
+		statusMap.put("Kåsen", Kåsen);
+		statusMap.put("Lynhøgen", Lynhøgen);
+		statusMap.put("Mortenskåten", Mortenskåten);
+		statusMap.put("Nicokoia", Nicokoia);
+		statusMap.put("Rindalsløa", Rindalsløa);
+		statusMap.put("Selbukåten", Selbukåten);
+		statusMap.put("Sonvasskoia", Sonvasskoia);
+		statusMap.put("Stabburet", Stabburet);
+		statusMap.put("Stakkslettbua", Stakkslettbua);
+		statusMap.put("Telin", Telin);
+		statusMap.put("Taagaabu", Taagaabu);
+		statusMap.put("Vekvessætra",Vekvessætra);
+		statusMap.put("Øvensenget", Øvensenget);
+	}
+	
 }
