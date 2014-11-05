@@ -64,7 +64,7 @@ public class Kart extends Application {
         scene.setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
        
         stage.setScene(scene);
-        stage.setTitle("Koie Kart");
+       
         stage.show();
     }
     
