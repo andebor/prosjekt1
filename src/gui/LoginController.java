@@ -28,6 +28,7 @@ public class LoginController {
 	@FXML
 	private PasswordField pw;
 	
+	//Checking if input data corresponds with the database and opens mainmenu if so
 	@FXML
 	public void openMainMenu(ActionEvent event)throws IOException{
 		if (DbAdmin.checkAdmin(e_post.getText(),pw.getText())){
@@ -35,7 +36,7 @@ public class LoginController {
 			mm.start(primaryStage);
 		}
 		else{
-			errorMessage.setVisible(true);
+			errorMessage.setVisible(true);//Showing error message to the user if input data is wrong
 		}
 	}
 }

@@ -17,6 +17,8 @@ public class MainMenuController {
 	@FXML
 	private Button koier, kart, reports, reservations, equipmentList, logOut;
 	
+	
+	//Methods for opening GUIs
 	@FXML
 	public void openKoie(ActionEvent event)throws IOException{
 		Koier koier = new Koier();
