@@ -31,7 +31,7 @@
             <Image url="@images/koiene_logo.gif" />
          </image>
       </ImageView>
-      <Button layoutX="26.0" layoutY="576.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="Rediger" />
+      <Button fx:id="rediger" layoutX="26.0" layoutY="576.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="Rediger" />
       <Text layoutX="297.0" layoutY="434.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Leverte rapporter:" wrappingWidth="84.13671875" />
       <TableView fx:id="reportsTable" layoutX="297.0" layoutY="454.0" prefHeight="136.0" prefWidth="322.0">
          <columns>
@@ -40,19 +40,16 @@
             <TableColumn fx:id="status" text="Status" prefWidth="86.0" />
          </columns>
       </TableView>
-      <ImageView fitHeight="182.0" fitWidth="322.0" layoutX="297.0" layoutY="137.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/IMG_20131010_170254.jpg" />
-         </image>
+      <ImageView fx:id="koiePic" fitHeight="182.0" fitWidth="322.0" layoutX="297.0" layoutY="137.0" pickOnBounds="true" preserveRatio="true">
       </ImageView>
-      <Button layoutX="179.0" layoutY="576.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="Lagre" />
+      <Button fx:id="lagre" layoutX="179.0" layoutY="576.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="Lagre" />
       <TableView fx:id="equipmentList" layoutX="26.0" layoutY="228.0" prefHeight="342.0" prefWidth="258.0">
          <columns>
-            <TableColumn fx:id="equipments" prefWidth="158.0" text="Utstyr" />
-            <TableColumn prefWidth="100.0" text="Antall" />
+            <TableColumn fx:id="equipments" prefWidth="138.0" text="Utstyr" />
+            <TableColumn fx:id="equipmentstatus" prefWidth="120.0" text="Status" />
          </columns>
       </TableView>
-      <ChoiceBox fx:id="koieList" layoutX="18.0" layoutY="94.0" prefHeight="25.0" prefWidth="322.0" />
+      <ComboBox fx:id="koieList" layoutX="18.0" layoutY="94.0" prefHeight="25.0" prefWidth="322.0" />
       <Button fx:id="koiee" layoutX="351.0" layoutY="94.0" mnemonicParsing="false" onAction="#toKoie" text="Velg annen koie" />
       <Text fx:id="errorMessage" disable="true" fill="#f20303" layoutX="120.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Du må velge en koie" visible="false" />
    </children>

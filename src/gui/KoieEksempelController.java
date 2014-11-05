@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 import database.DbEquipmentList;
 import database.DbKoie;
 import database.DbReports;
+import model.ModelEquipment;
 import model.ModelEquipmentLists;
 import model.ModelKoie;
 import model.ModelReports;
@@ -18,12 +19,15 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -50,7 +54,7 @@ public class KoieEksempelController implements Initializable {
 	@FXML
 	private TextArea description;
 	@FXML
-	private ChoiceBox<String> koieList;
+	private ComboBox<String> koieList;
 	@FXML
 	private Text errorMessage;
 	@FXML
@@ -60,9 +64,13 @@ public class KoieEksempelController implements Initializable {
 	@FXML
 	private TableColumn<ModelReports, Integer> status, reportID;
 	@FXML
-	private TableView<ModelEquipmentLists> equipmentList;
+	private TableView<ModelEquipment> equipmentList;
 	@FXML
-	private TableColumn<ModelEquipmentLists, String> equipments;
+	private TableColumn<ModelEquipment, String> equipments;
+	@FXML
+	private TableColumn<ModelEquipment, Integer> equipmentstatus;
+	@FXML 
+	private ImageView koiePic;
 	
 	//Method for returning to main menu
 	@FXML
@@ -96,13 +104,14 @@ public class KoieEksempelController implements Initializable {
 			.observableArrayList(DbKoie.getAllKoieNames());
 	final ObservableList<ModelReports> dataReport = FXCollections
 			.observableArrayList(DbReports.getReport(koie.getKoieName()));
-	final ObservableList<ModelEquipmentLists> dataEquipment = FXCollections
-			.observableArrayList(DbEquipmentList.getEquipmentLists());
+	final ObservableList<ModelEquipment> dataEquipment = FXCollections
+			.observableArrayList(DbEquipmentList.getEquipment());
 	
 	//Filling the textboxes, tables and choicebox with sufficient data. 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
+		koieList.setPromptText("Trykk her for å velge annen koie");
 		koieList.setItems(dataKoie);
 		koieName.setText(koie.getKoieName());
 		beds.setText(String.valueOf(koie.getNumberOfBeds()));
@@ -138,26 +147,49 @@ public class KoieEksempelController implements Initializable {
 				@Override
 				protected void updateItem(Integer item, boolean empty) {
 					super.updateItem(item, empty);
+					if (!empty) {
+						setTextFill(Paint.valueOf("black"));
+						if (item == 0) {
+							setStyle("-fx-background-color: lightgreen");
+							setText("Alt i orden");
+						} else if (item == 1) {
+							setStyle("-fx-background-color: lightsalmon");
+							setText("Mangler");
+						} else {
+							setStyle("-fx-background-color: khaki");
+							setText("Gjenglemt");
+						}
+					}
+					else {
+						setText(null);
+					}
+				}
+			};
+		});
+		//Pushing values into the tables
+		reportsTable.setItems(dataReport);
+		}
+		
+		if(DbEquipmentList.getEquipment()!= null){
+		equipments.setCellValueFactory(new PropertyValueFactory<ModelEquipment, String>("equipment"));	
+		equipmentstatus.setCellValueFactory(new PropertyValueFactory<ModelEquipment, Integer>(koie.getKoieName()));
+		
+		equipmentstatus.setCellFactory(column -> {
+			return new TableCell<ModelEquipment, Integer>() {
+				@Override
+				protected void updateItem(Integer item, boolean empty) {
+					super.updateItem(item, empty);
 
 					if (!empty) {
 						setTextFill(Paint.valueOf("black"));
 						if (item == 0) {
-							
 							setStyle("-fx-background-color: lightgreen");
-							setText("Alt i orden");
-
-						} else if (item == 1) {
-							setStyle("-fx-background-color: lightsalmon");
-							setText("Mangler");
-
+							setText("Utstyr i orden");
 						} else {
-
-							setStyle("-fx-background-color: khaki");
-							setText("Gjenglemt");
-						}
-
+							setStyle("-fx-background-color: lightsalmon");
+							setText("Mangler utstyr");
+						} 
 					}
-
 					else {
 						setText(null);
 					}
@@ -165,11 +197,9 @@ public class KoieEksempelController implements Initializable {
 			};
 
 		});
-		//Pushing values into the tables
-		reportsTable.setItems(dataReport);
 		
-		equipments.setCellValueFactory(new PropertyValueFactory<ModelEquipmentLists, String>("status"));	
-		
+		Image img = new Image(koie.getImage());
+		koiePic.setImage(img);
 		equipmentList.setItems(dataEquipment);
 		
 		}

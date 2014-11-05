@@ -18,7 +18,7 @@ public class DbKoie {
         	ps.setString(1, koieName);
         	ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                koie = new ModelKoie(rs.getString("koie_name"), rs.getInt("number_of_beds"), rs.getString("description"));
+                koie = new ModelKoie(rs.getString("koie_name"), rs.getInt("number_of_beds"), rs.getString("description"),rs.getString("image"));
             }
         } catch (SQLException e) {
             e.printStackTrace();

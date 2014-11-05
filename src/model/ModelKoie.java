@@ -10,10 +10,11 @@ public class ModelKoie {
 	private String image;
 	 
 
-	public ModelKoie(String koie_name, int number_of_beds, String description){
+	public ModelKoie(String koie_name, int number_of_beds, String description, String image){
 		this.koieName = koie_name;
 		this.numberOfBeds = number_of_beds;
 		this.description = description;
+		this.image = image;
 	}
 
 	public String getKoieName() {

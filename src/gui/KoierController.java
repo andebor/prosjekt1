@@ -16,6 +16,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -30,7 +31,7 @@ public class KoierController implements Initializable {
 	@FXML
 	private Button back, koie;
 	@FXML
-	private ChoiceBox<String> koieList;
+	private ComboBox<String> koieList;
 	@FXML
 	private Text errorMessage;
 	
@@ -67,6 +68,7 @@ public class KoierController implements Initializable {
 			.observableArrayList(DbKoie.getAllKoieNames());
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		koieList.setPromptText("Trykk her for å finne koie");
 		koieList.setItems(data);
 		
 	}
