@@ -42,10 +42,11 @@ public class KoierController implements Initializable {
 		mm.start(primaryStage);
 	}
 	
+	//Opening selected koie in the choicebox when "Velg koie" is clicked
 	@FXML
 	public void toKoie(ActionEvent event)throws IOException{
 		if(koieList.getValue() != null){
-		ModelKoie mkoie = DbKoie.getKoie(koieList.getValue());
+		ModelKoie mkoie = DbKoie.getKoie(koieList.getValue());//Getting the selected koie object by using its name
 		KoieEksempel koie = new KoieEksempel();
 		try {
 			KoieEksempelController.setKoier(mkoie);
@@ -57,10 +58,11 @@ public class KoierController implements Initializable {
 		}
 		}
 		else{
-			errorMessage.setVisible(true);
+			errorMessage.setVisible(true);//Error message if nothing is selected
 		}
 	}
 	
+	//Code for filling the choicebox with koie names on initialization of the GUI
 	final ObservableList<String> data = FXCollections
 			.observableArrayList(DbKoie.getAllKoieNames());
 	@Override

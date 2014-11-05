@@ -9,12 +9,13 @@ import javafx.stage.Stage;
 
 public class Login extends Application {
 	
+	//The start method is similar in all GUI classes
 	@Override
 	public void start(Stage primaryStage) throws IOException {
-		Parent root = FXMLLoader.load(this.getClass().getResource("Login.fxml"));
+		Parent root = FXMLLoader.load(this.getClass().getResource("Login.fxml")); //loading the correct FXML-file
 	    primaryStage.setScene(new Scene(root));
 	    primaryStage.show();
-	    primaryStage.setResizable(false);
+	    primaryStage.setResizable(false); //setting all GUIs non-resizable
 	    LoginController.setPrimaryStage(primaryStage);
 	}
 	
