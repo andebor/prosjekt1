@@ -19,6 +19,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -53,7 +54,7 @@ public class KoieEksempelController implements Initializable {
 	@FXML
 	private TextArea description;
 	@FXML
-	private ChoiceBox<String> koieList;
+	private ComboBox<String> koieList;
 	@FXML
 	private Text errorMessage;
 	@FXML
@@ -110,6 +111,7 @@ public class KoieEksempelController implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
+		koieList.setPromptText("Trykk her for å velge annen koie");
 		koieList.setItems(dataKoie);
 		koieName.setText(koie.getKoieName());
 		beds.setText(String.valueOf(koie.getNumberOfBeds()));
