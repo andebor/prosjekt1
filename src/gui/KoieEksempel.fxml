@@ -31,7 +31,7 @@
             <Image url="@images/koiene_logo.gif" />
          </image>
       </ImageView>
-      <Button layoutX="26.0" layoutY="576.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="Rediger" />
+      <Button fx:id="rediger" layoutX="26.0" layoutY="576.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="Rediger" />
       <Text layoutX="297.0" layoutY="434.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Leverte rapporter:" wrappingWidth="84.13671875" />
       <TableView fx:id="reportsTable" layoutX="297.0" layoutY="454.0" prefHeight="136.0" prefWidth="322.0">
          <columns>
@@ -45,7 +45,7 @@
             <Image url="@images/IMG_20131010_170254.jpg" />
          </image>
       </ImageView>
-      <Button layoutX="179.0" layoutY="576.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="Lagre" />
+      <Button fx:id="lagre" layoutX="179.0" layoutY="576.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="Lagre" />
       <TableView fx:id="equipmentList" layoutX="26.0" layoutY="228.0" prefHeight="342.0" prefWidth="258.0">
          <columns>
             <TableColumn fx:id="equipments" prefWidth="138.0" text="Utstyr" />

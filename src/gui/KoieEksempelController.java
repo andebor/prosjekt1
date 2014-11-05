@@ -164,7 +164,7 @@ public class KoieEksempelController implements Initializable {
 		reportsTable.setItems(dataReport);
 		}
 		
-		if(!DbEquipmentList.getEquipment().contains("status")){
+		if(DbEquipmentList.getEquipment()!= null){
 		equipments.setCellValueFactory(new PropertyValueFactory<ModelEquipment, String>("equipment"));	
 		equipmentstatus.setCellValueFactory(new PropertyValueFactory<ModelEquipment, Integer>(koie.getKoieName()));
 		
