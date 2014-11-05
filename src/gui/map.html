@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html> 
+<head> 
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" /> 
+  <title>Koie Kart</title> 
+  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.1.min.js"></script>
+</head> 
+<body>
+  <div id="map" style="width: 790px; height: 580px;"></div>
+
+  <script type="text/javascript">
+    function tilKoia(){
+        var dt = new Date();
+        document.write(dt.toTimeString());
+        // var elem = document.getElementById("divElem");
+        // elem.textContent = dt.toTimeString();
+        window.setTimeout("tilKoia();", 5000);
+    }
+    // Define your koieListe: HTML content for the info window, latitude, longitude
+    var koieListe = [
+      ['<h4>Fosenkoia</h4> <p>Trykk for å gå til Koia</p> <button onclick="tilKoia()">Til Koia</button>  ', 63.56813, 10.29541],
+      ['<h4>Øvensenget</h4> <p>Trykk for å gå til Koia</p> <button onclick="tilKoia()">Til Koia</button>', 62.41219, 11.18655],
+      ['<h4>Kamtjønnkoia</h4> <p>Trykk for å gå til Koia</p> <button onclick="tilKoia()">Til Koia</button>', 62.74317, 09.29119],
+      ['<h4>Vekvessætra</h4> <p>Trykk for å gå til Koia</p> <button onclick="tilKoia()">Til Koia</button>',62.70850, 09.80087],
+      ['<h4>Taagaab</h4> <p>Trykk for å gå til Koia</p> <button onclick="tilKoia()">Til Koia</button>', 62.82197, 10.60875],
+      ['<h4>Kvernmovollen</h4> <p>Trykk for å gå til Koia</p> <button onclick="tilKoia()">Til Koia</button>', 62.92831, 10.97890],
+      ['<h4>Mortenskåten</h4> <p>Trykk for å gå til Koia</p> <button onclick="tilKoia()">Til Koia</button>', 63.01650, 10.95894],
+      ['<h4>Hognabu</h4> <p>Trykk for å gå til Koia</p> <button onclick="tilKoia()">Til Koia</button>',  63.10875, 11.53450],
+      ['<h4>Holmsåkoia</h4> <p>Trykk for å gå til Koia</p> <button onclick="tilKoia()">Til Koia</button>', 63.08642, 11.64870],
+      ['<h4>Stabburet</h4> <p>Trykk for å gå til Koia</p> <button onclick="tilKoia()">Til Koia</button>', 63.14200, 11.72236],
+      ['<h4>Telin</h4> <p>Trykk for å gå til Koia</p> <button onclick="tilKoia()">Til Koia</button>', 62.87615, 09.66196],
+      ['<h4>Iglbu</h4> <p>Trykk for å gå til Koia</p> <button onclick="tilKoia()">Til Koia</button>', 62.96119, 10.09028],
+      ['<h4>Flåkoia</h4> <p>Trykk for å gå til Koia</p> <button onclick="tilKoia()">Til Koia</button>', 63.15702, 10.36538],
+      ['<h4>Nicokoia</h4> <p>Trykk for å gå til Koia</p> <button onclick="tilKoia()">Til Koia</button>',  63.16349, 10.52637],
+      ['<h4>Lynhøgen</h4> <p>Trykk for å gå til Koia</p> <button onclick="tilKoia()">Til Koia</button>', 63.21028, 10.70875],
+      ['<h4>Heinfjordstua</h4> <p>Trykk for å gå til Koia</p> <button onclick="tilKoia()">Til Koia</button>', 63.31492, 10.75206],
+      ['<h4>Selbukåten</h4> <p>Trykk for å gå til Koia</p> <button onclick="tilKoia()">Til Koia</button>', 63.32851, 11.02758],
+      ['<h4>Sonvasskoia</h4> <p>Trykk for å gå til Koia</p> <button onclick="tilKoia()">Til Koia</button>', 63.39030, 11.41852],
+      ['<h4>Rindalsløa</h4> <p>Trykk for å gå til Koia</p> <button onclick="tilKoia()">Til Koia</button>', 63.01999, 09.19786],
+      ['<h4>Stakkslettbua</h4> <p>Trykk for å gå til Koia</p> <button onclick="tilKoia()">Til Koia</button>',  63.14713, 09.11576],
+      ['<h4>Kåsen</h4> <p>Trykk for å gå til Koia</p> <button onclick="tilKoia()">Til Koia</button>',  63.12375, 09.44338],
+      ['<h4>Holvassgamma</h4> <p>Trykk for å gå til Koia</p> <button onclick="tilKoia()">Til Koia</button>', 63.82745, 10.37133]
+
+    ];
+    
+    // Setup the different icons and shadows
+    var iconURLPrefix = 'http://maps.google.com/mapfiles/ms/icons/';
+    
+    var icons = [
+      iconURLPrefix + 'red-dot.png',
+   
+    ]
+    var icons_length = icons.length;
+    
+    
+    var shadow = {
+      anchor: new google.maps.Point(15,33),
+      url: iconURLPrefix + 'msmarker.shadow.png'
+    };
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 10,
+      center: new google.maps.LatLng(63.327383, 10.46747),
+      mapTypeId: google.maps.MapTypeId.TERRAIN,
+      mapTypeControl: false,
+      streetViewControl: true,
+      panControl: false,
+      zoomControlOptions: {
+         position: google.maps.ControlPosition.LEFT_BOTTOM
+      }
+    });
+
+    var infowindow = new google.maps.InfoWindow({
+      maxWidth: 260
+    });
+
+    var marker;
+    var markers = new Array();
+    
+    var iconCounter = 0;
+    
+    // Add the markers and infowindows to the map
+    for (var i = 0; i < koieListe.length; i++) {  
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(koieListe[i][1], koieListe[i][2]),
+        map: map,
+        icon : icons[iconCounter],
+        shadow: shadow
+      });
+
+      markers.push(marker);
+
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          infowindow.setContent(koieListe[i][0]);
+          infowindow.open(map, marker);
+        }
+      })(marker, i));
+      
+      iconCounter++;
+      // We only have a limited number of possible icon colors, so we may have to restart the counter
+      if(iconCounter >= icons_length){
+        iconCounter = 0;
+      }
+    }
+    
+    function AutoCenter() {
+      //  Create a new viewpoint bound
+      var bounds = new google.maps.LatLngBounds();
+      //  Go through each...
+      $.each(markers, function (index, marker) {
+        bounds.extend(marker.position);
+      });
+      //  Fit these bounds to the map
+      map.fitBounds(bounds);
+    }
+    AutoCenter();
+
+  </script> 
+</body>
+</html>

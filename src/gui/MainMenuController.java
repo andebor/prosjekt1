@@ -28,6 +28,7 @@ public class MainMenuController {
 	@FXML
 	public void openKart(ActionEvent event)throws IOException{
 		Kart kart = new Kart();
+		kart.setPrimaryStage(primaryStage);
 		kart.start(primaryStage);
 	}
 	
