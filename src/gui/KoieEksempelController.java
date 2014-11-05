@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 import database.DbEquipmentList;
 import database.DbKoie;
 import database.DbReports;
+import model.ModelEquipment;
 import model.ModelEquipmentLists;
 import model.ModelKoie;
 import model.ModelReports;
@@ -60,9 +61,11 @@ public class KoieEksempelController implements Initializable {
 	@FXML
 	TableColumn<ModelReports, Integer> status, reportID;
 	@FXML
-	TableView<ModelEquipmentLists> equipmentList;
+	TableView<ModelEquipment> equipmentList;
 	@FXML
-	TableColumn<ModelEquipmentLists, String> equipments;
+	TableColumn<ModelEquipment, String> equipments;
+	@FXML
+	TableColumn<ModelEquipment, Integer> equipmentstatus;
 	
 	@FXML
 	public void back(ActionEvent event) throws IOException{
@@ -99,8 +102,8 @@ public class KoieEksempelController implements Initializable {
 			.observableArrayList(DbKoie.getAllKoieNames());
 	final ObservableList<ModelReports> dataReport = FXCollections
 			.observableArrayList(DbReports.getReport(koie.getKoieName()));
-	final ObservableList<ModelEquipmentLists> dataEquipment = FXCollections
-			.observableArrayList(DbEquipmentList.getEquipmentLists());
+	final ObservableList<ModelEquipment> dataEquipment = FXCollections
+			.observableArrayList(DbEquipmentList.getEquipment());
 	
 	
 	@Override
@@ -144,26 +147,49 @@ public class KoieEksempelController implements Initializable {
 				@Override
 				protected void updateItem(Integer item, boolean empty) {
 					super.updateItem(item, empty);
+					if (!empty) {
+						setTextFill(Paint.valueOf("black"));
+						if (item == 0) {
+							setStyle("-fx-background-color: lightgreen");
+							setText("Alt i orden");
+						} else if (item == 1) {
+							setStyle("-fx-background-color: lightsalmon");
+							setText("Mangler");
+						} else {
+							setStyle("-fx-background-color: khaki");
+							setText("Gjenglemt");
+						}
+					}
+					else {
+						setText(null);
+					}
+				}
+			};
+
+		});
+		}
+		reportsTable.setItems(dataReport);
+		
+		if(!DbEquipmentList.getEquipment().contains("status")){
+		equipments.setCellValueFactory(new PropertyValueFactory<ModelEquipment, String>("equipment"));	
+		equipmentstatus.setCellValueFactory(new PropertyValueFactory<ModelEquipment, Integer>(koie.getKoieName()));
+		
+		equipmentstatus.setCellFactory(column -> {
+			return new TableCell<ModelEquipment, Integer>() {
+				@Override
+				protected void updateItem(Integer item, boolean empty) {
+					super.updateItem(item, empty);
 
 					if (!empty) {
 						setTextFill(Paint.valueOf("black"));
 						if (item == 0) {
-							
 							setStyle("-fx-background-color: lightgreen");
-							setText("Alt i orden");
-
-						} else if (item == 1) {
-							setStyle("-fx-background-color: lightsalmon");
-							setText("Mangler");
-
+							setText("Utstyr i orden");
 						} else {
-
-							setStyle("-fx-background-color: khaki");
-							setText("Gjenglemt");
-						}
-
+							setStyle("-fx-background-color: lightsalmon");
+							setText("Mangler utstyr");
+						} 
 					}
-
 					else {
 						setText(null);
 					}
@@ -172,9 +198,6 @@ public class KoieEksempelController implements Initializable {
 
 		});
 		
-		reportsTable.setItems(dataReport);
-		
-		equipments.setCellValueFactory(new PropertyValueFactory<ModelEquipmentLists, String>("status"));	
 		
 		equipmentList.setItems(dataEquipment);
 		}
