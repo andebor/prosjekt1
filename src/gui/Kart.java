@@ -64,7 +64,7 @@ public class Kart extends Application {
         scene.setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
        
         stage.setScene(scene);
-        stage.setTitle("Koie Kart");
+       
         stage.show();
     }
     
@@ -80,6 +80,7 @@ public class Kart extends Application {
         HBox hbox = new HBox();
         hbox.setPadding(new Insets(10, 12, 15, 12));
         hbox.setSpacing(50);   // Gap between nodes
+
        
         Image kartTekst = new Image("http://folk.ntnu.no/ssbolsta/sites/images/PNG.png");
     
@@ -89,6 +90,7 @@ public class Kart extends Application {
         iv2.setFitWidth(544);
        
     
+
        
 
         Button backButton = new Button("Hovedmeny");
@@ -114,7 +116,9 @@ public class Kart extends Application {
         });
         hbox.getChildren().addAll(backButton);
         hbox.getChildren().addAll(iv2);
+
  
+
         group.getChildren().addAll(hbox);
         
         return group;
@@ -136,7 +140,9 @@ public class Kart extends Application {
 
     private AnchorPane addAnchorPane(GridPane grid) {
   	    WebView kartet = new WebView();
+
   	    kartet.setMaxHeight(484);
+
   	    kartet.setMaxWidth(729);
         WebEngine webEngine = kartet.getEngine();
         URL urlGoogleMaps = getClass().getResource("map.html");

@@ -1,59 +1,44 @@
 <?php
 include 'functions.php';
+include 'check_email.php';
+include 'dbconn.php';
 
-$dbhost = 'mysql.stud.ntnu.no';
-$dbuser = 'oyvbr_prosjekt1';
-$dbpass = 'oyvbr_prosjekt1';
-$dbname = 'oyvbr_koie';
-//Første connection for å inserte i reports
-$conn = mysql_connect($dbhost, $dbuser, $dbpass);
-mysql_set_charset('utf8',$conn);
-$db_found = mysql_select_db($dbname, $conn);
-if(! $conn )
+// set utf-8
+$mysqli->set_charset("utf8");
+
+//Henter liste over utstyr som kan meldes som mangel
+$inventory_list = $mysqli->query("SELECT utstyr FROM `current_inventory2` WHERE utstyr <> 'wood' AND utstyr <> 'smoke' AND utstyr <> 'status' ORDER BY utstyr");
+
+if($_POST['submit'] == "Submit")
 {
-  die('Could not connect: ' . mysql_error());
-}
-if ($db_found) {
-
-  //Henter liste over utstyr som kan meldes som mangel
-  $inventory_list = mysql_query("SELECT utstyr FROM `current_inventory2` WHERE utstyr <> 'wood' AND utstyr <> 'smoke' AND utstyr <> 'status' ORDER BY utstyr");
-
-  if($_POST['submit'] == "Submit")
-  {
-    // Lager variabler fra form submit
-    $koie = $_POST['select_koie'];
-    $startdate = $_POST['startdate'];
-    $enddate = $_POST['enddate'];
-    $wood = $_POST['wood'];
-    $smoke = $_POST['smoke'];
-    $forgotten = $_POST['forgotten'];
-    $missing = $_POST['missing'];
-    $comment = $_POST['comment'];
-    if (count($missing) > 0) {
-        $impMissing = implode(", ", $missing);
-        $impMissing = ucwords($impMissing);
-    }
-    
-    $status = findStatus($missing, $forgotten);
-
-    $inventory_query = createUpdate2($missing, $koie, $wood, $smoke, $status);
-
-    $new_report = "INSERT INTO reports (`koie_name`, `status`, `startdate`, `enddate`, `smoke_detector`, `wood`, `remarks_of_defects`, `forgotten`, `comments`) VALUES ('$koie', '$status', '$startdate', '$enddate', '$smoke', '$wood', '$impMissing', '$forgotten', '$comment')";
-    $test = mysql_query($new_report, $conn);
-    if (! $test) {
-      die('Could not enter data: ' . mysql_error());
-    }  
+  // Lager variabler fra form submit
+  $koie = $_POST['select_koie'];
+  $startdate = $_POST['startdate'];
+  $enddate = $_POST['enddate'];
+  $wood = $_POST['wood'];
+  $smoke = $_POST['smoke'];
+  $forgotten = $_POST['forgotten'];
+  $missing = $_POST['missing'];
+  $comment = $_POST['comment'];
+  if (count($missing) > 0) {
+      $impMissing = implode(", ", $missing);
+      $impMissing = ucwords($impMissing);
   }
+  
+  $status = findStatus($missing, $forgotten);
+
+  $double_query = createUpdate($missing, $koie, $wood, $smoke, $status);
+
+  $double_query .= "INSERT INTO reports (`koie_name`, `status`, `startdate`, `enddate`, `smoke_detector`, `wood`, `remarks_of_defects`, `forgotten`, `comments`) VALUES ('$koie', '$status', '$startdate', '$enddate', '$smoke', '$wood', '$impMissing', '$forgotten', '$comment'); ";
+  
+  if (!$mysqli->multi_query($double_query)) {
+    echo "Multi query failed: (" . $mysqli->errno . ") " . $mysqli->error;
+  }
+  header("Location:http://org.ntnu.no/koiene/index.php");
 }
-mysql_close($conn); 
-//  Andre connection for å oppdatere current_inventory
-$conn2 = mysql_connect($dbhost, $dbuser, $dbpass); 
-mysql_set_charset('utf8',$conn2);
-mysql_select_db($dbname, $conn2);
-if($_POST['submit'] == "Submit") {
-  mysql_query($inventory_query, $conn2);
-}
-mysql_close($conn2); 
+
+$mysqli->close();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -83,6 +68,16 @@ mysql_close($conn2);
 
 <!-- Form Name -->
 <legend>Koierapport</legend>
+
+<!-- Skriv inn epost-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="email_input">Skriv inn epost</label>  
+  <div class="col-md-3">
+  <input id="email_input" name="email_input" type="text" placeholder="epost..." class="form-control input-md">
+  <span id="user-result"></span>
+  <span class="help-block">(Samme epost som du brukte da du reserverte koia.)</span>  
+  </div>
+</div>
 
 <!-- Velg koie -->
 <div class="form-group">
@@ -172,7 +167,7 @@ mysql_close($conn2);
   <div class="col-md-4">
     <select id="missing" name="missing[]" class="form-control" multiple="multiple">
       <?php
-      while($row = mysql_fetch_array($inventory_list)) {
+      while($row = mysqli_fetch_array($inventory_list)) {
         echo "<option value=\"" . $row["utstyr"] . "\">" . $row["utstyr"] . "</option>\r\n";
       }
       ?>
@@ -208,7 +203,7 @@ mysql_close($conn2);
 <div class="form-group">
   <label class="col-md-4 control-label" for="submit"></label>
   <div class="col-md-4">
-    <button type="submit" id="submit" name="submit" value="Submit" class="btn btn-primary">Send!</button>
+    <button type="submit" id="submit" name="submit" value="Submit" class="btn btn-primary" disabled>Send!</button>
   </div>
 </div>
 
@@ -221,6 +216,7 @@ mysql_close($conn2);
     <script src="js/bootstrap.min.js"></script>
     <script src="js/bootstrap-multiselect.js"></script>
     <script src="js/bootstrap-datepicker.js"></script>
+    <script src="js/emailcheck.js"></script>
         <script type="text/javascript">
             // When the document is ready
             $(document).ready(function () {
