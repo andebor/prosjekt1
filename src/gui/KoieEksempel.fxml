@@ -39,7 +39,7 @@
             <TableColumn fx:id="status" prefWidth="107.0" text="Status" />
          </columns>
       </TableView>
-      <ImageView fx:id="koiePic" fitHeight="191.0" fitWidth="322.0" layoutX="358.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="koiePic" fitHeight="191.0" fitWidth="286.0" layoutX="358.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
       </ImageView>
       <Button fx:id="lagre" layoutX="178.0" layoutY="535.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="Lagre" />
       <TableView fx:id="equipmentList" layoutX="26.0" layoutY="228.0" prefHeight="298.0" prefWidth="258.0">
