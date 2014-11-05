@@ -34,14 +34,15 @@ public class ReportsController implements Initializable {
 	@FXML
 	private Button back;
 	@FXML
-	TableView<ModelReports> reportsTable;
+	private TableView<ModelReports> reportsTable;
 	@FXML
-	TableColumn<ModelReports, String> koie;
+	private TableColumn<ModelReports, String> koie;
 	@FXML
-	TableColumn<ModelReports, Date> date, from, to, dateDelivered;
+	private TableColumn<ModelReports, Date> date, from, to, dateDelivered;
 	@FXML
-	TableColumn<ModelReports, Integer> status;
-
+	private TableColumn<ModelReports, Integer> status;
+	
+	//Method for returning to main menu
 	@FXML
 	public void backToMainMenu(ActionEvent event) throws IOException {
 		MainMenu mm = new MainMenu();

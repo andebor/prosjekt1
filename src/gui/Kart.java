@@ -4,6 +4,9 @@ package gui;
 import java.io.IOException;
 import java.net.URL;
 
+import database.DbKoie;
+import model.ModelKoie;
+import netscape.javascript.JSObject;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -20,7 +23,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-
+import javafx.scene.web.HTMLEditor;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
@@ -36,6 +39,7 @@ public class Kart extends Application {
 
     public static void main(String[] args) {
         launch(Kart.class, args);
+      
     }
     
     @Override
@@ -106,7 +110,8 @@ public class Kart extends Application {
         WebEngine webEngine = kartet.getEngine();
         URL urlGoogleMaps = getClass().getResource("map.html");
         webEngine.load(urlGoogleMaps.toExternalForm());
-           
+        JSObject jsobj = (JSObject) webEngine.executeScript("window");
+        jsobj.setMember("java", new Kart());
         AnchorPane anchorpane = new AnchorPane();
         
      
@@ -120,7 +125,21 @@ public class Kart extends Application {
         AnchorPane.setBottomAnchor(hb, 8.0);
         AnchorPane.setRightAnchor(hb, 5.0);
         AnchorPane.setTopAnchor(grid, 10.0);
-
+        
         return anchorpane;
+        
+    }
+    public void testtest(String koieName) throws IOException{
+    	
+    	ModelKoie mkoie = DbKoie.getKoie(koieName);//Getting the selected koie object by using its name
+		KoieEksempel koie = new KoieEksempel();
+		try {
+			KoieEksempelController.setKoier(mkoie);
+			koie.start(primaryStage);
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+		}
     }
 }

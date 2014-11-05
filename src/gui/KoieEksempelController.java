@@ -43,42 +43,38 @@ public class KoieEksempelController implements Initializable {
 	}
 	
 	@FXML 
-	Button back, backToMain, koiee;
+	private Button back, backToMain, koiee;
 	@FXML
-	Text koieName;
+	private Text koieName;
 	@FXML
-	TextField beds, wood, dugnad;
+	private TextField beds, wood, dugnad;
 	@FXML
-	TextArea description;
+	private TextArea description;
 	@FXML
 	private ChoiceBox<String> koieList;
 	@FXML
 	private Text errorMessage;
 	@FXML
-	TableView<ModelReports> reportsTable;
+	private TableView<ModelReports> reportsTable;
 	@FXML
-	TableColumn<ModelReports, Date> date;
+	private TableColumn<ModelReports, Date> date;
 	@FXML
-	TableColumn<ModelReports, Integer> status, reportID;
+	private TableColumn<ModelReports, Integer> status, reportID;
 	@FXML
-	TableView<ModelEquipment> equipmentList;
+	private TableView<ModelEquipment> equipmentList;
 	@FXML
-	TableColumn<ModelEquipment, String> equipments;
+	private TableColumn<ModelEquipment, String> equipments;
 	@FXML
-	TableColumn<ModelEquipment, Integer> equipmentstatus;
+	private TableColumn<ModelEquipment, Integer> equipmentstatus;
 	
-	@FXML
-	public void back(ActionEvent event) throws IOException{
-		Koier koie = new Koier();
-		koie.start(primaryStage);
-	}
-	
+	//Method for returning to main menu
 	@FXML
 	public void backToMainMenu(ActionEvent event) throws IOException{
 		MainMenu mm = new MainMenu();
 		mm.start(primaryStage);
 	}
 	
+	//Method for opening a new koie. Further explanation in KoierController.java
 	@FXML
 	public void toKoie(ActionEvent event)throws IOException{
 		if(koieList.getValue() != null){
@@ -97,7 +93,8 @@ public class KoieEksempelController implements Initializable {
 			errorMessage.setVisible(true);
 		}
 	}
-
+	
+	//Initializing lists of data to display in tables and choicebox.
 	final ObservableList<String> dataKoie = FXCollections
 			.observableArrayList(DbKoie.getAllKoieNames());
 	final ObservableList<ModelReports> dataReport = FXCollections
@@ -105,43 +102,40 @@ public class KoieEksempelController implements Initializable {
 	final ObservableList<ModelEquipment> dataEquipment = FXCollections
 			.observableArrayList(DbEquipmentList.getEquipment());
 	
-	
+	//Filling the textboxes, tables and choicebox with sufficient data. 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		
 		koieList.setItems(dataKoie);
 		koieName.setText(koie.getKoieName());
 		beds.setText(String.valueOf(koie.getNumberOfBeds()));
 		description.setText(koie.getDescription());
+		
+		//Displaying different wood status according to the value in the database
 		if(DbEquipmentList.getEquipmentList(koie.getKoieName()) != null){
 			equipment = DbEquipmentList.getEquipmentList(koie.getKoieName());
 			if(equipment.getWood() == 1){
 				wood.setText("0-15");
-			}
-			else if(equipment.getWood() == 2){
-				wood.setText("15-30");
-			}
-			else{
-				wood.setText("Mer enn 30");
-			}
-		}
-		if(DbEquipmentList.getEquipmentList(koie.getKoieName()) != null){
-			equipment = DbEquipmentList.getEquipmentList(koie.getKoieName());
-			if(equipment.getWood() == 1){
 				dugnad.setText("Så fort som mulig");
 			}
 			else if(equipment.getWood() == 2){
+				wood.setText("15-30");
 				dugnad.setText("Ca 3 mnd");
 			}
 			else{
+				wood.setText("Mer enn 30");
 				dugnad.setText("Ca 6 mnd");
 			}
 		}
-		
+	
 		if(DbReports.getReport(koie.getKoieName()) != null){
+		//Setting cell value factories for the columns
 		reportID.setCellValueFactory(new PropertyValueFactory<ModelReports, Integer>("reportId"));
 		date.setCellValueFactory(new PropertyValueFactory<ModelReports, Date>("timeStamp"));
 		status.setCellValueFactory(new PropertyValueFactory<ModelReports, Integer>("status"));	
-
+		
+		//Implementing custom cell factory for the status column. 
+		//Different colour and text for different values in the database
 		status.setCellFactory(column -> {
 			return new TableCell<ModelReports, Integer>() {
 				@Override
@@ -165,10 +159,10 @@ public class KoieEksempelController implements Initializable {
 					}
 				}
 			};
-
 		});
-		}
+		//Pushing values into the tables
 		reportsTable.setItems(dataReport);
+		}
 		
 		if(!DbEquipmentList.getEquipment().contains("status")){
 		equipments.setCellValueFactory(new PropertyValueFactory<ModelEquipment, String>("equipment"));	
@@ -200,6 +194,7 @@ public class KoieEksempelController implements Initializable {
 		
 		
 		equipmentList.setItems(dataEquipment);
+		
 		}
 		
 	}
