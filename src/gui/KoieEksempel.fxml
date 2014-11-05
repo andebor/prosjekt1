@@ -24,15 +24,15 @@
         	<Font size="36.0" />
         </font>
        </Text>  
-       <Text disable="true" layoutX="20.0" layoutY="555.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dobbelklikk på ønsket utstyr i tabellen for å endre utstyrsstatus" wrappingWidth="384.13671875"/>
+       <Text disable="true" layoutX="5.0" layoutY="560.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dobbelklikk på utstyr i tabellen for å endre utstyrsstatus" wrappingWidth="384.13671875"/>
       <Button fx:id="backToMain" layoutX="575.0" layoutY="23.0" mnemonicParsing="false" onAction="#backToMainMenu" prefHeight="25.0" prefWidth="140.0" text="Hovedmeny" />
       <ImageView fitHeight="100.0" fitWidth="58.0" layoutX="20.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/koiene_logo.gif" />
          </image>
       </ImageView>
-      <Text layoutX="321.0" layoutY="443.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Leverte rapporter:" wrappingWidth="121.13671875" />
-      <TableView fx:id="reportsTable" layoutX="324.0" layoutY="453.0" prefHeight="115.0" prefWidth="356.0">
+      <Text layoutX="321.0" layoutY="438.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Leverte rapporter:" wrappingWidth="121.13671875" />
+      <TableView fx:id="reportsTable" layoutX="324.0" layoutY="450.0" prefHeight="120.0" prefWidth="356.0">
          <columns>
             <TableColumn fx:id="reportID" prefWidth="95.0" text="Raport ID" />
             <TableColumn fx:id="date" minWidth="0.0" prefWidth="152.0" text="Dato levert" />
@@ -41,7 +41,7 @@
       </TableView>
       <ImageView fx:id="koiePic" fitHeight="191.0" fitWidth="286.0" layoutX="397.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
       </ImageView>
-      <TableView fx:id="equipmentList" layoutX="26.0" layoutY="228.0" prefHeight="298.0" prefWidth="258.0">
+      <TableView fx:id="equipmentList" layoutX="26.0" layoutY="228.0" prefHeight="313.0" prefWidth="258.0">
          <columns>
             <TableColumn fx:id="equipments" prefWidth="123.0" text="Utstyr" />
             <TableColumn fx:id="equipmentstatus" prefWidth="120.0" text="Status" />
