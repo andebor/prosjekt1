@@ -1,6 +1,5 @@
 <?php
 include 'functions.php';
-include 'check_email.php';
 include 'dbconn.php';
 
 // set utf-8
@@ -34,7 +33,8 @@ if($_POST['submit'] == "Submit")
   if (!$mysqli->multi_query($double_query)) {
     echo "Multi query failed: (" . $mysqli->errno . ") " . $mysqli->error;
   }
-  header("Location:http://org.ntnu.no/koiene/index.php");
+  //videresende til ny side når skjema er fullført
+  header("Location: success.html");
 }
 
 $mysqli->close();
@@ -115,7 +115,7 @@ $mysqli->close();
 <div class="form-group">
   <label class="col-md-4 control-label" for="startdate">Dato - fra:</label>
   <div class="col-md-3">
-    <input type='text' class="form-control" name="startdate" id="startdate" placeholder="Velg..." />  
+    <input type='text' class="form-control" name="startdate" id="startdate" placeholder="Velg..." disabled />  
   </div>
 </div>
 
@@ -123,7 +123,8 @@ $mysqli->close();
 <div class="form-group">
   <label class="col-md-4 control-label" for="enddate">Dato - til:</label>
   <div class="col-md-3">
-    <input type='text' class="form-control" name="enddate" id="enddate" placeholder="Velg..." />  
+    <input type='text' class="form-control" name="enddate" id="enddate" placeholder="Velg..." disabled />  
+  <span id="reservation-display"></span>
   </div>
 </div>
 
@@ -216,7 +217,7 @@ $mysqli->close();
     <script src="js/bootstrap.min.js"></script>
     <script src="js/bootstrap-multiselect.js"></script>
     <script src="js/bootstrap-datepicker.js"></script>
-    <script src="js/emailcheck.js"></script>
+    <script src="js/inputcheck.js"></script>
         <script type="text/javascript">
             // When the document is ready
             $(document).ready(function () {
@@ -232,7 +233,7 @@ $mysqli->close();
                     format: "yyyy-mm-dd",
                     autoclose: true,
                     startDate: '-2w',
-                    endDate: new Date() //hvis trøbbel med å velge i dag, prøv new Date(new Date() -1)
+                    endDate: new Date()
 
                 });    
             
