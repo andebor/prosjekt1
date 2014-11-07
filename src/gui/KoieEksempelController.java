@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.util.ResourceBundle;
+
 import database.DbEquipmentList;
 import database.DbKoie;
 import database.DbReports;
@@ -29,6 +30,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -168,7 +170,7 @@ public class KoieEksempelController implements Initializable {
 					int initialStatus;
 					equipment1.makeStatusMap();
 					if (equipment1.getEquipmentStatus(koie.getKoieName()) == 0) {
-						status.setValue("Alt i orden");
+						status.setValue("Utstyr i orden");
 						initialStatus = 0;
 						status.getItems().addAll("Utstyr i orden",
 								"Mangler i utstyr");
@@ -176,7 +178,7 @@ public class KoieEksempelController implements Initializable {
 						initialStatus = 1;
 						status.setValue("Mangler i utstyr");
 						status.getItems().addAll("Mangler i utstyr",
-								"Alt i orden");
+								"Utstyr i orden");
 					}
 
 					Button save = new Button();
@@ -189,7 +191,7 @@ public class KoieEksempelController implements Initializable {
 						
 						@Override
 						public void handle(ActionEvent event) {
-							if (status.getValue() == "Alt i orden" && initialStatus != 0) {
+							if (status.getValue() == "Utstyr i orden" && initialStatus != 0) {
 								DbEquipmentList.updateEquipment(equipment1.getEquipment(), 0,koie.getKoieName());
 								newStage.close();
 								KoieEksempel koien = new KoieEksempel();
@@ -216,7 +218,7 @@ public class KoieEksempelController implements Initializable {
 								}
 							} else {
 								error.setVisible(true);
-								System.out.println("Du har ikke endret utstyr");
+						
 							}
 
 						}
@@ -240,6 +242,7 @@ public class KoieEksempelController implements Initializable {
 					save.setLayoutY(140);
 					exit.setLayoutX(230);
 					exit.setLayoutY(140);
+					error.setFill(Color.RED);
 					error.setLayoutX(50);
 					error.setLayoutY(190);
 					error.setVisible(false);
