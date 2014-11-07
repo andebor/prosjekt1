@@ -57,46 +57,44 @@ public class DbEquipmentList {
     }
 	
 			
-	public static List<ModelEquipment> getEquipmentStatus() {
+	public static ModelEquipment getEquipmentStatus() {
         String sql = "select * from current_inventory2 where utstyr = 'status'";
-        List<ModelEquipment> inventory = new ArrayList<>();
+        ModelEquipment status = null;
         try (PreparedStatement ps = DatabaseConnect.getInstance().prepareStatement(sql)) {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-            	ModelEquipment status = new ModelEquipment(rs.getInt("id"), rs.getString("utstyr"), rs.getInt("Flåkoia"), 
+            	status = new ModelEquipment(rs.getInt("id"), rs.getString("utstyr"), rs.getInt("Flåkoia"), 
             			rs.getInt("Fosenkoia"), rs.getInt("Heinfjordstua"), rs.getInt("Hognabu"), rs.getInt("Holmsåkoia"), 
             			rs.getInt("Holvassgamma"), rs.getInt("Iglbu"), rs.getInt("Kamtjønnkoia"), rs.getInt("Kråklikåten"), 
             			rs.getInt("Kvernmovollen"), rs.getInt("Kåsen"), rs.getInt("Lynhøgen"), rs.getInt("Mortenskåten"), 
             			rs.getInt("Nicokoia"), rs.getInt("Rindalsløa"), rs.getInt("Selbukåten"), rs.getInt("Sonvasskoia"), 
             			rs.getInt("Stabburet"), rs.getInt("Stakkslettbua"), rs.getInt("Telin"), rs.getInt("Taagaabu"), 
             			rs.getInt("Vekvessætra"), rs.getInt("Øvensenget"));
-            	inventory.add(status);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return inventory;
+        return status;
     }		
 	
-	public static List<ModelEquipment> getEquipmentWood() {
+	public static ModelEquipment getEquipmentWood() {
         String sql = "select * from current_inventory2 where utstyr = 'wood'";
-        List<ModelEquipment> inventory = new ArrayList<>();
+        ModelEquipment wood = null;
         try (PreparedStatement ps = DatabaseConnect.getInstance().prepareStatement(sql)) {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-            	ModelEquipment wood = new ModelEquipment(rs.getInt("id"), rs.getString("utstyr"), rs.getInt("Flåkoia"), 
+            	wood = new ModelEquipment(rs.getInt("id"), rs.getString("utstyr"), rs.getInt("Flåkoia"), 
             			rs.getInt("Fosenkoia"), rs.getInt("Heinfjordstua"), rs.getInt("Hognabu"), rs.getInt("Holmsåkoia"), 
             			rs.getInt("Holvassgamma"), rs.getInt("Iglbu"), rs.getInt("Kamtjønnkoia"), rs.getInt("Kråklikåten"), 
             			rs.getInt("Kvernmovollen"), rs.getInt("Kåsen"), rs.getInt("Lynhøgen"), rs.getInt("Mortenskåten"), 
             			rs.getInt("Nicokoia"), rs.getInt("Rindalsløa"), rs.getInt("Selbukåten"), rs.getInt("Sonvasskoia"), 
             			rs.getInt("Stabburet"), rs.getInt("Stakkslettbua"), rs.getInt("Telin"), rs.getInt("Taagaabu"), 
             			rs.getInt("Vekvessætra"), rs.getInt("Øvensenget"));
-            	inventory.add(wood);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return inventory;
+        return wood;
     }	
 	
 	public static List<ModelEquipment> getEquipment() {
