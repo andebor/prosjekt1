@@ -220,7 +220,7 @@ public class KoieEksempelController implements Initializable {
 				if (event.getClickCount() > 1) {
 					ModelEquipment equipment = (ModelEquipment) equipmentList
 							.getSelectionModel().getSelectedItem();
-					
+					int initialStatus;
 					Stage newStage = new Stage();
 					VBox comp = new VBox();
 					Text nameField = new Text("Vil du endre status på " + equipment.getEquipment().toLowerCase()+" på "+koie.getKoieName()+"?");
@@ -229,15 +229,54 @@ public class KoieEksempelController implements Initializable {
 					equipment.makeStatusMap();
 					if(equipment.getEquipmentStatus(koie.getKoieName()) == 0){
 						status.setValue("Alt i orden");
+						initialStatus = 0;
 						status.getItems().addAll("Utstyr i orden", "Mangler i utstyr");
 					}
 					else{
+						initialStatus = 1;
 						status.setValue("Mangler i utstyr");
 						status.getItems().addAll("Mangler i utstyr","Alt i orden");
 					}
 					
+					Button save = new Button();
+					Button exit = new Button();
+					save.setText("Lagre");
+					exit.setText("Ikke lagre");
+					
+					save.setOnAction(new EventHandler<ActionEvent>() {
+				        
+			            @Override
+			            public void handle(ActionEvent event){
+			            	if (status.getValue() == "Alt i orden" && initialStatus != 0){
+			            		//pushe database
+			            		newStage.close();
+			            	}
+			            	else if(status.getValue().equals("Mangler i utstyr") && initialStatus != 1){
+			            		//pushe database
+			            		newStage.close();
+			            	}
+			            	else{
+			            		System.out.println("Du har ikke endret utstyr");
+			            	}
+			            	
+			            	
+			            }
+			        });
+					
+					exit.setOnAction(new EventHandler<ActionEvent>(){
+						@Override
+						public void handle(ActionEvent event){
+							newStage.close();
+						}
+					});
+					
 					comp.getChildren().add(nameField);
 					comp.getChildren().add(status);
+					comp.getChildren().add(save);
+					comp.getChildren().add(exit);
+					
+					
+					
 					
 					
 					Scene stageScene = new Scene(comp, 400, 300);
