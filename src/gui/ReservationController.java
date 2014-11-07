@@ -72,6 +72,9 @@ public class ReservationController implements Initializable {
 			} else {
 				desktop.mail(new URI("mailto:" + email.getText()));
 			}
+		} catch (UnsupportedOperationException e){
+			e.printStackTrace();
+			
 		} catch (IOException e) {
 
 			e.printStackTrace();
