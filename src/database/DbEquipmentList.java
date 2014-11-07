@@ -137,7 +137,7 @@ public class DbEquipmentList {
     }
 	
 	public static void main(String[] args) {
-		getEquipment();
+		System.out.println(getEquipment());
 	}
 
 }
