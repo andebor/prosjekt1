@@ -31,6 +31,20 @@ public class DbEquipmentList {
         return inventory;
     }
 	
+	public static List<Integer> getEquipmentStatus(String koieName) {
+        String sql = "select " + koieName + " from current_inventory2 where utstyr <> 'wood' and utstyr <> 'status'  and utstyr <> 'smoke' order by utstyr";
+        List<Integer> inventory = new ArrayList<>();
+        try (PreparedStatement ps = DatabaseConnect.getInstance().prepareStatement(sql)) {
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+            	inventory.add(rs.getInt(1));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return inventory;
+    }
+	
 	public static void updateEquipment(String equipment, int newStatus, String koieName) {
 		String sql;
 		if (newStatus == 0){
