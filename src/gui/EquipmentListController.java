@@ -3,6 +3,8 @@ package gui;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 import model.ModelEquipment;
@@ -40,11 +42,11 @@ public class EquipmentListController implements Initializable{
 	@FXML
 	private Button back;
 	@FXML
-	TableView<ModelEquipment> equipmentTable;
+	TableView<ModelKoie> equipmentTable;
 	@FXML
 	TableColumn<ModelKoie, String> koie;
 	@FXML
-	TableColumn<ModelEquipment, Integer> wood, status;
+	TableColumn<ModelKoie, Integer> wood, status;
 	
 	@FXML
 	public void backToMainMenu(ActionEvent event) throws IOException{
@@ -53,17 +55,18 @@ public class EquipmentListController implements Initializable{
 	}
 	
 	
-	final ObservableList<ModelEquipment> data = FXCollections.observableArrayList(DbEquipmentList.getEquipmentStatus());
+	
+	final ObservableList<ModelKoie> data = FXCollections.observableArrayList(DbKoie.getAllKoieStatus());
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		koie.setCellValueFactory(
 				new PropertyValueFactory<ModelKoie, String>("koieName"));
 		wood.setCellValueFactory(
-				new PropertyValueFactory<ModelEquipment, Integer>(koiee.getKoieName()));
+				new PropertyValueFactory<ModelKoie, Integer>("wood"));
 		
 		wood.setCellFactory(column ->{
-			return new TableCell<ModelEquipment,Integer>(){
+			return new TableCell<ModelKoie,Integer>(){
 				@Override
 				protected void updateItem(Integer item, boolean empty){
 					super.updateItem(item, empty);
@@ -86,10 +89,10 @@ public class EquipmentListController implements Initializable{
 			};
 		});
 		status.setCellValueFactory(
-				new PropertyValueFactory<ModelEquipment, Integer>(koiee.getKoieName()));
+				new PropertyValueFactory<ModelKoie, Integer>("status"));
 		
 		status.setCellFactory(column -> {
-			return new TableCell<ModelEquipment, Integer>() {
+			return new TableCell<ModelKoie, Integer>() {
 				@Override
 				protected void updateItem(Integer item, boolean empty) {
 					super.updateItem(item, empty);
@@ -123,25 +126,25 @@ public class EquipmentListController implements Initializable{
 		equipmentTable.setItems(data);
 		
 		
-//		equipmentTable.setOnMouseClicked(new EventHandler<MouseEvent>() {
-//			@Override
-//			public void handle(MouseEvent event) {
-//				if (event.getClickCount() > 1) {
-//					ModelEquipmentLists tempObject = (ModelEquipmentLists) equipmentTable
-//							.getSelectionModel().getSelectedItem();
-//					ModelKoie mkoie = DbKoie.getKoie(tempObject.getKoieName());
-//					KoieEksempel koie = new KoieEksempel();
-//					try {
-//						KoieEksempelController.setKoier(mkoie);
-//						koie.start(primaryStage);
-//
-//					} catch (IOException e) {
-//
-//						e.printStackTrace();
-//					}
-//				}
-//			}
-//		});
+		equipmentTable.setOnMouseClicked(new EventHandler<MouseEvent>() {
+			@Override
+			public void handle(MouseEvent event) {
+				if (event.getClickCount() > 1) {
+					ModelKoie tempObject = (ModelKoie) equipmentTable
+							.getSelectionModel().getSelectedItem();
+					ModelKoie mkoie = DbKoie.getKoie(tempObject.getKoieName());
+					KoieEksempel koie = new KoieEksempel();
+					try {
+						KoieEksempelController.setKoier(mkoie);
+						koie.start(primaryStage);
+
+					} catch (IOException e) {
+
+						e.printStackTrace();
+					}
+				}
+			}
+		});
 
 	}
 

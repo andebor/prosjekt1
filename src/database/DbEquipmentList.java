@@ -77,6 +77,8 @@ public class DbEquipmentList {
         return status;
     }		
 	
+	
+	
 	public static ModelEquipment getEquipmentWood() {
         String sql = "select * from current_inventory2 where utstyr = 'wood'";
         ModelEquipment wood = null;

@@ -59,7 +59,7 @@ public class KoieEksempelController implements Initializable {
 	@FXML
 	private Text koieName;
 	@FXML
-	private TextField beds, wood, dugnad;
+	private TextField beds, wood, dugnad, smoke;
 	@FXML
 	private TextArea description;
 	@FXML
@@ -127,20 +127,27 @@ public class KoieEksempelController implements Initializable {
 
 		// Displaying different wood status according to the value in the
 		// database
-		if (DbEquipmentList.getEquipmentList(koie.getKoieName()) != null) {
-			equipment = DbEquipmentList.getEquipmentList(koie.getKoieName());
-			if (equipment.getWood() == 1) {
+		if (koie != null) {
+			
+			if (koie.getWood() == 1) {
 				wood.setText("0-15");
 				dugnad.setText("Så fort som mulig");
-			} else if (equipment.getWood() == 2) {
+			} else if (koie.getWood() == 2) {
 				wood.setText("15-30");
 				dugnad.setText("Ca 3 mnd");
 			} else {
 				wood.setText("Mer enn 30");
 				dugnad.setText("Ca 6 mnd");
 			}
+			
+			if(koie.getSmoke() == 0){
+				smoke.setText("Fungerer");
+			}
+			else{
+				smoke.setText("Fungerer ikke");
+			}
 		}
-
+		
 		if (DbReports.getReport(koie.getKoieName()) != null) {
 			// Setting cell value factories for the columns
 			reportID.setCellValueFactory(new PropertyValueFactory<ModelReports, Integer>(
@@ -231,12 +238,28 @@ public class KoieEksempelController implements Initializable {
 							if (status.getValue() == "Alt i orden" && initialStatus != 0) {
 								DbEquipmentList.updateEquipment(equipment1.getEquipment(), 0,koie.getKoieName());
 								newStage.close();
-								initialize(null, null);
+								KoieEksempel koien = new KoieEksempel();
+								try {
+									KoieEksempelController.setKoier(koie);
+									koien.start(primaryStage);
+
+								} catch (IOException e) {
+
+									e.printStackTrace();
+								}
 							} else if (status.getValue().equals("Mangler i utstyr") && initialStatus != 1) {
 								DbEquipmentList.updateEquipment(equipment1.getEquipment(), 1,koie.getKoieName());
 								newStage.close();
 								
-								initialize(null,null);
+								KoieEksempel koien = new KoieEksempel();
+								try {
+									KoieEksempelController.setKoier(koie);
+									koien.start(primaryStage);
+
+								} catch (IOException e) {
+
+									e.printStackTrace();
+								}
 							} else {
 								System.out.println("Du har ikke endret utstyr");
 							}

@@ -30,7 +30,7 @@ public class ModelEquipment {
 	private int Taagaabu;
 	private int Vekvessætra;
 	private int Øvensenget;
-	private Map<String,Integer> statusMap;
+	public Map<String,Integer> statusMap;
 
 	public ModelEquipment(int id, String equipment, int flåkoia, int fosenkoia,
 			int heinfjordstua, int hognabu, int holmsåkoia, int holvassgamma,
