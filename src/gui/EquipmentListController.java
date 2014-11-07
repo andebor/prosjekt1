@@ -2,26 +2,15 @@ package gui;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Date;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.ResourceBundle;
-
-import model.ModelEquipment;
-import model.ModelEquipmentLists;
 import model.ModelKoie;
-import model.ModelReports;
-import model.ModelReservations;
-import database.DbEquipmentList;
 import database.DbKoie;
-import database.DbReservations;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -33,14 +22,12 @@ import javafx.stage.Stage;
 public class EquipmentListController implements Initializable{
 	
 	private static Stage primaryStage;
-	private static ModelKoie koiee;
 
 	public static void setPrimaryStage(Stage primaryStage) {
 		EquipmentListController.primaryStage = primaryStage;
 	}
-	
-	@FXML
-	private Button back;
+	final ObservableList<ModelKoie> data = FXCollections.observableArrayList(DbKoie.getAllKoieStatus());
+
 	@FXML
 	TableView<ModelKoie> equipmentTable;
 	@FXML
@@ -54,12 +41,38 @@ public class EquipmentListController implements Initializable{
 		mm.start(primaryStage);
 	}
 	
-	
-	
-	final ObservableList<ModelKoie> data = FXCollections.observableArrayList(DbKoie.getAllKoieStatus());
-
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		updateEquipmentTable();
+		enableDoubleClickOnTable();
+		
+
+	}
+	
+	private void enableDoubleClickOnTable(){
+		equipmentTable.setOnMouseClicked(new EventHandler<MouseEvent>() {
+			@Override
+			public void handle(MouseEvent event) {
+				if (event.getClickCount() > 1) {
+					ModelKoie tempObject = (ModelKoie) equipmentTable
+							.getSelectionModel().getSelectedItem();
+					ModelKoie mkoie = DbKoie.getKoie(tempObject.getKoieName());
+					KoieEksempel koie = new KoieEksempel();
+					try {
+						KoieEksempelController.setKoier(mkoie);
+						koie.start(primaryStage);
+
+					} catch (IOException e) {
+
+						e.printStackTrace();
+					}
+				}
+			}
+		});
+	}
+	
+	
+	private void updateEquipmentTable(){
 		koie.setCellValueFactory(
 				new PropertyValueFactory<ModelKoie, String>("koieName"));
 		wood.setCellValueFactory(
@@ -125,27 +138,5 @@ public class EquipmentListController implements Initializable{
 		
 		equipmentTable.setItems(data);
 		
-		
-		equipmentTable.setOnMouseClicked(new EventHandler<MouseEvent>() {
-			@Override
-			public void handle(MouseEvent event) {
-				if (event.getClickCount() > 1) {
-					ModelKoie tempObject = (ModelKoie) equipmentTable
-							.getSelectionModel().getSelectedItem();
-					ModelKoie mkoie = DbKoie.getKoie(tempObject.getKoieName());
-					KoieEksempel koie = new KoieEksempel();
-					try {
-						KoieEksempelController.setKoier(mkoie);
-						koie.start(primaryStage);
-
-					} catch (IOException e) {
-
-						e.printStackTrace();
-					}
-				}
-			}
-		});
-
 	}
-
 }

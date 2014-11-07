@@ -3,31 +3,23 @@ package gui;
 
 import java.io.IOException;
 import java.net.URL;
-
 import database.DbKoie;
 import model.ModelKoie;
 import netscape.javascript.JSObject;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.NodeOrientation;
-import javafx.geometry.Pos;
-import javafx.geometry.Rectangle2D;
-import javafx.geometry.VPos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Hyperlink;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.paint.Color;
-import javafx.scene.web.HTMLEditor;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
@@ -167,7 +159,7 @@ public class Kart extends Application {
         return anchorpane;
         
     }
-    public void testtest(String koieName) throws IOException{
+    public void toKoie(String koieName) throws IOException{
     	
     	ModelKoie mkoie = DbKoie.getKoie(koieName);//Getting the selected koie object by using its name
 		KoieEksempel koie = new KoieEksempel();

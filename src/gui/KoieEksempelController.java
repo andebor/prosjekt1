@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.util.ResourceBundle;
-
 import database.DbEquipmentList;
 import database.DbKoie;
 import database.DbReports;
@@ -12,7 +11,6 @@ import model.ModelEquipment;
 import model.ModelEquipmentLists;
 import model.ModelKoie;
 import model.ModelReports;
-import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -21,29 +19,24 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.ComboBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.util.converter.DefaultStringConverter;
 
 public class KoieEksempelController implements Initializable {
 	private static Stage primaryStage;
 	private static ModelKoie koie;
-	private static ModelEquipmentLists equipment;
 	private ModelEquipment equipment1 = null;
 
 	public static void setPrimaryStage(Stage primaryStage) {

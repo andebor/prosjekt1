@@ -11,23 +11,23 @@
 
 <AnchorPane prefHeight="575" prefWidth="729" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.EquipmentListController">
    <children>
-      <Text layoutX="90.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Utstyrsoversikt" wrappingWidth="468.13671875">
-         <font>
-            <Font size="36.0" />
-         </font>
-      </Text>
-      <Button fx:id="back" layoutX="575.0" layoutY="23.0" mnemonicParsing="false" onAction="#backToMainMenu" prefHeight="25.0" prefWidth="140.0" text="Hovedmeny" />
-      <ImageView fitHeight="100.0" fitWidth="58.0" layoutX="20.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/koiene_logo.gif" />
-         </image>
-      </ImageView>
-      <TableView fx:id="equipmentTable"  layoutY="91.0" prefHeight="470.0" prefWidth="704.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.bottomAnchor="10.0">
-         <columns>
-            <TableColumn fx:id="koie" prefWidth="250.0" text="Koie" />
-            <TableColumn fx:id="wood" prefWidth="168.0" text="Vedstokker" />
-            <TableColumn fx:id="status" prefWidth="275.0" text="Status" />
-         </columns>
-      </TableView>
-   </children>
+   		<ImageView fitHeight="100.0" fitWidth="58.0" layoutX="20.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+        	<image>
+         		<Image url="@images/koiene_logo.gif" />
+			</image>
+		</ImageView>
+		<Text layoutX="90.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Utstyrsoversikt" wrappingWidth="468.13671875">
+			<font>
+				<Font size="36.0" />
+			</font>
+		</Text>
+		<Button layoutX="575.0" layoutY="23.0" mnemonicParsing="false" onAction="#backToMainMenu" prefHeight="25.0" prefWidth="140.0" text="Hovedmeny" />
+		<TableView fx:id="equipmentTable"  layoutY="91.0" prefHeight="470.0" prefWidth="704.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.bottomAnchor="10.0">
+			<columns>
+				<TableColumn fx:id="koie" prefWidth="250.0" text="Koie" />
+				<TableColumn fx:id="wood" prefWidth="168.0" text="Vedstokker" />
+				<TableColumn fx:id="status" prefWidth="275.0" text="Status" />
+			</columns>
+		</TableView>
+	</children>
 </AnchorPane>
