@@ -25,7 +25,7 @@
         </font>
        </Text>  
        <Text disable="true" layoutX="5.0" layoutY="560.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dobbelklikk på utstyr i tabellen for å endre utstyrsstatus" wrappingWidth="384.13671875"/>
-      <Button fx:id="backToMain" layoutX="575.0" layoutY="23.0" mnemonicParsing="false" onAction="#backToMainMenu" prefHeight="25.0" prefWidth="140.0" text="Hovedmeny" />
+      <Button layoutX="575.0" layoutY="23.0" mnemonicParsing="false" onAction="#backToMainMenu" prefHeight="25.0" prefWidth="140.0" text="Hovedmeny" />
       <ImageView fitHeight="100.0" fitWidth="58.0" layoutX="20.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/koiene_logo.gif" />
@@ -48,7 +48,7 @@
          </columns>
       </TableView>
       <ComboBox fx:id="koieList" layoutX="18.0" layoutY="94.0" prefHeight="25.0" prefWidth="322.0" />
-      <Button fx:id="koiee" layoutX="351.0" layoutY="94.0" mnemonicParsing="false" onAction="#toKoie" text="Velg annen koie" />
+      <Button layoutX="351.0" layoutY="94.0" mnemonicParsing="false" onAction="#toKoie" text="Velg annen koie" />
       <Text fx:id="errorMessage" disable="true" fill="#f20303" layoutX="120.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Du må velge en koie" visible="false" />
       <TextField fx:id="smoke" disable="true" layoutX="105.0" layoutY="197.0" opacity="100" promptText="funker røykvarsler" />
       <Text layoutX="26.0" layoutY="212.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Røykvarsler:" wrappingWidth="84.13671875" />

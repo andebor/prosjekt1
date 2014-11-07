@@ -46,11 +46,107 @@ public class ModelEquipment {
 		
 	}
 
+	public int getFlåkoia() {
+		return Flåkoia;
+	}
+
+	public int getFosenkoia() {
+		return Fosenkoia;
+	}
+
+	public int getHeinfjordstua() {
+		return Heinfjordstua;
+	}
+
+	public int getHognabu() {
+		return Hognabu;
+	}
+
+	public int getHolmsåkoia() {
+		return Holmsåkoia;
+	}
+
+	public int getHolvassgamma() {
+		return Holvassgamma;
+	}
+
+	public int getIglbu() {
+		return Iglbu;
+	}
+
+	public int getKamtjønnkoia() {
+		return Kamtjønnkoia;
+	}
+
+	public int getKråklikåten() {
+		return Kråklikåten;
+	}
+
+	public int getKvernmovollen() {
+		return Kvernmovollen;
+	}
+
+	public int getKåsen() {
+		return Kåsen;
+	}
+
+	public int getLynhøgen() {
+		return Lynhøgen;
+	}
+
+	public int getMortenskåten() {
+		return Mortenskåten;
+	}
+
+	public int getNicokoia() {
+		return Nicokoia;
+	}
+
+	public int getRindalsløa() {
+		return Rindalsløa;
+	}
+
+	public int getSelbukåten() {
+		return Selbukåten;
+	}
+
+	public int getSonvasskoia() {
+		return Sonvasskoia;
+	}
+
+	public int getStabburet() {
+		return Stabburet;
+	}
+
+	public int getStakkslettbua() {
+		return Stakkslettbua;
+	}
+
+	public int getTelin() {
+		return Telin;
+	}
+
+	public int getTaagaabu() {
+		return Taagaabu;
+	}
+
+	public int getVekvessætra() {
+		return Vekvessætra;
+	}
+
+	public int getØvensenget() {
+		return Øvensenget;
+	}
+
+	public Map<String, Integer> getStatusMap() {
+		return statusMap;
+	}
+
 	public String getEquipment() {
 		return equipment;
 	}
 
-	public int getEquipmentStatus(String koieName){
+	public Integer getEquipmentStatus(String koieName){
 		return statusMap.get(koieName);
 	}
 	

@@ -8,7 +8,6 @@ import database.DbEquipmentList;
 import database.DbKoie;
 import database.DbReports;
 import model.ModelEquipment;
-import model.ModelEquipmentLists;
 import model.ModelKoie;
 import model.ModelReports;
 import javafx.collections.FXCollections;
@@ -29,7 +28,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -47,8 +46,6 @@ public class KoieEksempelController implements Initializable {
 		KoieEksempelController.koie = koie;
 	}
 
-	@FXML
-	private Button back, backToMain, koiee;
 	@FXML
 	private Text koieName;
 	@FXML
@@ -106,6 +103,8 @@ public class KoieEksempelController implements Initializable {
 			.observableArrayList(DbKoie.getAllKoieNames());
 	final ObservableList<ModelReports> dataReport = FXCollections
 			.observableArrayList(DbReports.getReport(koie.getKoieName()));
+	final ObservableList<ModelEquipment> dataEquipment = FXCollections
+			.observableArrayList(DbEquipmentList.getEquipment());
 
 
 	// Filling the textboxes, tables and choicebox with sufficient data.
@@ -140,7 +139,185 @@ public class KoieEksempelController implements Initializable {
 				smoke.setText("Fungerer ikke");
 			}
 		}
+			Image img = new Image(koie.getImage());
+			koiePic.setImage(img);
+			updateEquipmentTable();
+			editEquipmentStatus();
+			openReport();
+			updateReportsTable();
+
 		
+
+	}
+
+	private void editEquipmentStatus() {
+		equipmentList.setOnMouseClicked(new EventHandler<MouseEvent>() {
+			@Override
+			public void handle(MouseEvent event) {
+				if (event.getClickCount() > 1) {
+					
+					equipment1 = (ModelEquipment) equipmentList.getSelectionModel().getSelectedItem();
+					
+					
+					Stage newStage = new Stage();
+					AnchorPane comp = new AnchorPane();
+					Text nameField = new Text("Vil du endre status på "
+							+ equipment1.getEquipment().toLowerCase() + " på "
+							+ koie.getKoieName() + "?");
+					ComboBox<String> status = new ComboBox<String>();
+					int initialStatus;
+					equipment1.makeStatusMap();
+					if (equipment1.getEquipmentStatus(koie.getKoieName()) == 0) {
+						status.setValue("Alt i orden");
+						initialStatus = 0;
+						status.getItems().addAll("Utstyr i orden",
+								"Mangler i utstyr");
+					} else {
+						initialStatus = 1;
+						status.setValue("Mangler i utstyr");
+						status.getItems().addAll("Mangler i utstyr",
+								"Alt i orden");
+					}
+
+					Button save = new Button();
+					Button exit = new Button();
+					save.setText("Lagre");
+					exit.setText("Ikke lagre");
+					Text error = new Text("Du har ikke endret på noe!");
+					
+					save.setOnAction(new EventHandler<ActionEvent>() {
+						
+						@Override
+						public void handle(ActionEvent event) {
+							if (status.getValue() == "Alt i orden" && initialStatus != 0) {
+								DbEquipmentList.updateEquipment(equipment1.getEquipment(), 0,koie.getKoieName());
+								newStage.close();
+								KoieEksempel koien = new KoieEksempel();
+								try {
+									KoieEksempelController.setKoier(koie);
+									koien.start(primaryStage);
+
+								} catch (IOException e) {
+
+									e.printStackTrace();
+								}
+							} else if (status.getValue().equals("Mangler i utstyr") && initialStatus != 1) {
+								DbEquipmentList.updateEquipment(equipment1.getEquipment(), 1,koie.getKoieName());
+								newStage.close();
+								
+								KoieEksempel koien = new KoieEksempel();
+								try {
+									KoieEksempelController.setKoier(koie);
+									koien.start(primaryStage);
+
+								} catch (IOException e) {
+
+									e.printStackTrace();
+								}
+							} else {
+								error.setVisible(true);
+								System.out.println("Du har ikke endret utstyr");
+							}
+
+						}
+					});
+
+					exit.setOnAction(new EventHandler<ActionEvent>() {
+						@Override
+						public void handle(ActionEvent event) {
+							newStage.close();
+						}
+					});
+					
+					
+					
+					
+					nameField.setX(40);
+					nameField.setY(50);
+					status.setLayoutX(135);
+					status.setLayoutY(80);
+					save.setLayoutX(120);
+					save.setLayoutY(140);
+					exit.setLayoutX(230);
+					exit.setLayoutY(140);
+					error.setLayoutX(50);
+					error.setLayoutY(190);
+					error.setVisible(false);
+					
+
+					comp.getChildren().add(nameField);
+					comp.getChildren().add(status);
+					comp.getChildren().add(save);
+					comp.getChildren().add(exit);
+					comp.getChildren().add(error);
+
+					Scene stageScene = new Scene(comp, 400, 200);
+					newStage.setScene(stageScene);
+					newStage.show();
+					
+				}
+			}
+		});
+	}
+	private void openReport(){
+		reportsTable.setOnMouseClicked(new EventHandler<MouseEvent>() {
+			@Override
+			public void handle(MouseEvent event) {
+				if (event.getClickCount() > 1) {
+					ModelReports report = (ModelReports) reportsTable
+							.getSelectionModel().getSelectedItem();
+					ReportForm rf = new ReportForm();
+					try {
+						ReportFormController.setReports(report);
+						rf.start(primaryStage);
+						
+					} catch (IOException e) {
+					
+						e.printStackTrace();
+					}
+				}
+			}
+		});
+
+	}
+	private void updateEquipmentTable() {
+		if (DbEquipmentList.getEquipment() != null) {
+			
+			equipments
+					.setCellValueFactory(new PropertyValueFactory<ModelEquipment, String>(
+							"equipment"));
+			equipmentstatus
+					.setCellValueFactory(new PropertyValueFactory<ModelEquipment, Integer>(
+							koie.getKoieName()));
+
+			equipmentstatus.setCellFactory(column -> {
+				return new TableCell<ModelEquipment, Integer>() {
+					@Override
+					protected void updateItem(Integer item, boolean empty) {
+						super.updateItem(item, empty);
+
+						if (!empty) {
+							setTextFill(Paint.valueOf("black"));
+							if (item == 0) {
+								setStyle("-fx-background-color: lightgreen");
+								setText("Utstyr i orden");
+							} else {
+								setStyle("-fx-background-color: lightsalmon");
+								setText("Mangler i utstyr");
+							}
+						} else {
+							setText(null);
+						}
+					}
+				};
+
+			});
+		}
+		
+		equipmentList.setItems(dataEquipment);
+	}
+	
+	public void updateReportsTable(){
 		if (DbReports.getReport(koie.getKoieName()) != null) {
 			// Setting cell value factories for the columns
 			reportID.setCellValueFactory(new PropertyValueFactory<ModelReports, Integer>(
@@ -178,145 +355,5 @@ public class KoieEksempelController implements Initializable {
 			// Pushing values into the tables
 			reportsTable.setItems(dataReport);
 		}
-
-		
-
-			Image img = new Image(koie.getImage());
-			koiePic.setImage(img);
-			updateEquipmentTable();
-			editEquipmentStatus();
-
-		
-
-	}
-
-	private void editEquipmentStatus() {
-		equipmentList.setOnMouseClicked(new EventHandler<MouseEvent>() {
-			@Override
-			public void handle(MouseEvent event) {
-				if (event.getClickCount() > 1) {
-					
-					equipment1 = (ModelEquipment) equipmentList.getSelectionModel().getSelectedItem();
-					int initialStatus;
-					
-					Stage newStage = new Stage();
-					VBox comp = new VBox();
-					Text nameField = new Text("Vil du endre status på "
-							+ equipment1.getEquipment().toLowerCase() + " på "
-							+ koie.getKoieName() + "?");
-					ComboBox<String> status = new ComboBox<String>();
-
-					equipment1.makeStatusMap();
-					if (equipment1.getEquipmentStatus(koie.getKoieName()) == 0) {
-						status.setValue("Alt i orden");
-						initialStatus = 0;
-						status.getItems().addAll("Utstyr i orden",
-								"Mangler i utstyr");
-					} else {
-						initialStatus = 1;
-						status.setValue("Mangler i utstyr");
-						status.getItems().addAll("Mangler i utstyr",
-								"Alt i orden");
-					}
-
-					Button save = new Button();
-					Button exit = new Button();
-					save.setText("Lagre");
-					exit.setText("Ikke lagre");
-					
-					save.setOnAction(new EventHandler<ActionEvent>() {
-						
-						@Override
-						public void handle(ActionEvent event) {
-							if (status.getValue() == "Alt i orden" && initialStatus != 0) {
-								DbEquipmentList.updateEquipment(equipment1.getEquipment(), 0,koie.getKoieName());
-								newStage.close();
-								KoieEksempel koien = new KoieEksempel();
-								try {
-									KoieEksempelController.setKoier(koie);
-									koien.start(primaryStage);
-
-								} catch (IOException e) {
-
-									e.printStackTrace();
-								}
-							} else if (status.getValue().equals("Mangler i utstyr") && initialStatus != 1) {
-								DbEquipmentList.updateEquipment(equipment1.getEquipment(), 1,koie.getKoieName());
-								newStage.close();
-								
-								KoieEksempel koien = new KoieEksempel();
-								try {
-									KoieEksempelController.setKoier(koie);
-									koien.start(primaryStage);
-
-								} catch (IOException e) {
-
-									e.printStackTrace();
-								}
-							} else {
-								System.out.println("Du har ikke endret utstyr");
-							}
-
-						}
-					});
-
-					exit.setOnAction(new EventHandler<ActionEvent>() {
-						@Override
-						public void handle(ActionEvent event) {
-							newStage.close();
-						}
-					});
-
-					comp.getChildren().add(nameField);
-					comp.getChildren().add(status);
-					comp.getChildren().add(save);
-					comp.getChildren().add(exit);
-
-					Scene stageScene = new Scene(comp, 400, 300);
-					newStage.setScene(stageScene);
-					newStage.show();
-
-				}
-			}
-		});
-	}
-
-	private void updateEquipmentTable() {
-		final ObservableList<ModelEquipment> dataEquipment = FXCollections
-				.observableArrayList(DbEquipmentList.getEquipment());
-		
-		if (DbEquipmentList.getEquipment() != null) {
-			equipments
-					.setCellValueFactory(new PropertyValueFactory<ModelEquipment, String>(
-							"equipment"));
-			equipmentstatus
-					.setCellValueFactory(new PropertyValueFactory<ModelEquipment, Integer>(
-							koie.getKoieName()));
-
-			equipmentstatus.setCellFactory(column -> {
-				return new TableCell<ModelEquipment, Integer>() {
-					@Override
-					protected void updateItem(Integer item, boolean empty) {
-						super.updateItem(item, empty);
-
-						if (!empty) {
-							setTextFill(Paint.valueOf("black"));
-							if (item == 0) {
-								setStyle("-fx-background-color: lightgreen");
-								setText("Utstyr i orden");
-							} else {
-								setStyle("-fx-background-color: lightsalmon");
-								setText("Mangler i utstyr");
-							}
-						} else {
-							setText(null);
-						}
-					}
-				};
-
-			});
-		}
-		
-		equipmentList.setItems(dataEquipment);
 	}
 }
