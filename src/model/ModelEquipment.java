@@ -173,6 +173,7 @@ public class ModelEquipment {
 	public int getEquipmentStatus(String koieName){
 		return statusMap.get(koieName);
 	}
+	
 
 	public void makeStatusMap(){
 		statusMap = new HashMap<String,Integer>();

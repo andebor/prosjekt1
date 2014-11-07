@@ -81,12 +81,16 @@ public class DbEquipmentList {
         return inventory;
     }
 	
-	public void updateEquipment(String equipment, int newStatus, String koieName) {
-    	String sql = "update current_inventory2 set ? = '?' where utstyr ='?' ";
+	public static void updateEquipment(String equipment, int newStatus, String koieName) {
+		String sql;
+		if (newStatus == 0){
+			sql = "update current_inventory2 set "+koieName+"= 0 where utstyr ='"+equipment+"'";
+		}
+		else{
+			sql = "update current_inventory2 set "+koieName+"= 1 where utstyr ='"+equipment+"'";
+		}
+    	
     	try (PreparedStatement ps = DatabaseConnect.getInstance().prepareStatement(sql)) {
-    		ps.setString(1, koieName);
-            ps.setInt(2, newStatus);
-            ps.setString(3, equipment); 
             ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
