@@ -85,7 +85,7 @@ public class ReportFormController implements Initializable {
 			reportId.setText(String.valueOf(report.getReportId()));
 			timeStamp.setText(report.getTimeStamp().toString());
 			smokeDetector.setText(report.getSmokeDetector() ? "Ja" : "Nei");
-			forgotten.setText(report.getForgotten() ? "Nei" : "Ja");
+			forgotten.setText(report.getForgotten() ? "Ja" : "Nei");
 			reportComment.setText(report.getComments());
 		}
 	}
