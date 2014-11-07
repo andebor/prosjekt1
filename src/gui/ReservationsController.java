@@ -13,7 +13,6 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -28,8 +27,6 @@ public class ReservationsController implements Initializable {
 		ReservationsController.primaryStage = primaryStage;
 	}
 
-	@FXML
-	private Button back;
 	@FXML
 	TableView<ModelReservations> reservationsTable;
 	@FXML
@@ -50,6 +47,12 @@ public class ReservationsController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		updateReservationsTable();
+		enableDoubleClickOnTable();
+
+	}
+
+	private void updateReservationsTable() {
 		koie.setCellValueFactory(new PropertyValueFactory<ModelReservations, String>(
 				"koieName"));
 		from.setCellValueFactory(new PropertyValueFactory<ModelReservations, Date>(
@@ -64,7 +67,9 @@ public class ReservationsController implements Initializable {
 				"tenantNumber"));
 
 		reservationsTable.setItems(data);
+	}
 
+	private void enableDoubleClickOnTable() {
 		reservationsTable.setOnMouseClicked(new EventHandler<MouseEvent>() {
 			@Override
 			public void handle(MouseEvent event) {
@@ -84,5 +89,4 @@ public class ReservationsController implements Initializable {
 			}
 		});
 	}
-	
 }

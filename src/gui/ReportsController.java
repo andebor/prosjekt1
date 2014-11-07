@@ -13,14 +13,12 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Paint;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class ReportsController implements Initializable {
@@ -32,8 +30,6 @@ public class ReportsController implements Initializable {
 	}
 
 	@FXML
-	private Button back;
-	@FXML
 	private TableView<ModelReports> reportsTable;
 	@FXML
 	private TableColumn<ModelReports, String> koie;
@@ -41,8 +37,8 @@ public class ReportsController implements Initializable {
 	private TableColumn<ModelReports, Date> date, from, to, dateDelivered;
 	@FXML
 	private TableColumn<ModelReports, Integer> status;
-	
-	//Method for returning to main menu
+
+	// Method for returning to main menu
 	@FXML
 	public void backToMainMenu(ActionEvent event) throws IOException {
 		MainMenu mm = new MainMenu();
@@ -61,6 +57,12 @@ public class ReportsController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		updateReportsTable();
+		enableDoubleClickOnTable();
+
+	}
+
+	private void updateReportsTable() {
 		koie.setCellValueFactory(new PropertyValueFactory<ModelReports, String>(
 				"koieName"));
 		from.setCellValueFactory(new PropertyValueFactory<ModelReports, Date>(
@@ -82,32 +84,25 @@ public class ReportsController implements Initializable {
 					if (!empty) {
 						setTextFill(Paint.valueOf("black"));
 						if (item == 0) {
-							
 							setStyle("-fx-background-color: lightgreen");
 							setText("Alt i orden");
-
 						} else if (item == 1) {
 							setStyle("-fx-background-color: lightsalmon");
 							setText("Mangler");
-
 						} else {
-
 							setStyle("-fx-background-color: khaki");
 							setText("Gjenglemt");
 						}
-
-					}
-
-					else {
+					} else {
 						setText(null);
 					}
 				}
 			};
-
 		});
-
 		reportsTable.setItems(data);
+	}
 
+	private void enableDoubleClickOnTable() {
 		reportsTable.setOnMouseClicked(new EventHandler<MouseEvent>() {
 			@Override
 			public void handle(MouseEvent event) {
@@ -118,15 +113,14 @@ public class ReportsController implements Initializable {
 					try {
 						ReportFormController.setReports(report);
 						rf.start(primaryStage);
-						
+
 					} catch (IOException e) {
-					
+
 						e.printStackTrace();
 					}
 				}
 			}
 		});
-
 	}
 
 }

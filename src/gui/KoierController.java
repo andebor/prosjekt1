@@ -2,20 +2,15 @@ package gui;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import database.DbKoie;
-import database.DbReports;
 import model.ModelKoie;
-import model.ModelReports;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -29,13 +24,9 @@ public class KoierController implements Initializable {
 	}
 	
 	@FXML
-	private Button back, koie;
-	@FXML
 	private ComboBox<String> koieList;
 	@FXML
 	private Text errorMessage;
-	
-	
 	
 	@FXML
 	public void backToMainMenu(ActionEvent event) throws IOException{
