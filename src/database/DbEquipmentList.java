@@ -50,8 +50,11 @@ public class DbEquipmentList {
 		if (newStatus == 0){
 			sql = "update current_inventory2 set "+koieName+"= 0 where utstyr ='"+equipment+"'";
 		}
-		else{
+		else if(newStatus == 1){
 			sql = "update current_inventory2 set "+koieName+"= 1 where utstyr ='"+equipment+"'";
+		}
+		else{
+			sql = "update current_inventory2 set "+koieName+"= 2 where utstyr ='"+equipment+"'";
 		}
     	
     	try (PreparedStatement ps = DatabaseConnect.getInstance().prepareStatement(sql)) {

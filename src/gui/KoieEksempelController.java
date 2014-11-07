@@ -39,6 +39,7 @@ public class KoieEksempelController implements Initializable {
 	private static Stage primaryStage;
 	private static ModelKoie koie;
 	private ModelEquipment equipment1 = null;
+	
 
 	public static void setPrimaryStage(Stage primaryStage) {
 		KoieEksempelController.primaryStage = primaryStage;
@@ -292,13 +293,14 @@ public class KoieEksempelController implements Initializable {
 			equipmentstatus
 					.setCellValueFactory(new PropertyValueFactory<ModelEquipment, Integer>(
 							koie.getKoieName()));
-
+			
 			equipmentstatus.setCellFactory(column -> {
 				return new TableCell<ModelEquipment, Integer>() {
+					
 					@Override
 					protected void updateItem(Integer item, boolean empty) {
 						super.updateItem(item, empty);
-
+						
 						if (!empty) {
 							setTextFill(Paint.valueOf("black"));
 							if (item == 0) {
@@ -307,6 +309,7 @@ public class KoieEksempelController implements Initializable {
 							} else {
 								setStyle("-fx-background-color: lightsalmon");
 								setText("Mangler i utstyr");
+								DbEquipmentList.updateEquipment("status", 2, koie.getKoieName());
 							}
 						} else {
 							setText(null);
@@ -316,6 +319,12 @@ public class KoieEksempelController implements Initializable {
 
 			});
 		}
+		
+			DbEquipmentList.updateEquipment("status",0,koie.getKoieName());
+		
+	
+			
+		
 		
 		equipmentList.setItems(dataEquipment);
 	}
