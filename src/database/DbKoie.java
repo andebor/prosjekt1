@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.ModelKoie;
-import model.ModelReports;
 
 public class DbKoie {
 

@@ -1,6 +1,5 @@
 package database;
 
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -64,10 +63,5 @@ public class DbReports {
 	        }
 	        return false;
 	    }
-	   
-	   public static void main(String[] args) {
-		 
-		   System.out.println(checkReport("mortenskåten", "2014-10-28", "2014-10-29"));
-	}
 
 }

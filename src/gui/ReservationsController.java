@@ -5,7 +5,6 @@ import java.net.URL;
 import java.sql.Date;
 import java.util.ResourceBundle;
 
-import model.ModelReports;
 import model.ModelReservations;
 import database.DbReservations;
 import javafx.collections.FXCollections;
@@ -85,4 +84,5 @@ public class ReservationsController implements Initializable {
 			}
 		});
 	}
+	
 }
