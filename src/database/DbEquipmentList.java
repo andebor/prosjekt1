@@ -56,6 +56,9 @@ public class DbEquipmentList {
         }
         return equipments;
     }
+
+			
+			
 	
 	public static List<ModelEquipment> getEquipment() {
         String sql = "select * from current_inventory2 where utstyr <> 'wood' and utstyr <> 'status'  and utstyr <> 'smoke' order by utstyr";
@@ -76,6 +79,18 @@ public class DbEquipmentList {
             e.printStackTrace();
         }
         return inventory;
+    }
+	
+	public void updateEquipment(String equipment, int newStatus, String koieName) {
+    	String sql = "update current_inventory2 set ? = '?' where utstyr ='?' ";
+    	try (PreparedStatement ps = DatabaseConnect.getInstance().prepareStatement(sql)) {
+    		ps.setString(1, koieName);
+            ps.setInt(2, newStatus);
+            ps.setString(3, equipment); 
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 	
 	public static void main(String[] args) {
