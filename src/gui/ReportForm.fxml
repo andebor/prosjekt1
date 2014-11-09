@@ -9,7 +9,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ReportFormController" prefHeight="575" prefWidth="729">
+<AnchorPane prefHeight="668.0" prefWidth="795.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ReportFormController" >
    <children>
       <Text layoutX="72.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gjenglemt:" wrappingWidth="151.13671875">
          <font>
@@ -21,7 +21,7 @@
             <Font size="14.0" />
          </font>
       </Text>
-      <Button layoutX="575.0" layoutY="55.0" mnemonicParsing="false" onAction="#backToReports" prefHeight="25.0" prefWidth="140.0" text="Tilbake" />
+      <Button layoutX="631.0" layoutY="60.0" mnemonicParsing="false" onAction="#backToReports" prefHeight="25.0" prefWidth="140.0" text="Tilbake" />
       <Text layoutX="449.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registrerte mangler:" wrappingWidth="181.13671875">
          <font>
             <Font size="14.0" />
@@ -65,7 +65,7 @@
             <Font size="36.0" />
          </font>
       </Text>
-      <Button layoutX="575.0" layoutY="23.0" mnemonicParsing="false" onAction="#backToMainMenu" prefHeight="25.0" prefWidth="140.0" text="Hovedmeny" />
+      <Button layoutX="631.0" layoutY="20.0" mnemonicParsing="false" onAction="#backToMainMenu" prefHeight="25.0" prefWidth="140.0" text="Hovedmeny" />
       <ImageView fitHeight="100.0" fitWidth="58.0" layoutX="20.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/koiene_logo.gif" />

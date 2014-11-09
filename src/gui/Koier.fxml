@@ -6,9 +6,9 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="575" prefWidth="729" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.KoierController">
+<AnchorPane prefHeight="668.0" prefWidth="795.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.KoierController">
    <children>
-      <Button layoutX="575.0" layoutY="23.0" mnemonicParsing="false" onAction="#backToMainMenu" prefHeight="25.0" prefWidth="140.0" text="Hovedmeny" />
+      <Button layoutX="631.0" layoutY="20.0" mnemonicParsing="false" onAction="#backToMainMenu" prefHeight="25.0" prefWidth="140.0" text="Hovedmeny" />
       <Text disable="true" layoutX="90.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Koier" wrappingWidth="384.13671875">
          <font>
             <Font size="36.0" />

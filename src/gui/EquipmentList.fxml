@@ -9,7 +9,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="575" prefWidth="729" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.EquipmentListController">
+<AnchorPane prefHeight="668.0" prefWidth="795.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.EquipmentListController">
    <children>
    		<ImageView fitHeight="100.0" fitWidth="58.0" layoutX="20.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
         	<image>
@@ -21,7 +21,7 @@
 				<Font size="36.0" />
 			</font>
 		</Text>
-		<Button layoutX="575.0" layoutY="23.0" mnemonicParsing="false" onAction="#backToMainMenu" prefHeight="25.0" prefWidth="140.0" text="Hovedmeny" />
+		<Button layoutX="631.0" layoutY="20.0" mnemonicParsing="false" onAction="#backToMainMenu" prefHeight="25.0" prefWidth="140.0" text="Hovedmeny" />
 		<TableView fx:id="equipmentTable"  layoutY="91.0" prefHeight="470.0" prefWidth="704.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.bottomAnchor="10.0">
 			<columns>
 				<TableColumn fx:id="koie" prefWidth="250.0" text="Koie" />
