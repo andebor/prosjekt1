@@ -29,8 +29,8 @@
          <font>
             <Font name="System Italic" size="15.0" />
          </font></Text>
-      <Button fx:id="saveWood" disable="true" layoutX="310.0" layoutY="143.0" mnemonicParsing="false" onAction="#saveWoodStatus" opacity="0.0" prefHeight="25.0" prefWidth="80.0" text="Lagre" />
-      <Button fx:id="saveForgotten" disable="true" layoutX="310.0" layoutY="227.0" mnemonicParsing="false" onAction="#saveForgottenStatus" opacity="0.0" prefHeight="25.0" prefWidth="80.0" text="Lagre" />
+      <Button fx:id="saveWood" disable="true" layoutX="336.0" layoutY="143.0" mnemonicParsing="false" onAction="#saveWoodStatus" opacity="0.0" prefHeight="25.0" prefWidth="80.0" text="Lagre" />
+      <Button fx:id="saveForgotten" disable="true" layoutX="336.0" layoutY="227.0" mnemonicParsing="false" onAction="#saveForgottenStatus" opacity="0.0" prefHeight="25.0" prefWidth="80.0" text="Lagre" />
       <Button layoutX="631.0" layoutY="20.0" mnemonicParsing="false" onAction="#backToMainMenu" prefHeight="25.0" prefWidth="140.0" text="Hovedmeny" />
       <ImageView fitHeight="100.0" fitWidth="58.0" layoutX="20.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -45,7 +45,7 @@
             <TableColumn fx:id="status" prefWidth="107.0" text="Status" />
          </columns>
       </TableView>
-      <ImageView fx:id="koiePic" fitHeight="191.0" fitWidth="286.0" layoutX="415.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="koiePic" fitHeight="190.0" fitWidth="286.0" layoutX="488.0" layoutY="118.0" pickOnBounds="true" preserveRatio="true">
       </ImageView>
       <TableView fx:id="equipmentList" layoutX="36.0" layoutY="317.0" prefHeight="285.0" prefWidth="286.0">
          <columns>
