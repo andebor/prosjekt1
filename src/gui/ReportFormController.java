@@ -59,7 +59,10 @@ public class ReportFormController implements Initializable {
 			String tempString = "";
 			for (int i = 0; i < report.getDefects().length(); i++) {
 				char c = report.getDefects().charAt(i);
-				if (c == ',') {
+				if (c == ',' || i == report.getDefects().length() -1) {
+					if(c != ','){
+						tempString += c;
+					}
 					defectList.add(tempString);
 					tempString = "";
 				} else if (tempString == "") {
