@@ -6,7 +6,7 @@ public class ModelKoie {
 	private int numberOfBeds;
 	private String description;
 	private String image;
-	private int status,wood, smoke;
+	private int status,wood, smoke,forgotten;
 	
 	 
 	public ModelKoie(String koie_name, int number_of_beds, String description, String image){
@@ -30,6 +30,10 @@ public class ModelKoie {
 
 	public void setWood(int wood) {
 		this.wood = wood;
+	}
+	
+	public void setForgotten(int forgotten){
+		this.forgotten = forgotten;
 	}
 
 	public String getKoieName() {
@@ -58,5 +62,8 @@ public class ModelKoie {
 	
 	public int getSmoke(){
 		return smoke;
+	}
+	public int getForgotten(){
+		return forgotten;
 	}
 }

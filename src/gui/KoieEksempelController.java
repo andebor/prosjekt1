@@ -306,11 +306,14 @@ public class KoieEksempelController implements Initializable {
 							if (item == 0) {
 								setStyle("-fx-background-color: lightgreen");
 								setText("Utstyr i orden");
-							} else {
-								setStyle("-fx-background-color: lightsalmon");
-								setText("Mangler i utstyr");
-								DbEquipmentList.updateEquipment("status", 2, koie.getKoieName());
 							}
+							else{
+									setStyle("-fx-background-color: lightsalmon");
+									setText("Mangler i utstyr");
+									DbEquipmentList.updateEquipment("status", 2, koie.getKoieName());
+								}
+								
+							
 						} else {
 							setText(null);
 						}
@@ -320,7 +323,16 @@ public class KoieEksempelController implements Initializable {
 			});
 		}
 		
+		boolean allGood = true;
+		for(int i : DbEquipmentList.getEquipmentStatus(koie.getKoieName())){
+			if (i == 1){
+				allGood = false;
+			}
+		}
+		if(allGood){
 			DbEquipmentList.updateEquipment("status",0,koie.getKoieName());
+		}
+			
 		
 	
 			

@@ -11,7 +11,7 @@ import model.ModelEquipment;
 public class DbEquipmentList {
 	
 	public static List<ModelEquipment> getEquipment() {
-        String sql = "select * from current_inventory2 where utstyr <> 'wood' and utstyr <> 'status'  and utstyr <> 'smoke' order by utstyr";
+        String sql = "select * from current_inventory2 where utstyr <> 'wood' and utstyr <> 'status'  and utstyr <> 'smoke' and utstyr <> 'forgotten' order by utstyr";
         List<ModelEquipment> inventory = new ArrayList<>();
         try (PreparedStatement ps = DatabaseConnect.getInstance().prepareStatement(sql)) {
             ResultSet rs = ps.executeQuery();

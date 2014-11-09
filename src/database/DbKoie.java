@@ -25,13 +25,16 @@ public class DbKoie {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		String sql2 = "select "+koieName+" from current_inventory2 where utstyr in ('wood','status','smoke')";
+		String sql2 = "select "+koieName+" from current_inventory2 where utstyr in ('forgotten','smoke','status','wood')";
 		try (PreparedStatement ps = DatabaseConnect.getInstance()
 				.prepareStatement(sql2)) {
 			ResultSet rs = ps.executeQuery();
 			int counter = 0;
 			while (rs.next()) {
 					if(counter == 0){
+						koie.setForgotten(rs.getInt(1));
+					}
+					else if(counter == 1){
 						koie.setSmoke(rs.getInt(1));
 						
 					}
