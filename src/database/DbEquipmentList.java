@@ -32,7 +32,7 @@ public class DbEquipmentList {
     }
 	
 	public static List<Integer> getEquipmentStatus(String koieName) {
-        String sql = "select " + koieName + " from current_inventory2 where utstyr <> 'wood' and utstyr <> 'status'  and utstyr <> 'smoke' order by utstyr";
+        String sql = "select " + koieName + " from current_inventory2 where utstyr <> 'wood' and utstyr <> 'status'  and utstyr <> 'smoke' and utstyr <> 'forgotten' order by utstyr";
         List<Integer> inventory = new ArrayList<>();
         try (PreparedStatement ps = DatabaseConnect.getInstance().prepareStatement(sql)) {
             ResultSet rs = ps.executeQuery();
@@ -53,8 +53,11 @@ public class DbEquipmentList {
 		else if(newStatus == 1){
 			sql = "update current_inventory2 set "+koieName+"= 1 where utstyr ='"+equipment+"'";
 		}
-		else{
+		else if (newStatus == 2){
 			sql = "update current_inventory2 set "+koieName+"= 2 where utstyr ='"+equipment+"'";
+		}
+		else{
+			sql = "update current_inventory2 set "+koieName+"= 3 where utstyr ='"+equipment+"'";
 		}
     	
     	try (PreparedStatement ps = DatabaseConnect.getInstance().prepareStatement(sql)) {

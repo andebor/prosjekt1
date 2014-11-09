@@ -74,17 +74,20 @@ public class DbKoie {
 		List<String> koier = getAllKoieNames();
 		int counter = 0;
 		for (String koieName : koier) {
-			String sql = "select "+koieName+" from current_inventory2 where utstyr in ('wood','status','smoke')";
+			String sql = "select "+koieName+" from current_inventory2 where utstyr in ('wood','status','smoke','forgotten')";
 			try (PreparedStatement ps = DatabaseConnect.getInstance()
 					.prepareStatement(sql)) {
 				ResultSet rs = ps.executeQuery();
 				koieStatus = new ModelKoie(koieName);
 				while (rs.next()) {
 						if(counter == 0){
+							koieStatus.setForgotten(rs.getInt(1));
+						}
+						else if(counter == 1){
 							koieStatus.setSmoke(rs.getInt(1));
 							
 						}
-						else if (counter == 1){
+						else if (counter == 2){
 							koieStatus.setStatus(rs.getInt(1));
 						}
 						else{
@@ -102,5 +105,6 @@ public class DbKoie {
 		}
 		return koieStatusList;
 	}
+
 	
 }

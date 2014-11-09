@@ -14,6 +14,8 @@
       <TextField fx:id="beds" disable="true" layoutX="397.0" layoutY="396.0" opacity="100" prefHeight="25.0" prefWidth="100.0" promptText="sengeplasser" />
       <TextArea fx:id="description" editable="false" layoutX="397.0" layoutY="324.0" opacity="100" prefHeight="66.0" prefWidth="286.0" promptText="beskrivelse" wrapText="true" />
       <TextField fx:id="dugnad" disable="true" layoutX="105.0" layoutY="171.0" opacity="100" promptText="antall besøk/dato" />
+      <ComboBox fx:id= "wood" layoutX="105.0" layoutY="143.0" prefWidth="187.0" />
+      <ComboBox fx:id = "forgotten" layoutX="105.0" layoutY="227.0" prefWidth="187.0" />
       <Text layoutX="26.0" layoutY="187.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tid til dugnad:" wrappingWidth="84.13671875" />
       <Text layoutX="26.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vedkubber:" wrappingWidth="84.13671875" />
       <Text layoutX="321.0" layoutY="413.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sengeplasser:" wrappingWidth="73.13671875" />
@@ -23,7 +25,9 @@
         	<Font size="36.0" />
         </font>
        </Text>  
-       <Text disable="true" layoutX="5.0" layoutY="560.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dobbelklikk på utstyr i tabellen for å endre utstyrsstatus" wrappingWidth="384.13671875" />
+      <Text disable="true" layoutX="5.0" layoutY="560.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dobbelklikk på utstyr i tabellen for å endre utstyrsstatus" wrappingWidth="384.13671875" />
+      <Button fx:id="saveWood" disable = "true" opacity="0.0" layoutX="310.0" layoutY="143.0" mnemonicParsing="false" onAction = "#saveWoodStatus" prefHeight="25.0" prefWidth="80.0" text="Lagre"/>
+      <Button fx:id="saveForgotten" disable = "true" opacity="0.0" layoutX="310.0" layoutY="227.0" mnemonicParsing="false" onAction = "#saveForgottenStatus" prefHeight="25.0" prefWidth="80.0" text="Lagre"/>
       <Button layoutX="575.0" layoutY="23.0" mnemonicParsing="false" onAction="#backToMainMenu" prefHeight="25.0" prefWidth="140.0" text="Hovedmeny" />
       <ImageView fitHeight="100.0" fitWidth="58.0" layoutX="20.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -52,7 +56,5 @@
       <TextField fx:id="smoke" disable="true" layoutX="105.0" layoutY="199.0" opacity="100" promptText="funker røykvarsler" />
       <Text layoutX="26.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Røykvarsler:" wrappingWidth="84.13671875" />
       <Text layoutX="26.0" layoutY="244.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gjenglemt:" wrappingWidth="84.13671875" />
-      <ComboBox layoutX="104.0" layoutY="227.0" prefWidth="150.0" />
-      <ComboBox layoutX="104.0" layoutY="143.0" prefWidth="150.0" />
    </children>
 </AnchorPane>

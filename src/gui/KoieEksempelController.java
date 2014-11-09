@@ -52,11 +52,13 @@ public class KoieEksempelController implements Initializable {
 	@FXML
 	private Text koieName;
 	@FXML
-	private TextField beds, wood, dugnad, smoke;
+	private Button saveWood,saveForgotten;
+	@FXML
+	private TextField beds, dugnad, smoke;
 	@FXML
 	private TextArea description;
 	@FXML
-	private ComboBox<String> koieList;
+	private ComboBox<String> koieList,wood,forgotten;
 	@FXML
 	private Text errorMessage;
 	@FXML
@@ -106,34 +108,20 @@ public class KoieEksempelController implements Initializable {
 			.observableArrayList(DbKoie.getAllKoieNames());
 	final ObservableList<ModelReports> dataReport = FXCollections
 			.observableArrayList(DbReports.getReport(koie.getKoieName()));
-	final ObservableList<ModelEquipment> dataEquipment = FXCollections
-			.observableArrayList(DbEquipmentList.getEquipment());
+	
 
 
 	// Filling the textboxes, tables and choicebox with sufficient data.
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-
+		
 		koieList.setPromptText("Trykk her for å velge annen koie");
 		koieList.setItems(dataKoie);
-		koieName.setText(koie.getKoieName());
-		beds.setText(String.valueOf(koie.getNumberOfBeds()));
-		description.setText(koie.getDescription());
+		if (koie != null){
+			koieName.setText(koie.getKoieName());
+			beds.setText(String.valueOf(koie.getNumberOfBeds()));
+			description.setText(koie.getDescription());
 
-		// Displaying different wood status according to the value in the
-		// database
-		if (koie != null) {
-			
-			if (koie.getWood() == 1) {
-				wood.setText("0-15");
-				dugnad.setText("Så fort som mulig");
-			} else if (koie.getWood() == 2) {
-				wood.setText("15-30");
-				dugnad.setText("Ca 3 mnd");
-			} else {
-				wood.setText("Mer enn 30");
-				dugnad.setText("Ca 6 mnd");
-			}
 			
 			if(koie.getSmoke() == 0){
 				smoke.setText("Fungerer");
@@ -141,18 +129,61 @@ public class KoieEksempelController implements Initializable {
 			else{
 				smoke.setText("Fungerer ikke");
 			}
-		}
+			
 			Image img = new Image(koie.getImage());
 			koiePic.setImage(img);
+			updateWoodStatus();
+			updateForgotten();
 			updateEquipmentTable();
 			editEquipmentStatus();
 			openReport();
 			updateReportsTable();
 
+		}
+		
 		
 
 	}
-
+	
+	private void updateWoodStatus(){
+		// Displaying different wood status according to the value in the database
+		
+			
+			wood.getItems().addAll("0-15","15-30","Mer enn 30");	
+			if (koie.getWood() == 1) {
+				wood.setValue("0-15");
+				dugnad.setText("Så fort som mulig");
+			} else if (koie.getWood() == 2) {
+				wood.setValue("15-30");
+				dugnad.setText("Ca 3 mnd");
+			} else {
+				wood.setValue("Mer enn 30");
+				dugnad.setText("Ca 6 mnd");
+			}
+			wood.setOnAction((event) ->{
+				saveWood.setOpacity(100);
+				saveWood.setDisable(false);
+			});
+			
+					
+	}
+	
+	private void updateForgotten(){
+		forgotten.getItems().addAll("Ikke gjenglemt","Gjenglemt");
+		if(koie.getForgotten() == 0){
+			forgotten.setValue("Ikke gjenglemt");
+		}
+		else{
+			forgotten.setValue("Gjenglemt");
+		}
+		
+		forgotten.setOnAction((event)->{
+			saveForgotten.setOpacity(100);
+			saveForgotten.setDisable(false);
+		});
+	}
+	
+	
 	private void editEquipmentStatus() {
 		equipmentList.setOnMouseClicked(new EventHandler<MouseEvent>() {
 			@Override
@@ -285,6 +316,8 @@ public class KoieEksempelController implements Initializable {
 
 	}
 	private void updateEquipmentTable() {
+		final ObservableList<ModelEquipment> dataEquipment = FXCollections
+				.observableArrayList(DbEquipmentList.getEquipment());
 		if (DbEquipmentList.getEquipment() != null) {
 			
 			equipments
@@ -310,7 +343,6 @@ public class KoieEksempelController implements Initializable {
 							else{
 									setStyle("-fx-background-color: lightsalmon");
 									setText("Mangler i utstyr");
-									DbEquipmentList.updateEquipment("status", 2, koie.getKoieName());
 								}
 								
 							
@@ -329,8 +361,17 @@ public class KoieEksempelController implements Initializable {
 				allGood = false;
 			}
 		}
-		if(allGood){
+		if(allGood && koie.getForgotten() == 0){
 			DbEquipmentList.updateEquipment("status",0,koie.getKoieName());
+			
+		}
+		else if (allGood && koie.getForgotten() == 1){
+			DbEquipmentList.updateEquipment("status", 1,koie.getKoieName());
+			
+		}
+		else{
+			DbEquipmentList.updateEquipment("status", 2,koie.getKoieName());
+			
 		}
 			
 		
@@ -378,6 +419,58 @@ public class KoieEksempelController implements Initializable {
 			});
 			// Pushing values into the tables
 			reportsTable.setItems(dataReport);
+		}
+	}
+	
+	@FXML
+	public void saveWoodStatus(){
+		if(wood.getValue() == "0-15" && koie.getWood() != 1) {
+			saveWood.setOpacity(0);
+			saveWood.setDisable(true);
+			DbEquipmentList.updateEquipment("wood", 1, koie.getKoieName());
+			dugnad.setText("Så fort som mulig");
+			koie.setWood(1);
+		}
+		else if(wood.getValue() == "15-30" && koie.getWood() != 2){
+			saveWood.setOpacity(0);
+			saveWood.setDisable(true);
+			DbEquipmentList.updateEquipment("wood", 2, koie.getKoieName());
+			dugnad.setText("Ca 3 mnd");
+			koie.setWood(2);
+		}
+		else if(wood.getValue() == "Mer enn 30" && koie.getWood() != 3){
+			saveWood.setOpacity(0);
+			saveWood.setDisable(true);
+			DbEquipmentList.updateEquipment("wood", 3, koie.getKoieName());
+			dugnad.setText("Ca 6 mnd");
+			koie.setWood(3);
+		}
+		else{
+			saveWood.setOpacity(0);
+			saveWood.setDisable(true);
+		}
+		
+	}
+	
+	@FXML
+	public void saveForgottenStatus(){
+		if(forgotten.getValue() == "Ikke gjenglemt" && koie.getForgotten() != 0){
+			saveForgotten.setOpacity(0);
+			saveForgotten.setDisable(true);
+			DbEquipmentList.updateEquipment("forgotten", 0, koie.getKoieName());
+			koie.setForgotten(0);
+			updateEquipmentTable();
+		}
+		else if(forgotten.getValue() == "Gjenglemt" && koie.getForgotten() != 1){
+			saveForgotten.setOpacity(0);
+			saveForgotten.setDisable(true);
+			DbEquipmentList.updateEquipment("forgotten", 1, koie.getKoieName());
+			koie.setForgotten(1);
+			updateEquipmentTable();
+		}
+		else{
+			saveForgotten.setOpacity(0);
+			saveForgotten.setDisable(true);
 		}
 	}
 }
