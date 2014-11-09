@@ -12,11 +12,13 @@ public class Login extends Application {
 	//The start method is similar in all GUI classes
 	@Override
 	public void start(Stage primaryStage) throws IOException {
+		final double rem = javafx.scene.text.Font.getDefault().getSize();
 		Parent root = FXMLLoader.load(this.getClass().getResource("Login.fxml")); //loading the correct FXML-file
 	    primaryStage.setScene(new Scene(root));
 	    primaryStage.show();
-	    primaryStage.setResizable(false); //setting all GUIs non-resizable
+	    //primaryStage.setResizable(false); //setting all GUIs non-resizable
 	    LoginController.setPrimaryStage(primaryStage);
+	   
 	}
 	
 	public static void main(String[] args) {
