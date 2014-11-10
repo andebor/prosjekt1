@@ -22,11 +22,11 @@
 			</font>
 		</Text>
 		<Button layoutX="631.0" layoutY="20.0" mnemonicParsing="false" onAction="#backToMainMenu" prefHeight="25.0" prefWidth="140.0" text="Hovedmeny" />
-		<TableView fx:id="equipmentTable"  layoutY="91.0" prefHeight="470.0" prefWidth="704.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.bottomAnchor="10.0">
+		<TableView fx:id="equipmentTable" layoutY="91.0" prefHeight="540.0" prefWidth="775.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
 			<columns>
-				<TableColumn fx:id="koie" prefWidth="250.0" text="Koie" />
-				<TableColumn fx:id="wood" prefWidth="168.0" text="Vedstokker" />
-				<TableColumn fx:id="status" prefWidth="275.0" text="Status" />
+				<TableColumn fx:id="koie" prefWidth="258.0" text="Koie" />
+				<TableColumn fx:id="wood" prefWidth="257.0" text="Vedstokker" />
+				<TableColumn fx:id="status" prefWidth="258.0" text="Status" />
 			</columns>
 		</TableView>
 	</children>

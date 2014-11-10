@@ -9,7 +9,6 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane prefHeight="668.0" prefWidth="795.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ReportsController">
    <children>
       <Text layoutX="90.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rapporter" wrappingWidth="468.13671875">
@@ -23,17 +22,17 @@
             <Image url="@images/koiene_logo.gif" />
          </image>
       </ImageView>
-      <TableView fx:id="reportsTable" layoutX="10.0" layoutY="91.0" prefHeight="485.0" prefWidth="709.0">
+      <TableView fx:id="reportsTable" layoutX="10.0" layoutY="91.0" prefHeight="540.0" prefWidth="775.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
          <columns>
-            <TableColumn fx:id="koie" prefWidth="270.0" text="Koie" />
-            <TableColumn fx:id="date" prefWidth="197.0" text="Dato">
+            <TableColumn fx:id="koie" prefWidth="255.0" text="Koie" />
+            <TableColumn fx:id="date" prefWidth="198.0" text="Dato">
                <columns>
-                  <TableColumn fx:id="from" minWidth="5.0" prefWidth="88.0" text="Fra " />
-                  <TableColumn fx:id="to" minWidth="5.0" prefWidth="88.0" text="Til" />
+                  <TableColumn fx:id="from" minWidth="5.0" prefWidth="98.0" text="Fra " />
+                  <TableColumn fx:id="to" minWidth="5.0" prefWidth="98.0" text="Til" />
                </columns>
             </TableColumn>
-            <TableColumn fx:id="dateDelivered" prefWidth="139.0" text="Dato levert" />
-            <TableColumn fx:id="status" prefWidth="132.0" text="Status" />
+            <TableColumn fx:id="dateDelivered" prefWidth="158.0" text="Dato levert" />
+            <TableColumn fx:id="status" prefWidth="158.0" text="Status" />
          </columns>
       </TableView>
    </children>
