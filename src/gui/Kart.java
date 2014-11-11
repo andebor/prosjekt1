@@ -79,7 +79,7 @@ public class Kart extends Application {
         ImageView iv2 = new ImageView();
         iv2.setImage(kartTekst);
         iv2.setFitHeight(66);
-        iv2.setFitWidth(544);
+        iv2.setFitWidth(610);
        
     
 

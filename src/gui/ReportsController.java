@@ -88,7 +88,7 @@ public class ReportsController implements Initializable {
 							setText("Alt i orden");
 						} else if (item == 1) {
 							setStyle("-fx-background-color: lightsalmon");
-							setText("Mangler");
+							setText("Mangler i utstyr");
 						} else {
 							setStyle("-fx-background-color: khaki");
 							setText("Gjenglemt");

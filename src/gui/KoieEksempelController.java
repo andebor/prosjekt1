@@ -107,7 +107,7 @@ public class KoieEksempelController implements Initializable {
 	final ObservableList<String> dataKoie = FXCollections
 			.observableArrayList(DbKoie.getAllKoieNames());
 	final ObservableList<ModelReports> dataReport = FXCollections
-			.observableArrayList(DbReports.getReport(koie.getKoieName()));
+			.observableArrayList(DbReports.getReports(koie.getKoieName()));
 	
 
 
@@ -406,7 +406,7 @@ public class KoieEksempelController implements Initializable {
 								setText("Alt i orden");
 							} else if (item == 1) {
 								setStyle("-fx-background-color: lightsalmon");
-								setText("Mangler");
+								setText("Mangler i utstyr");
 							} else {
 								setStyle("-fx-background-color: khaki");
 								setText("Gjenglemt");

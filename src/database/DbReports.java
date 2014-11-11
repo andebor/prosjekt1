@@ -63,5 +63,23 @@ public class DbReports {
 	        }
 	        return false;
 	    }
-
+	   
+	   public static List<ModelReports> getReports(String koieName) {
+	        String sql = "select * from reports where koie_name = ?";
+	        List<ModelReports> reports = new ArrayList<>();
+	        try (PreparedStatement ps = DatabaseConnect.getInstance().prepareStatement(sql)) {
+	        	ps.setString(1, koieName);
+	            ResultSet rs = ps.executeQuery();
+	            while (rs.next()) {
+	            	ModelReports report = new ModelReports(rs.getInt("report_id"), rs.getString("koie_name"), rs.getInt("status"), 
+	            			rs.getDate("startdate"), rs.getDate("enddate"), rs.getBoolean("smoke_detector"), 
+	            			rs.getInt("wood"), rs.getString("remarks_of_defects"), rs.getBoolean("forgotten"), 
+	            			rs.getString("comments"),rs.getTimestamp("timestamp"));
+	                reports.add(report);
+	            }
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	        return reports;
+	    }
 }
