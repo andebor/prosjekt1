@@ -72,6 +72,8 @@ public class ReportsController implements Initializable {
 		dateDelivered
 				.setCellValueFactory(new PropertyValueFactory<ModelReports, Date>(
 						"timeStamp"));
+		dateDelivered.setSortType(TableColumn.SortType.DESCENDING);
+		
 		status.setCellValueFactory(new PropertyValueFactory<ModelReports, Integer>(
 				"status"));
 
@@ -100,6 +102,8 @@ public class ReportsController implements Initializable {
 			};
 		});
 		reportsTable.setItems(data);
+		reportsTable.getSortOrder().add(dateDelivered);
+		
 	}
 
 	private void enableDoubleClickOnTable() {
