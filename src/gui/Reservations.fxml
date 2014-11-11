@@ -24,16 +24,16 @@
       </ImageView>
       <TableView fx:id="reservationsTable" layoutX="10.0" layoutY="92.0" prefHeight="540.0" prefWidth="775.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
          <columns>
-            <TableColumn fx:id="koie" prefWidth="166.0" text="Koie" />
-            <TableColumn fx:id="date" minWidth="0.0" prefWidth="159.0" text="Dato">
+            <TableColumn fx:id="koie" prefWidth="150.0" text="Koie" />
+            <TableColumn fx:id="date" minWidth="0.0" prefWidth="166.0" text="Dato">
                <columns>
-                  <TableColumn fx:id="from" prefWidth="75.0" text="Fra" />
-                  <TableColumn fx:id="to" prefWidth="75.0" text="Til" />
+                  <TableColumn fx:id="from" prefWidth="100.0" text="Fra" />
+                  <TableColumn fx:id="to" prefWidth="100.0" text="Til" />
                </columns>
             </TableColumn>
             <TableColumn fx:id="name" prefWidth="131.0" text="Navn" />
-            <TableColumn fx:id="email" prefWidth="151.0" text="Epost" />
-            <TableColumn fx:id="number" prefWidth="164.0" text="Tlf" />
+            <TableColumn fx:id="email" prefWidth="171.0" text="Epost" />
+            <TableColumn fx:id="number" prefWidth="120.0" text="Tlf" />
          </columns>
       </TableView>
    </children>
