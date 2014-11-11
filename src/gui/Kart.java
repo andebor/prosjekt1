@@ -133,9 +133,9 @@ public class Kart extends Application {
     private AnchorPane addAnchorPane(GridPane grid) {
   	    WebView kartet = new WebView();
 
-  	    kartet.setMaxHeight(484);
+  	    kartet.setMaxHeight(577);
 
-  	    kartet.setMaxWidth(729);
+  	    kartet.setMaxWidth(795);
         WebEngine webEngine = kartet.getEngine();
         URL urlGoogleMaps = getClass().getResource("map.html");
         webEngine.load(urlGoogleMaps.toExternalForm());
