@@ -14,16 +14,16 @@ function findStatus($missing, $forgotten) {
 }
 
 // Sjekker om det er mangler og legger disse til i update query 
-function createUpdate($columnArray, $koie, $wood, $smoke, $status) {
+function createUpdate($columnArray, $koie, $wood, $smoke, $status, $forgotten) {
     if (count($columnArray) > 0) {
         foreach ($columnArray as $key => $value) {
           $pairs [] = "WHEN '$value' THEN 0";
         }
         $imploded = implode(' ', $pairs);
 
-        return "UPDATE current_inventory2 SET " . $koie . "= CASE utstyr WHEN 'status' THEN " . $status . " " . $imploded . " WHEN 'wood' THEN " . $wood . " WHEN 'smoke' THEN " . $smoke . " ELSE " . $koie . " END; ";
+        return "UPDATE current_inventory2 SET " . $koie . "= CASE utstyr WHEN 'status' THEN " . $status . " " . $imploded . " WHEN 'wood' THEN " . $wood . " WHEN 'smoke' THEN " . $smoke . " WHEN 'forgotten' THEN " . $forgotten . " ELSE " . $koie . " END; ";
     }
-    return "UPDATE current_inventory2 SET " . $koie . "= CASE utstyr WHEN 'status' THEN " . $status . " WHEN 'wood' THEN " . $wood . " WHEN 'smoke' THEN " . $smoke . " ELSE " . $koie . " END; ";
+    return "UPDATE current_inventory2 SET " . $koie . "= CASE utstyr WHEN 'status' THEN " . $status . " WHEN 'wood' THEN " . $wood . " WHEN 'smoke' THEN " . $smoke .  " WHEN 'forgotten' THEN " . $forgotten . " ELSE " . $koie . " END; ";
 }
 
 ?>

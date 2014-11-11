@@ -6,6 +6,7 @@ $("#email_input").keyup(function(e) {
             $("#startdate").attr("disabled", false);
         }else{
             $("#startdate").attr("disabled", true);
+            $("#submit").attr("disabled", true);
         }
     });
 });
@@ -44,4 +45,21 @@ $("#enddate").change(function(e) {
             $("#submit").attr("disabled", true);
         }
     });
+});
+
+
+$("#select_koie").change(function() {
+    var enddate = $("#enddate").val();
+    var startdate = $("#startdate").val();
+    var koie = $(this).val();
+    if (! $("#enddate").val() == '') {
+        $.post('check_reservation.php', {'select_koie':koie, 'startdate':startdate, 'enddate':enddate}, function(data) {
+        $("#reservation-display").html(data);
+        if(data == '<p class="bg-success">Gyldig reservasjon.</p>') {
+            $("#submit").attr("disabled", false);
+        }else{
+            $("#submit").attr("disabled", true);
+        }
+    });
+    }   
 });

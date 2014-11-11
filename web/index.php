@@ -6,7 +6,7 @@ include 'dbconn.php';
 $mysqli->set_charset("utf8");
 
 //Henter liste over utstyr som kan meldes som mangel
-$inventory_list = $mysqli->query("SELECT utstyr FROM `current_inventory2` WHERE utstyr <> 'wood' AND utstyr <> 'smoke' AND utstyr <> 'status' ORDER BY utstyr");
+$inventory_list = $mysqli->query("SELECT utstyr FROM `current_inventory2` WHERE utstyr <> 'wood' AND utstyr <> 'smoke' AND utstyr <> 'status' AND utstyr <> 'forgotten' ORDER BY utstyr");
 
 if($_POST['submit'] == "Submit")
 {
@@ -26,7 +26,7 @@ if($_POST['submit'] == "Submit")
   
   $status = findStatus($missing, $forgotten);
 
-  $double_query = createUpdate($missing, $koie, $wood, $smoke, $status);
+  $double_query = createUpdate($missing, $koie, $wood, $smoke, $status, $forgotten);
 
   $double_query .= "INSERT INTO reports (`koie_name`, `status`, `startdate`, `enddate`, `smoke_detector`, `wood`, `remarks_of_defects`, `forgotten`, `comments`) VALUES ('$koie', '$status', '$startdate', '$enddate', '$smoke', '$wood', '$impMissing', '$forgotten', '$comment'); ";
   
@@ -153,11 +153,11 @@ $mysqli->close();
   <div class="col-md-4"> 
     <label class="radio-inline" for="smoke-0">
       <input type="radio" name="smoke" id="smoke-0" value="1" checked="checked">
-      JA
+      Ja
     </label> 
     <label class="radio-inline" for="smoke-1">
       <input type="radio" name="smoke" id="smoke-1" value="0">
-      NEI
+      Nei
     </label>
   </div>
 </div>
@@ -182,13 +182,13 @@ $mysqli->close();
   <div class="col-md-4"> 
     <label class="radio-inline" for="forgotten-0">
       <input type="radio" name="forgotten" id="smoke-0" value="1">
-      JA
+      Ja
     </label> 
     <label class="radio-inline" for="forgotten-1">
       <input type="radio" name="forgotten" id="smoke-1" value="0" checked="checked">
-      NEI
+      Nei
     </label>
-    <p class="help-block">Hvis JA, spesifiser i kommentarfeltet.</p>
+    <p class="help-block">Hvis ja, spesifiser i kommentarfeltet.</p>
   </div>
 </div>
 
