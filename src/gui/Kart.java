@@ -47,7 +47,7 @@ public class Kart extends Application {
         Group group = addHBox();
        
         
-       /**Legger groupen i toppen av borderPanen */
+       /**Adding the group to the top of the borderPane */
         border.setTop(group);
         /**Adding the gridPane that has the webview to the center of the borderpane, */
         border.setCenter(addAnchorPane(addGridPane()));
