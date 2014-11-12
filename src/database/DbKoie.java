@@ -7,9 +7,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.ModelKoie;
-
+/**
+ * 
+ *	Queries to the database for ModelKoie
+ *
+ */
 public class DbKoie {
-
+	/**
+	 * Queries for setting values on a ModelKoie object.
+	 * Will fill in koie name, number of beds, description, image url, forgotten status, smoke detector status
+	 * , wood status, and general status of the koie.
+	 * @param The koie you want to retrieve status from
+	 * @return A ModelKoie object
+	 * 
+	 */
 	public static ModelKoie getKoie(String koieName) {
 		String sql = "select * from koie where koie_name = ?";
 		ModelKoie koie = null;
@@ -51,7 +62,12 @@ public class DbKoie {
 		}
 		return koie;
 	}
-
+	/**
+	 * 
+	 * Query to get all koie names from the database table koie.
+	 * 
+	 * @return List of Strings with all koie names in the database
+	 */
 	public static List<String> getAllKoieNames() {
 		String sql = "select koie_name from koie";
 		List<String> koier = new ArrayList<>();
@@ -67,7 +83,12 @@ public class DbKoie {
 		}
 		return koier;
 	}
-
+	
+	/**
+	 * Query method that generates a list of ModelKoie objects 
+	 * that only contains koie name, wood status, smoke detector status, forgotten status and general status.
+	 * @return List of ModelKoie objects
+	 */
 	public static List<ModelKoie> getAllKoieStatus() {
 		List<ModelKoie> koieStatusList = new ArrayList<ModelKoie>();
 		ModelKoie koieStatus = null;

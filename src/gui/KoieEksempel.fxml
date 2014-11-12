@@ -17,7 +17,7 @@
       <ComboBox fx:id="wood" layoutX="139.0" layoutY="170.0" prefWidth="187.0" />
       <ComboBox fx:id="forgotten" layoutX="139.0" layoutY="293.0" prefWidth="187.0" />
       <Text layoutX="36.0" layoutY="233.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tid til dugnad:" wrappingWidth="109.0" />
-      <Text layoutX="36.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vedkubber:" wrappingWidth="84.13671875" />
+      <Text layoutX="36.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vedstokker:" wrappingWidth="84.13671875" />
       <Text layoutX="367.0" layoutY="439.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sengeplasser:" wrappingWidth="93.13671875" />
       <Text layoutX="366.0" layoutY="355.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Beskrivelse:" wrappingWidth="84.13671875" />
       <Text fx:id="koieName" layoutX="90.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="koienavn" wrappingWidth="468.13671875">

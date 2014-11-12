@@ -9,15 +9,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.ModelReports;
-
+/**
+ * 
+ * Queries for the reports table in the database
+ *
+ */
 
 public class DbReports {
-
-	   public static List<ModelReports> getReports() {
-	        String sql = "select * from reports";
-	        List<ModelReports> reports = new ArrayList<>();
-	        try (PreparedStatement ps = DatabaseConnect.getInstance().prepareStatement(sql)) {
-	            ResultSet rs = ps.executeQuery();
+		
+		/**
+		 * Query that retrieves all reports and generates a 
+		 * list of ModelReports objects that each contain information about one report
+		 * @return List of ModelReports objects
+		 */
+	public static List<ModelReports> getReports() {
+		String sql = "select * from reports";
+	    List<ModelReports> reports = new ArrayList<>();
+	    	try (PreparedStatement ps = DatabaseConnect.getInstance().prepareStatement(sql)) {
+	    		ResultSet rs = ps.executeQuery();
 	            while (rs.next()) {
 	            	ModelReports report = new ModelReports(rs.getInt("report_id"), rs.getString("koie_name"), rs.getInt("status"), 
 	            			rs.getDate("startdate"), rs.getDate("enddate"), rs.getBoolean("smoke_detector"), 
@@ -30,7 +39,11 @@ public class DbReports {
 	        }
 	        return reports;
 	    }
-	   
+	   /**
+	    * Query for getting one report on a given koie. Used to check if a koie atleast has one report
+	    * @param koiename name of the koie you want to get report from
+	    * @return ModelReports object with info about the report
+	    */
 	   public static ModelReports getReport(String koiename) {
 	        String sql = "select * from reports where koie_name = ?";
 	        ModelReports report = null;
@@ -48,6 +61,13 @@ public class DbReports {
 	        return report;
 	    }
 	   
+	   /**
+	    * Query to check if there is a report in the database with the given parameters
+	    * @param koieName name of the koie
+	    * @param startDate start date of the koie stay
+	    * @param endDate end date of the koie stay
+	    * @return true if there is a report from that time period on that koie name. False if not. 
+	    */
 	   public static boolean checkReport(String koieName, String startDate, String endDate) {
 	        String sql = "select * from reports where koie_name = ? and startdate = ? and enddate = ?";
 	        try (PreparedStatement ps = DatabaseConnect.getInstance().prepareStatement(sql)) {
@@ -63,7 +83,11 @@ public class DbReports {
 	        }
 	        return false;
 	    }
-	   
+	   /**
+	    * Query for getting all reports on a given koie
+	    * @param koieName Name of the koie you want to get all reports from
+	    * @return A list of ModelReports objects
+	    */
 	   public static List<ModelReports> getReports(String koieName) {
 	        String sql = "select * from reports where koie_name = ?";
 	        List<ModelReports> reports = new ArrayList<>();

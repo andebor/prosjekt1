@@ -7,9 +7,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.ModelEquipment;
+/**
+ * 
+ *Queries for the current_invetory2 database table
+ *
+ */
 
 public class DbEquipmentList {
-	
+	/**
+	 * Generates a list of ModelEquipment objects that contains the equipment name and status of the equipment on every koie.
+	 * 
+	 * @return List of ModelEquipment objects.
+	 */
 	public static List<ModelEquipment> getEquipment() {
         String sql = "select * from current_inventory2 where utstyr <> 'wood' and utstyr <> 'status'  and utstyr <> 'smoke' and utstyr <> 'forgotten' order by utstyr";
         List<ModelEquipment> inventory = new ArrayList<>();
@@ -31,6 +40,12 @@ public class DbEquipmentList {
         return inventory;
     }
 	
+	/**
+	 * Checks the equipment status on every equipment on a given koie. Used to check whether all list values are 0. (Means that all equipment on the given koie is okay).
+	 * @param koieName Name of the koie you want equipment status on
+	 * @return List of integers 
+	 */
+	
 	public static List<Integer> getEquipmentStatus(String koieName) {
         String sql = "select " + koieName + " from current_inventory2 where utstyr <> 'wood' and utstyr <> 'status'  and utstyr <> 'smoke' and utstyr <> 'forgotten' order by utstyr";
         List<Integer> inventory = new ArrayList<>();
@@ -44,6 +59,14 @@ public class DbEquipmentList {
         }
         return inventory;
     }
+	
+	/**
+	 * Updates the equipment status on the given koie. 
+	 * 
+	 * @param equipment The equipment you want to change status on
+	 * @param newStatus The new status you want for that equipment
+	 * @param koieName The koie you want to change the equipment status on
+	 */
 	
 	public static void updateEquipment(String equipment, int newStatus, String koieName) {
 		String sql;
