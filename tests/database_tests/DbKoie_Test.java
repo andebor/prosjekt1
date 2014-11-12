@@ -6,10 +6,21 @@ import org.junit.Test;
 import java.util.HashMap;
 import model.ModelKoie;
 import database.DbKoie;
-
+/**
+ * Testing the static values retrieved from the database table "koie" in the class database.DbKoie.
+ * @author Øyvind Bratvedt
+ *
+ */
 
 public class DbKoie_Test {
-	
+	/**
+	 * Checks that the the getKoie(koieName) function gets the correct values from the database. 
+	 * The test makes a HashMap with the correct koie names and corresponding number of beds. 
+	 * Then it iterates through the map and checks if DbKoie.getKoie(koieName) returns the right object 
+	 * by checking name and number of beds.
+	 * 
+	 * 
+	 */
 	@Test
 	public void testGetKoieNameWhenKoieNameIsRight(){
 		HashMap<String,Integer> koier = new HashMap<String,Integer>();
