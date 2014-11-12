@@ -20,15 +20,19 @@ public class DbPerformance_Test {
 	
 	@Test
 	public void getAllKoieNames(){
-		double start = System.nanoTime();
-		for (int i = 0; i < 1000; i++){
-			
-			DbKoie.getAllKoieNames();
-			
+		double average = 0;
+		int averageNumber = 100;
+		int howManyFetches = 1000;
+		for (int i = 0; i < averageNumber; i++) {
+			double start = System.nanoTime();
+			for (int j = 0; j < howManyFetches; j++){
+				DbKoie.getAllKoieNames();
+			}
+			average += System.nanoTime() - start;
 		}
-		double estimated = System.nanoTime() - start;
-		System.out.println("Estimated time on getting all koienames 1000 times: "+ estimated/1000000000 + "seconds");
-		assertTrue("1000 db queries took more than 100 seconds",estimated/1000000000 < 100);
+		average /= averageNumber;
+		System.out.println("Average time for 100 times getting all koienames 1000 times: "+ average/1000000000 + "seconds");
+		assertTrue("100 times 1000 db queries took more than 1000 seconds",average/1000000000 < 1000);
 	}
 	
 }
