@@ -14,13 +14,13 @@
 
 
   <script type="text/javascript">
-    
+    //Initiating the function that starts the koieEksempel in java 
     function tilKoia(t){
-
+      //Sending the name of the koie as a paramater
       java.toKoie(koieListe[t][0]);
 
     }
-    // Define your koieListe: HTML content for the info window, latitude, longitude
+    // Creating a var koieliste, witch has the coordinates of the spesific koia and also the amount of beds and the name. 
    var koieListe = [
       ['<b>Fosenkoia</b> <br></br>Sengeplasser: 10 </br> </br>Trykk for å gå til Koia<br> <button onclick="tilKoia(1)">Til Koia</button>  ', 63.56813, 10.29541],['Fosenkoia'],
       ['<b>Øvensenget</b> <br></br>Sengeplasser: 8 </br> </br>Trykk for å gå til Koia<br> <button onclick="tilKoia(3)">Til Koia</button>', 62.41219, 11.18655],['Øvensenget'],
@@ -46,26 +46,34 @@
       ['<b>Holvassgamma</b> <br></br>Sengeplasser: 8 </br> </br>Trykk for å gå til Koia<br> <button onclick="tilKoia(43)">Til Koia</button>', 63.82745, 10.37133],['Holvassgamma']
     ];
     
-    // Setup the different icons and shadows
+    // Opening a location of several dots  
+
     var iconURLPrefix = 'http://maps.google.com/mapfiles/ms/icons/';
-    
+    //Fetching the red-dot picture. 
     var icons = [
       iconURLPrefix + 'red-dot.png',
    
     ]
+    //Only used if you're having more than one dot or symbol on the map. 
     var icons_length = icons.length;
     
     
     var shadow = {
+      //adding some shadow and style to the marker
       anchor: new google.maps.Point(15,33),
       url: iconURLPrefix + 'msmarker.shadow.png'
     };
 
     var map = new google.maps.Map(document.getElementById('map'), {
+      //Setting the zoom of the map ( because of the AutoCenter function, this isn't really used. )
       zoom: 10,
+
+      //Setting the scenter of the map  
       center: new google.maps.LatLng(63.327383, 10.46747),
+      //Setting the map type as Terrain
       mapTypeId: google.maps.MapTypeId.TERRAIN,
       mapTypeControl: false,
+      //Setting streetview to True, to get the stretview symbol on the bottom left corner 
       streetViewControl: true,
       panControl: false,
       zoomControlOptions: {
@@ -74,16 +82,18 @@
     });
 
     var infowindow = new google.maps.InfoWindow({
+      //Setting the max width of the infoview above the marker 
       maxWidth: 260
     });
 
     var marker;
     var markers = new Array();
-    
+    //Creating a variable markers, that is a arraylist list.
     var iconCounter = 0;
     
     // Add the markers and infowindows to the map
     for (var i=0; i < koieListe.length; i=i+2) {  
+      //looping through the Koieliste Array, and creating a marker on the position
       marker = new google.maps.Marker({
         position: new google.maps.LatLng(koieListe[i][1], koieListe[i][2]),
         map: map,
@@ -92,7 +102,7 @@
       });
 
       markers.push(marker);
-
+      // adding a infoview to the marker that contains a button. 
       google.maps.event.addListener(marker, 'click', (function(marker, i) {
         return function() {
           infowindow.setContent(koieListe[i][0]);
@@ -101,16 +111,16 @@
       })(marker, i));
       
       iconCounter++;
-      // We only have a limited number of possible icon colors, so we may have to restart the counter
+      //This can be used to get different markers, but on this map there's only the red one. 
       if(iconCounter >= icons_length){
         iconCounter = 0;
       }
     }
     
     function AutoCenter() {
-      //  Create a new viewpoint bound
+      //  Create a new center witch is large enough to contain all the markers
       var bounds = new google.maps.LatLngBounds();
-      //  Go through each...
+      //  Go through the markers and find the bounds 
       $.each(markers, function (index, marker) {
         bounds.extend(marker.position);
       });
