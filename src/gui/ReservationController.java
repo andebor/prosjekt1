@@ -14,45 +14,87 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+/**
+ * 
+ * Class for controlling the content of the Reservation-GUI
+ *
+ */
 
 public class ReservationController implements Initializable {
 
 	private static Stage primaryStage;
 	private static ModelReservations reservation;
+	
+	/**
+	 * Method for setting the primaryStage field
+	 * @param primaryStage The stage window
+	 */
 
 	public static void setPrimaryStage(Stage primaryStage) {
 		ReservationController.primaryStage = primaryStage;
 	}
-
+	
+	/**
+	 * Method for setting the current reservation to be showed in the GUI view
+	 * @param reservation ModelReservations object.
+	 */
 	public static void setReservations(ModelReservations reservation) {
 		ReservationController.reservation = reservation;
 	}
 
+	//Declaring fields from the FXML-file
 	@FXML
 	TextField koie, id, startDate, endDate, delivered, email, number, name;
+	
+	/**
+	 * Method for opening the MainMenu-GUI
+	 * @param event
+	 * @throws IOException If an input or output exception occurred
+	 */
 
 	@FXML
 	public void backToMainMenu(ActionEvent event) throws IOException {
 		MainMenu mm = new MainMenu();
 		mm.start(primaryStage);
 	}
+	
+	/**
+	 * Method for going back to the Reservations-GUI
+	 * @param event 
+	 * @throws IOException If an input or output exception occurred
+	 */
 
 	@FXML
 	public void backToReservations(ActionEvent event) throws IOException {
 		Reservations r = new Reservations();
 		r.start(primaryStage);
 	}
-
+	
+	/**
+	 * Code to be executed if the "Standard email" button is pressed.
+	 * @param event 
+	 */
 	@FXML
 	public void sendStandardEmail(ActionEvent event) {
 		sendEmail(true);
 	}
-
+	
+	/**
+	 * Code to be executed if the "Annen email" button is pressed.
+	 * @param event
+	 */
 	@FXML
 	public void sendCustomEmail(ActionEvent event) {
 		sendEmail(false);
 	}
 
+	/**
+	 * Method that opens your standard email program (if you have one) and makes an automatic
+	 * generated email if param = true or an empty email if param = false. The reciever email
+	 * is the ModelReservations.tenantMail field. Catching exceptions if URI is wrong, the system
+	 * does not support Desktop or IOException
+	 * @param standard
+	 */
 	private void sendEmail(boolean standard) {
 		Desktop desktop = Desktop.getDesktop();
 		try {
@@ -83,12 +125,18 @@ public class ReservationController implements Initializable {
 			e.printStackTrace();
 		}
 	}
-
+	/**
+	 * The initialize method that is called automatically. 
+	 * Calling methods for filling the reservation fields with data in the GUI
+	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		updateReservation();
 	}
 	
+	/**
+	 * Filling textfields in the GUI with data from the ModelReservations object
+	 */
 	private void updateReservation(){
 		if (reservation != null) {
 			koie.setText(reservation.getKoieName());

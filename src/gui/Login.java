@@ -6,17 +6,20 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
+/**
+ * Class for starting the Login-GUI. This is also the systems starting class.
+ */
 public class Login extends Application {
 	
-	//The start method is similar in all GUI classes
+	/**
+	 * Method for starting the GUI and retrieve the FXML file. Passing the Stage element to the controller file.
+	 */
 	@Override
 	public void start(Stage primaryStage) throws IOException {
-		final double rem = javafx.scene.text.Font.getDefault().getSize();
-		Parent root = FXMLLoader.load(this.getClass().getResource("Login.fxml")); //loading the correct FXML-file
+		Parent root = FXMLLoader.load(this.getClass().getResource("Login.fxml"));
 	    primaryStage.setScene(new Scene(root));
 	    primaryStage.show();
-	    primaryStage.setResizable(false); //setting all GUIs non-resizable
+	    primaryStage.setResizable(false);
 	    LoginController.setPrimaryStage(primaryStage);
 	   
 	}

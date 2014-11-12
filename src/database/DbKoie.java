@@ -17,7 +17,7 @@ public class DbKoie {
 	 * Queries for setting values on a ModelKoie object.
 	 * Will fill in koie name, number of beds, description, image url, forgotten status, smoke detector status
 	 * , wood status, and general status of the koie.
-	 * @param The koie you want to retrieve status from
+	 * @param koieName The koie you want to retrieve status from
 	 * @return A ModelKoie object
 	 * 
 	 */

@@ -20,15 +20,25 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
-
+/**
+ * 
+ * Class for controlling the content of the Reports-GUI
+ *
+ */
 public class ReportsController implements Initializable {
 
 	private static Stage primaryStage;
-
+	
+	/**
+	 * Method for setting the primaryStage field
+	 * @param primaryStage The stage window
+	 */
 	public static void setPrimaryStage(Stage primaryStage) {
 		ReportsController.primaryStage = primaryStage;
 	}
+	
 
+	//Declaring fields from the FXML-file
 	@FXML
 	private TableView<ModelReports> reportsTable;
 	@FXML
@@ -38,30 +48,41 @@ public class ReportsController implements Initializable {
 	@FXML
 	private TableColumn<ModelReports, Integer> status;
 
-	// Method for returning to main menu
+	/**
+	 * Method for opening the MainMenu-GUI
+	 * @param event 
+	 * @throws IOException If an input or output exception occurred
+	 */
 	@FXML
 	public void backToMainMenu(ActionEvent event) throws IOException {
 		MainMenu mm = new MainMenu();
 		mm.start(primaryStage);
 	}
-
+	
+	/**
+	 * Making an ObservableList of ModelReports objects collected from DdReports.getReports().
+	 */
 	final ObservableList<ModelReports> data = FXCollections
 			.observableArrayList(DbReports.getReports());
+	
 
-	@FXML
-	public void openReport(ActionEvent event) throws IOException {
-		ModelReports report = (ModelReports) reportsTable.getSelectionModel()
-				.getSelectedItem();
-		System.out.println(report.getKoieName());
-	}
-
+	/**
+	 * The initialize method that is called automatically. 
+	 * Calling methods for filling the reports table and enable double click on the table
+	 * in this method.
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		updateReportsTable();
 		enableDoubleClickOnTable();
 
 	}
-
+	
+	/**
+	 * Method that defines the data types to be displayed in the reports table. 
+	 * The status column has a CellValueFactory-method so that we are able to display 
+	 * different text and colours according to the status we get from the database.
+	 */
 	private void updateReportsTable() {
 		koie.setCellValueFactory(new PropertyValueFactory<ModelReports, String>(
 				"koieName"));
@@ -72,6 +93,7 @@ public class ReportsController implements Initializable {
 		dateDelivered
 				.setCellValueFactory(new PropertyValueFactory<ModelReports, Date>(
 						"timeStamp"));
+		//Make the sort type on dateDelivered to descending
 		dateDelivered.setSortType(TableColumn.SortType.DESCENDING);
 		
 		status.setCellValueFactory(new PropertyValueFactory<ModelReports, Integer>(
@@ -102,10 +124,18 @@ public class ReportsController implements Initializable {
 			};
 		});
 		reportsTable.setItems(data);
+		//Setting the table to sort on the values in the "Dato levert" column
 		reportsTable.getSortOrder().add(dateDelivered);
 		
 	}
+	
+	
 
+	/**
+	 * Makes a event when a row is double clicked in the reports table.
+	 * When double clicked. The value of the row(ModelReports object) will take
+	 * you to ReportForm-GUI showing the values of the clicked ModelReports.
+	 */
 	private void enableDoubleClickOnTable() {
 		reportsTable.setOnMouseClicked(new EventHandler<MouseEvent>() {
 			@Override

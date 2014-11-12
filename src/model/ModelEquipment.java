@@ -2,7 +2,11 @@ package model;
 
 import java.util.HashMap;
 import java.util.Map;
-
+/**
+ * 
+ * Class for storing data retrieved from the queries in database.DbEquipmentList
+ *
+ */
 public class ModelEquipment {
 	
 	private String equipment;

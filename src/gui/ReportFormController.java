@@ -19,14 +19,25 @@ public class ReportFormController implements Initializable {
 	private static Stage primaryStage;
 	private static ModelReports report;
 
+	/**
+	 * Method for setting the primaryStage field
+	 * @param primaryStage The stage window
+	 */
+
 	public static void setPrimaryStage(Stage primaryStage) {
 		ReportFormController.primaryStage = primaryStage;
 	}
-
+	/**
+	 * 
+	 * Method for setting the current report to be showed in the GUI view
+	 *
+	 * @param report A ModelReports object
+	 */
 	public static void setReports(ModelReports report) {
 		ReportFormController.report = report;
 	}
-
+	
+	//Declaring fields from the FXML-file
 	@FXML
 	TextField forgotten, smokeDetector, timeStamp, reportId, woodStatus, koieName;
 	@FXML
@@ -35,24 +46,50 @@ public class ReportFormController implements Initializable {
 	ListView<String> defectsList;
 
 	ObservableList<String> data;
+	
+	/**
+	 * Method for going back to the Reports-GUI
+	 * @param event 
+	 * @throws IOException If an input or output exception occurred
+	 */
 
 	@FXML
 	public void backToReports(ActionEvent event) throws IOException {
 		Reports reports = new Reports();
 		reports.start(primaryStage);
 	}
-
+	
+	/**
+	 * Method for opening the MainMenu-GUI
+	 * @param event
+	 * @throws IOException If an input or output exception occurred
+	 */
 	@FXML
 	public void backToMainMenu(ActionEvent event) throws IOException {
 		MainMenu mm = new MainMenu();
 		mm.start(primaryStage);
 	}
+	
+
+/**
+	 * The initialize method that is called automatically. 
+	 * Calling method for filling in textfields and listviews in this method
+	 */
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		updateReport();
 	}
-
+	
+	/**
+	 * 
+	 * Method for filling in sufficient data to the text fields. All values are taken from the
+	 * ModelReports object. Since defects are represented with a string  and separates the defects
+	 * with a comma in the database table, we need to convert it to a ArrayList to get it in to 
+	 * the ListView. This is done by generating a substring that is added to the ArrayList when
+	 *  the next character is a comma. Some of the textfields have multiple showings, determined by the
+	 *  value of the fields in ModelReports.
+	 */
 	private void updateReport() {
 		if (report != null) {
 			ArrayList<String> defectList = new ArrayList<String>();

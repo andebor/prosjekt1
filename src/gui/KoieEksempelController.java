@@ -34,21 +34,33 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+/**
+ * 
+ * Class for controlling the content of the KoieEksempel-GUI
+ *
+ */
 
 public class KoieEksempelController implements Initializable {
 	private static Stage primaryStage;
 	private static ModelKoie koie;
 	private ModelEquipment equipment1 = null;
 	
-
+	/**
+	 * Method for setting the primaryStage field
+	 * @param primaryStage The stage window
+	 */
 	public static void setPrimaryStage(Stage primaryStage) {
 		KoieEksempelController.primaryStage = primaryStage;
 	}
-
+	
+	/**
+	 * Method for setting the ModelKoie field
+	 * @param koie the ModelKoie object we want to set
+	 */
 	public static void setKoier(ModelKoie koie) {
 		KoieEksempelController.koie = koie;
 	}
-
+	//Declaring fields from the FXML-file
 	@FXML
 	private Text koieName;
 	@FXML
@@ -76,15 +88,23 @@ public class KoieEksempelController implements Initializable {
 	@FXML
 	private ImageView koiePic;
 
-	// Method for returning to main menu
+	/**
+	 * Method for opening the MainMenu-GUI
+	 * @param event 
+	 * @throws IOException If an input or output exception occurred
+	 */
 	@FXML
 	public void backToMainMenu(ActionEvent event) throws IOException {
 		MainMenu mm = new MainMenu();
 		mm.start(primaryStage);
 	}
 
-	// Method for opening a new koie. Further explanation in
-	// KoierController.java
+	/**
+	 * Method for opening the KoieEksempel-GUI. Makes a ModelKoie object from the selected koie name in the checkbox
+	 * by using DbKoie.getKoie(koieName). Shows an error message in the GUI if no koie is selected.
+	 * @param event The event of the button(Button click)
+	 * @throws IOException If an input or output exception occurred
+	 */
 	@FXML
 	public void toKoie(ActionEvent event) throws IOException {
 		if (koieList.getValue() != null) {
@@ -103,15 +123,23 @@ public class KoieEksempelController implements Initializable {
 		}
 	}
 
-	// Initializing lists of data to display in tables and choicebox.
+	/**
+	 *  Initializing list of data to display in choicebox. Using DbKoie.getAllKoieNames() to retrieve the koie names
+	 */
 	final ObservableList<String> dataKoie = FXCollections
 			.observableArrayList(DbKoie.getAllKoieNames());
+	/**
+	 *  Initializing list of data to display in reportsTable. Using DbReports.getReports(koieName)
+	 *   to retrieve all reports on that koie name
+	 */
 	final ObservableList<ModelReports> dataReport = FXCollections
 			.observableArrayList(DbReports.getReports(koie.getKoieName()));
 	
 
 
-	// Filling the textboxes, tables and choicebox with sufficient data.
+	/**
+	 * Filling the textboxes, tables and choiceboxes with sufficient data. Calls methods that updates and fills in tables.
+	 */ 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
@@ -124,14 +152,15 @@ public class KoieEksempelController implements Initializable {
 
 			
 			if(koie.getSmoke() == 0){
-				smoke.setText("Fungerer");
+				smoke.setText("Fungerer ikke");
 			}
 			else{
-				smoke.setText("Fungerer ikke");
+				smoke.setText("Fungerer");
 			}
 			
 			Image img = new Image(koie.getImage());
 			koiePic.setImage(img);
+			//Update functions
 			updateWoodStatus();
 			updateForgotten();
 			updateEquipmentTable();
@@ -144,9 +173,12 @@ public class KoieEksempelController implements Initializable {
 		
 
 	}
-	
+	/**
+	 * Method for displaying the wood status and changing the display values in the wood checkbox and dugnad textbox
+	 * Showing the save button when wood checkbox is clicked. 
+	 */
 	private void updateWoodStatus(){
-		// Displaying different wood status according to the value in the database
+	
 		
 			
 			wood.getItems().addAll("0-15","15-30","Mer enn 30");	
@@ -167,6 +199,10 @@ public class KoieEksempelController implements Initializable {
 			
 					
 	}
+	/**
+	 * Method for updating the status of forgotten in the koie displayed in the GUI. Changing value of the forgotten
+	 * checkbox will show a save button. 
+	 */
 	
 	private void updateForgotten(){
 		forgotten.getItems().addAll("Ikke gjenglemt","Gjenglemt");
@@ -183,7 +219,11 @@ public class KoieEksempelController implements Initializable {
 		});
 	}
 	
-	
+	/**
+	 * Method declaring a EventHandler that executes when a row in the equipment table is double clicked.
+	 * The event opens a prompt that gives opportunity to change the status of the double clicked equipment in
+	 * the equipment table.
+	 */
 	private void editEquipmentStatus() {
 		equipmentList.setOnMouseClicked(new EventHandler<MouseEvent>() {
 			@Override
@@ -220,7 +260,12 @@ public class KoieEksempelController implements Initializable {
 					Text error = new Text("Du har ikke endret på noe!");
 					
 					save.setOnAction(new EventHandler<ActionEvent>() {
-						
+						/**
+						 * Method that closes the prompt and returns to the KoieEksempel-GUI if the value in the checkbox
+						 * is different from the original value. A error message will show up otherwise.
+						 * Updates the equipment table in the GUI and in the database since the initialize-method will be
+						 * executed when the start method is called.
+						 */
 						@Override
 						public void handle(ActionEvent event) {
 							if (status.getValue() == "Utstyr i orden" && initialStatus != 0) {
@@ -294,6 +339,12 @@ public class KoieEksempelController implements Initializable {
 			}
 		});
 	}
+	
+	/**
+	 * Implements a double click event on reportstable. When a row is double clicked,
+	 *  the content of the row (a ModelReports object) will open in the ReportForm gui.
+	 * 
+	 */
 	private void openReport(){
 		reportsTable.setOnMouseClicked(new EventHandler<MouseEvent>() {
 			@Override
@@ -315,6 +366,16 @@ public class KoieEksempelController implements Initializable {
 		});
 
 	}
+	/**
+	 * Method that defines the data types to be displayed in the equipment table. 
+	 * The status column has a CellValueFactory-method so that we are able to display different text and colours 
+	 * according to the status we get from the database. Adds data to the table view
+	 * 
+	 * 
+	 *  Updates the database on three conditions; 0: All equipment is good and nothing is forgotten, 1: All equipment 
+	 * is good, but something is forgotten, 2: Defects in equipment and something might be forgotten 
+	 * (You can see if something is forgotten when going to the actual koie in the GUI).
+	 */
 	private void updateEquipmentTable() {
 		final ObservableList<ModelEquipment> dataEquipment = FXCollections
 				.observableArrayList(DbEquipmentList.getEquipment());
@@ -354,7 +415,7 @@ public class KoieEksempelController implements Initializable {
 
 			});
 		}
-		
+	
 		boolean allGood = true;
 		for(int i : DbEquipmentList.getEquipmentStatus(koie.getKoieName())){
 			if (i == 1){
@@ -382,6 +443,11 @@ public class KoieEksempelController implements Initializable {
 		equipmentList.setItems(dataEquipment);
 	}
 	
+/**
+ * Method that defines the data types to be displayed in the reports table.
+ *  The status column has a CellValueFactory-method so that we are able to display
+ *   different text and colours according to the status we get from the database. 
+ */
 	public void updateReportsTable(){
 		if (DbReports.getReport(koie.getKoieName()) != null) {
 			// Setting cell value factories for the columns
@@ -392,8 +458,7 @@ public class KoieEksempelController implements Initializable {
 			status.setCellValueFactory(new PropertyValueFactory<ModelReports, Integer>(
 					"status"));
 
-			// Implementing custom cell factory for the status column.
-			// Different colour and text for different values in the database
+			
 			status.setCellFactory(column -> {
 				return new TableCell<ModelReports, Integer>() {
 					@Override
@@ -421,7 +486,12 @@ public class KoieEksempelController implements Initializable {
 			reportsTable.setItems(dataReport);
 		}
 	}
-	
+	/**
+	 * Method for the save wood status button. Will update the equipment in the database and
+	 * the current ModelKoie object when button is clicked and something is changed from the original
+	 * ModelKoie-status.  
+	 * 
+	 */
 	@FXML
 	public void saveWoodStatus(){
 		if(wood.getValue() == "0-15" && koie.getWood() != 1) {
@@ -451,6 +521,13 @@ public class KoieEksempelController implements Initializable {
 		}
 		
 	}
+	
+	/**
+	 * Method for the save forgotten status button. Will update the equipment in the database and
+	 * the current ModelKoie object when button is clicked and something is changed from the original
+	 * ModelKoie-status. 
+	 * 
+	 */
 	
 	@FXML
 	public void saveForgottenStatus(){
