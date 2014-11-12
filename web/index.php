@@ -25,15 +25,16 @@ if($_POST['submit'] == "Submit")
   }
   
   $status = findStatus($missing, $forgotten);
-
+  // Henter ut update string for current_inventory2
   $double_query = createUpdate($missing, $koie, $wood, $smoke, $status, $forgotten);
-
+  //tilføyer ny rapport til databasespørringen
   $double_query .= "INSERT INTO reports (`koie_name`, `status`, `startdate`, `enddate`, `smoke_detector`, `wood`, `remarks_of_defects`, `forgotten`, `comments`) VALUES ('$koie', '$status', '$startdate', '$enddate', '$smoke', '$wood', '$impMissing', '$forgotten', '$comment'); ";
   
+  //Gjør spørringen og gir feilmelding hvis det ikke går
   if (!$mysqli->multi_query($double_query)) {
     echo "Multi query failed: (" . $mysqli->errno . ") " . $mysqli->error;
   }
-  //videresende til ny side når skjema er fullført
+  //videresender til ny side når skjema er fullført uten problemer.
   header("Location: success.html");
 }
 

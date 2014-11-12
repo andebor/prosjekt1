@@ -1,5 +1,5 @@
 <?php
-// Connect to database@
+// Oppretter en tilkobling til databasen
 
 $dbhost = 'mysql.stud.ntnu.no';
 $dbuser = 'oyvbr_prosjekt1';

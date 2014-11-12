@@ -2,6 +2,7 @@
 
 include 'dbconn.php';
 
+//Sjekker om det finnes en reservasjon på valgt koie i angitt tidsrom
 if(isset($_POST["select_koie"], $_POST["startdate"], $_POST["enddate"])) 
 {
     $koie = ucfirst($_POST["select_koie"]);

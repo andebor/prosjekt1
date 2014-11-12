@@ -1,3 +1,4 @@
+//Sjekker epost opp mot reservasjonsdatabase
 $("#email_input").keyup(function(e) {
     var email_input = $(this).val();
     $.post('check_email.php', {'email_input':email_input}, function(data) {
@@ -11,6 +12,7 @@ $("#email_input").keyup(function(e) {
     });
 });
 
+//Sjekker koie, startdate og enddate feltene for match i reservasjonsdatabasen ved ending av startdato hvis sluttdato er utfyllt.
 $("#startdate").change(function() {
     var enddate = $("#enddate").val();
     var startdate = $(this).val();
@@ -30,6 +32,7 @@ $("#startdate").change(function() {
     
 });
 
+//Sjekker koie, startdate og enddate feltene for match i reservasjonsdatabasen ved endring av sluttdato.
 $("#enddate").change(function(e) {
     var enddate = $(this).val();
     var startdate = $("#startdate").val();
@@ -47,7 +50,7 @@ $("#enddate").change(function(e) {
     });
 });
 
-
+//Sjekker koie, startdate og enddate feltene for match i reservasjonsdatabasen ved endring av koie feltet.
 $("#select_koie").change(function() {
     var enddate = $("#enddate").val();
     var startdate = $("#startdate").val();
