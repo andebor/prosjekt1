@@ -11,4 +11,7 @@ if ($mysqli->connect_errno) {
     echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
 }
 
+// set utf-8
+$mysqli->set_charset("utf8");
+
 ?>
