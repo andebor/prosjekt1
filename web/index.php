@@ -2,8 +2,7 @@
 include 'functions.php';
 include 'dbconn.php';
 
-// set utf-8
-$mysqli->set_charset("utf8");
+
 
 //Henter liste over utstyr som kan meldes som mangel
 $inventory_list = $mysqli->query("SELECT utstyr FROM `current_inventory2` WHERE utstyr <> 'wood' AND utstyr <> 'smoke' AND utstyr <> 'status' AND utstyr <> 'forgotten' ORDER BY utstyr");
@@ -25,8 +24,10 @@ if($_POST['submit'] == "Submit")
   }
   
   $status = findStatus($missing, $forgotten);
+  // Nullstiller status før update
+  $double_query = "UPDATE current_inventory2 SET " . $koie . "= CASE utstyr WHEN 'status' THEN 0 WHEN 'wood' THEN 0 WHEN 'smoke' THEN 0 WHEN 'forgotten' THEN 0 WHEN 'Brannapparat' THEN 0 WHEN 'Bestikk' THEN 0 WHEN 'Brannteppe' THEN 0 WHEN 'Gryter' THEN 0 WHEN 'Hammer' THEN 0 WHEN 'Hjulvisp' THEN 0 WHEN 'Kjøkkenklut' THEN 0 WHEN 'Koiebok' THEN 0 WHEN 'Kopphåndkle' THEN 0 WHEN 'Lysestaker' THEN 0 WHEN 'Oppvaskkost' THEN 0 WHEN 'Parafinlampe' THEN 0 WHEN 'Primus' THEN 0 WHEN 'Sag' THEN 0 WHEN 'Sagkrakk' THEN 0 WHEN 'Spade' THEN 0 WHEN 'Stekepanne' THEN 0 WHEN 'Tallerkener' THEN 0 WHEN 'Tommestokk' THEN 0 WHEN 'Vaskemiddel' THEN 0 WHEN 'Øks' THEN 0 ELSE " . $koie . " END; ";
   // Henter ut update string for current_inventory2
-  $double_query = createUpdate($missing, $koie, $wood, $smoke, $status, $forgotten);
+  $double_query .= createUpdate($missing, $koie, $wood, $smoke, $status, $forgotten);
   //tilføyer ny rapport til databasespørringen
   $double_query .= "INSERT INTO reports (`koie_name`, `status`, `startdate`, `enddate`, `smoke_detector`, `wood`, `remarks_of_defects`, `forgotten`, `comments`) VALUES ('$koie', '$status', '$startdate', '$enddate', '$smoke', '$wood', '$impMissing', '$forgotten', '$comment'); ";
   
@@ -153,11 +154,11 @@ $mysqli->close();
   <label class="col-md-4 control-label" for="smoke">Virket røykvarsler?</label>
   <div class="col-md-4"> 
     <label class="radio-inline" for="smoke-0">
-      <input type="radio" name="smoke" id="smoke-0" value="1" checked="checked">
+      <input type="radio" name="smoke" id="smoke-0" value="0" checked="checked">
       Ja
     </label> 
     <label class="radio-inline" for="smoke-1">
-      <input type="radio" name="smoke" id="smoke-1" value="0">
+      <input type="radio" name="smoke" id="smoke-1" value="1">
       Nei
     </label>
   </div>
