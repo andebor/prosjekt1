@@ -5,6 +5,7 @@ import java.util.Map;
 /**
  * 
  * Class for storing data retrieved from the queries in database.DbEquipmentList
+ * The getters on the koie names is only used for filling in the table in KoieEksempel
  *
  */
 public class ModelEquipment {
@@ -14,7 +15,14 @@ public class ModelEquipment {
 	private int Kråklikåten, Kvernmovollen, Kåsen, Lynhøgen, Mortenskåten, Nicokoia, Rindalsløa, Selbukåten;
 	private int Sonvasskoia, Stabburet, Stakkslettbua, Telin, Taagaabu, Vekvessætra, Øvensenget;
 	public Map<String,Integer> statusMap;
-
+	
+	/**
+	 * Constructor for constructing the current status for one equipment on all koier.
+	 * The first parameter is which equipment the status is for and the rest of the parameters
+	 * is the current status for that equipment on that given koie. 0 is okay and 1 is for defects
+	 * @param equipment The equipment name. 
+	 *
+	 */
 	public ModelEquipment(String equipment, int flåkoia, int fosenkoia,
 			int heinfjordstua, int hognabu, int holmsåkoia, int holvassgamma,
 			int iglbu, int kamtjønnkoia, int kråklikåten, int kvernmovollen,
@@ -145,16 +153,27 @@ public class ModelEquipment {
 	public Map<String, Integer> getStatusMap() {
 		return statusMap;
 	}
-
+	
+	/**
+	 * 
+	 * @return The equipment name
+	 */
 	public String getEquipment() {
 		return equipment;
 	}
-
+	/**
+	 * Returns the current status on one equipment in one koie.
+	 * @param koieName The koie name
+	 * @return Int that represents the status of the equipment on that koie
+	 */
 	public Integer getEquipmentStatus(String koieName){
 		return statusMap.get(koieName);
 	}
 	
-
+	/**
+	 * Generates a HashMap with koie name as key and the current status of the equipment
+	 * in the object at that koie as value. 
+	 */
 	public void makeStatusMap(){
 		statusMap = new HashMap<String,Integer>();
 		statusMap.put("Flåkoia", Flåkoia);
