@@ -2,8 +2,6 @@
 include 'functions.php';
 include 'dbconn.php';
 
-
-
 //Henter liste over utstyr som kan meldes som mangel
 $inventory_list = $mysqli->query("SELECT utstyr FROM `current_inventory2` WHERE utstyr <> 'wood' AND utstyr <> 'smoke' AND utstyr <> 'status' AND utstyr <> 'forgotten' ORDER BY utstyr");
 

@@ -17,7 +17,7 @@ function findStatus($missing, $forgotten) {
 function createUpdate($columnArray, $koie, $wood, $smoke, $status, $forgotten) {
     if (count($columnArray) > 0) {
         foreach ($columnArray as $key => $value) {
-          $pairs [] = "WHEN '$value' THEN 0";
+          $pairs [] = "WHEN '$value' THEN 1";
         }
         $imploded = implode(' ', $pairs);
 
