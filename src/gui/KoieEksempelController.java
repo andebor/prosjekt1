@@ -152,10 +152,10 @@ public class KoieEksempelController implements Initializable {
 
 			
 			if(koie.getSmoke() == 0){
-				smoke.setText("Fungerer ikke");
+				smoke.setText("Fungerer");
 			}
 			else{
-				smoke.setText("Fungerer");
+				smoke.setText("Fungerer ikke");
 			}
 			
 			Image img = new Image(koie.getImage());
