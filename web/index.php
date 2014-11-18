@@ -225,14 +225,14 @@ $mysqli->close();
                 $('#startdate').datepicker({
                     format: "yyyy-mm-dd",
                     autoclose: true,
-                    startDate: '-2w',
+                    startDate: '-3w',
                     endDate: new Date()
                 });
 
                 $('#enddate').datepicker({
                     format: "yyyy-mm-dd",
                     autoclose: true,
-                    startDate: '-2w',
+                    startDate: '-3w',
                     endDate: new Date()
 
                 });    
