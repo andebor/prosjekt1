@@ -50,7 +50,7 @@
             <Font size="14.0" />
          </font>
       </Text>
-      <Text layoutX="72.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dato:" wrappingWidth="128.13671875">
+      <Text layoutX="72.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dato levert:" wrappingWidth="128.13671875">
          <font>
             <Font size="14.0" />
          </font>
