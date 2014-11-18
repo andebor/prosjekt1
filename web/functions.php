@@ -3,9 +3,9 @@
 // Setter status basert på gjenlemt og mangler input
 function findStatus($missing, $forgotten) {
     $status = 0;
-    if ($forgotten == 1) {
+    if (count($missing) > 0) {
         $status = 2;
-    } elseif (count($missing) > 0) {
+    } elseif ($forgotten == 1) {
         $status = 1;
     } else {
         $status = 0;
