@@ -22,7 +22,4 @@ public class ReportForm extends Application {
 		ReportFormController.setPrimaryStage(primaryStage);     
 	}
 		
-	public static void main(String[] args) {
-		launch(args);
-	}
 }

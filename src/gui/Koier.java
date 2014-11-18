@@ -21,8 +21,5 @@ public class Koier extends Application{
 		KoierController.setPrimaryStage(primaryStage);
 	}
 	
-	public static void main(String[] args) {
-		launch(args);
-	}
 }
 

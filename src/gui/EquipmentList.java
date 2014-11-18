@@ -22,9 +22,5 @@ public class EquipmentList extends Application{
 		primaryStage.show();
 		EquipmentListController.setPrimaryStage(primaryStage);
 	}
-	
-	public static void main(String[] args) {
-		launch(args);
-	}
 }
 

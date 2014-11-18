@@ -23,9 +23,4 @@ public class Reservations extends Application{
 	    ReservationsController.setPrimaryStage(primaryStage);
 	}
 	
-	public static void main(String[] args) {
-		launch(args);
-	}
-	
-
 }

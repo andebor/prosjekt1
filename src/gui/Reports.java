@@ -24,9 +24,4 @@ public class Reports extends Application {
 		ReportsController.setPrimaryStage(primaryStage);
 
 	}
-
-	public static void main(String[] args) {
-		launch(args);
-	}
-
 }
