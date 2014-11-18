@@ -19,9 +19,9 @@
         		<Image url="@images/koiene_logo.gif" />
         	</image>
       	</ImageView>
-   		<TextField fx:id="e_post" layoutX="137.0" layoutY="112.0" promptText="E-post" />
-		<PasswordField fx:id="pw" layoutX="137.0" layoutY="170.0" promptText="Passord" />
-		<Button layoutX="186.0" layoutY="246.0" mnemonicParsing="true" onAction="#openMainMenu" text="Logg inn" />
-		<Text fx:id="errorMessage" disable="true" fill="#f20303" layoutX="143.0" layoutY="228.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E-post eller passord er feil" visible="false" />
+   		<TextField fx:id="e_post" layoutX="165.0" layoutY="112.0" promptText="E-post" />
+		<PasswordField fx:id="pw" layoutX="165.0" layoutY="170.0" promptText="Passord" />
+		<Button layoutX="208" layoutY="246.0" mnemonicParsing="true" onAction="#openMainMenu" text="Logg inn" />
+		<Text fx:id="errorMessage" disable="true" fill="#f20303" layoutX="170.0" layoutY="228.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E-post eller passord er feil" visible="false" />
 	</children>
 </AnchorPane>
