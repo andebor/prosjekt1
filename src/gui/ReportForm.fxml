@@ -33,13 +33,13 @@
          </font>
       </Text>
       <ListView fx:id="defectsList" layoutX="459.0" layoutY="246.0" prefHeight="136.0" prefWidth="252.0" />
-      <TextField fx:id="forgotten" disable="true" layoutX="251.0" layoutY="324.0" opacity="100" prefHeight="25.0" prefWidth="164.0" text="Ja/Nei" />
-      <TextField fx:id="smokeDetector" disable="true" layoutX="251.0" layoutY="289.0" opacity="100" prefHeight="25.0" prefWidth="164.0" text="Ja/Nei" />
-      <TextField fx:id="timeStamp" disable="true" layoutX="251.0" layoutY="219.0" opacity="100" prefHeight="25.0" prefWidth="164.0" text="yyyy-mm-dd" />
+      <TextField fx:id="forgotten" disable="true" layoutX="251.0" layoutY="327.0" opacity="100" prefHeight="25.0" prefWidth="164.0" text="Ja/Nei" />
+      <TextField fx:id="smokeDetector" disable="true" layoutX="251.0" layoutY="292.0" opacity="100" prefHeight="25.0" prefWidth="164.0" text="Ja/Nei" />
+      <TextField fx:id="timeStamp" disable="true" layoutX="251.0" layoutY="222.0" opacity="100" prefHeight="25.0" prefWidth="164.0" text="yyyy-mm-dd" />
       <TextArea fx:id="reportComment" editable="false" layoutX="72.0" layoutY="421.0" opacity="100" prefHeight="203.0" prefWidth="639.0" text="Kommentar fra rapporten" wrapText="true" />
-      <TextField fx:id="reportId" disable="true" layoutX="251.0" layoutY="149.0" opacity="100" prefHeight="25.0" prefWidth="164.0" text="Id" />
-      <TextField fx:id="woodStatus" disable="true" layoutX="251.0" layoutY="254.0" opacity="100" prefHeight="25.0" prefWidth="164.0" text="Antall vedkubber fylles inn" />
-      <TextField fx:id="koieName" disable="true" layoutX="251.0" layoutY="184.0" opacity="100" prefHeight="25.0" prefWidth="164.0" text="Koienavn fylles inn" />
+      <TextField fx:id="reportId" disable="true" layoutX="251.0" layoutY="152.0" opacity="100" prefHeight="25.0" prefWidth="164.0" text="Id" />
+      <TextField fx:id="woodStatus" disable="true" layoutX="251.0" layoutY="257.0" opacity="100" prefHeight="25.0" prefWidth="164.0" text="Antall vedkubber fylles inn" />
+      <TextField fx:id="koieName" disable="true" layoutX="251.0" layoutY="187.0" opacity="100" prefHeight="25.0" prefWidth="164.0" text="Koienavn fylles inn" />
       <Text layoutX="72.0" layoutY="404.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kommentar:" wrappingWidth="181.13671875">
          <font>
             <Font size="14.0" />
