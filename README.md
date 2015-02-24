@@ -1,4 +1,4 @@
 prosjekt1
 =========
 
-Prosjekt1, gruppe 3
+Prosjekt1 h2014, gruppe 3
